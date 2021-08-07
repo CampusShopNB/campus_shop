@@ -106,6 +106,14 @@ public class IndexController {
     }
 
     /**
+     * 商家商品列表
+     * */
+    @GetMapping("/seller/product")
+    public String sellerproduct(){
+        return "/seller/sellerproductlist";
+    }
+
+    /**
      * 通知消息
      * */
     @GetMapping("/user/message")
@@ -176,6 +184,14 @@ public class IndexController {
     }
 
     /**
+     * 商家售出记录
+     * */
+    @GetMapping("/seller/sold")
+    public String sellersold(){
+        return "/seller/sellersoldrecord";
+    }
+
+    /**
      * 销量列表
      * */
     @GetMapping("/admin/sold")
@@ -202,8 +218,8 @@ public class IndexController {
     /**
      * 商家个人中心
      */
-    @GetMapping("/user/seller-home")
+    @GetMapping("/seller/home")
     public String sellerhome(){
-        return "/user/seller-home";
+        return "/seller/seller-home";
     }
 }

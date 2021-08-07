@@ -98,11 +98,23 @@
                             <span style="font-size:30px;color:#E7503C" th:text="${gddetail.thinkmoney}"></span>
                             <span><del th:text="${'￥'+gddetail.orimoney}"></del></span>
                         </div>
+
                         <h4 style="margin-bottom:15px">
-                            <div class="layui-inline">
-                                <a th:href="@{/user/seller-home}"><img th:src="${userinfo.uimage}" style="width:60px" class="layui-circle">&nbsp;<span th:text="${userinfo.username}" id="username"></span></a>
+                            <div class="layui-inline" id="useR" >
+                                <a th:href="@{/user/center}" ><img th:src="${userinfo.uimage}" style="width:60px" class="layui-circle">&nbsp;<span th:text="${userinfo.username}" id="username"></span></a>
+                            </div>
+                            <div class="layui-inline" id="selleR" >
+                                <a th:href="@{/seller/home}" ><img th:src="${userinfo.uimage}" style="width:60px" class="layui-circle">&nbsp;<span th:text="${userinfo.username}" id="sellername"></span></a>
                             </div>
                         </h4>
+                        <script>
+                            if(userid===gooduser){
+                                console.log("userid === gooduser");
+                                $("#selleR").css('display','none');
+                            }else{
+                                $("#useR").css('display','none');
+                            }
+                        </script>
                         <h4 style="margin-bottom:15px">
                             <button type="button" class="layui-btn layui-btn-sm layui-btn-radius"
                             style="background-color:#27B574">地&nbsp;址</button>&nbsp;&nbsp;<span th:text="${gddetail.school}" id="school"></span>
