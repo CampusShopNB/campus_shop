@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.LoginMapper">
 
+<!--    //定义结果集？
+将查询到的复杂数据（比如查询到几个表中数据）映射到一个结果集当中。
+https://www.cnblogs.com/kenhome/p/7764398.html
+相比数据表login，少了字段mobilephone-->
     <resultMap id="shoplogin" type="com.entity.Login">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="userid" jdbcType="INTEGER" property="userid"/>
@@ -11,11 +15,16 @@
         <result column="userstatus" jdbcType="INTEGER" property="userstatus"/>
     </resultMap>
 
-    <!-- 注册 -->
+
+    <!-- 注册
+    insert语句，少了roleid和userstatus-->
     <insert id="loginAdd" parameterType="com.entity.Login">
         insert into login (id,userid,username,password,mobilephone) values (#{id},#{userid},#{username},#{password},#{mobilephone})
     </insert>
-    <!-- 登录及判断用户是否存在 -->
+
+
+    <!-- 登录及判断用户是否存在
+    条件除了roleid，userstatus默认为1正常状态-->
     <select id="userLogin" parameterType="com.entity.Login" resultMap="shoplogin">
         select * from login
         <where>
@@ -26,7 +35,10 @@
         </where>
         and userstatus=1
     </select>
-    <!-- 修改登录信息 -->
+
+
+    <!-- 修改登录信息
+    除了id和userid，全都可以改-->
     <update id="updateLogin" parameterType="com.entity.Login">
         update login
         <set>

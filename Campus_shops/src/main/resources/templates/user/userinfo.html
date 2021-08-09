@@ -21,6 +21,15 @@
             <div class="layui-card">
                 <div class="layui-card-header">个人信息</div>
                 <div class="layui-card-body" pad15>
+                    <div class="layui-form-item">
+                            <label class="layui-form-label">评分</label>
+                            <div class="layui-input-inline" style="cursor:not-allowed">
+<!--                                <div class="layui-form-mid layui-word-aux">-->
+                                    <i class="layui-icon layui-icon-rate-solid" style="font-size: 24px; color: #ffbb00;"></i>
+<!--                                </div>-->
+                                <span type="text" th:text="${userInfo.star}" readonly="readonly"></span>
+                            </div>
+                    </div>
 
                     <form class="layui-form">
                         <div class="layui-form-item">
@@ -41,7 +50,7 @@
                                        placeholder="请输入用户名"
                                        autocomplete="off" class="layui-input" th:value="${userInfo.username}">
                             </div>
-                            <div class="layui-form-mid layui-word-aux">谨慎修改。</div>
+                            <div class="layui-form-mid layui-word-aux">谨慎修改</div>
                         </div>
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="margin-top: 25px">头像</label>
@@ -58,14 +67,32 @@
                                        placeholder="请输入邮箱" class="layui-input" th:value="${userInfo.email}">
                             </div>
                         </div>
+
+<!--                        <div class="layui-form-item">-->
+<!--                            <label class="layui-form-label">个性签名</label>-->
+<!--                            <div class="layui-input-inline">-->
+<!--                                <input type="text" name="sign" value="" lay-verify="sign" autocomplete="off"-->
+<!--                                       placeholder="请输入签名" class="layui-input" th:value="${userInfo.sign}">-->
+<!--                            </div>-->
+<!--                        </div>-->
+
                         <div class="layui-form-item">
                             <label class="layui-form-label">学校</label>
                             <div class="layui-input-inline">
+<!--                                <input type="text" name="school" lay-verify="school" autocomplete="off"-->
+<!--                                       placeholder="请输入所在学校" class="layui-input" th:value="${userInfo.school}"-->
+<!--                                       style="cursor:not-allowed;" readonly="readonly">-->
+<!--                                <input th:if="${ userInfo.applyschoolstatus == 1 }" type="text" name="school" lay-verify="school" autocomplete="off"-->
+<!--                                       placeholder="请输入所在学校" class="layui-input" th:value="${userInfo.school}+(待审核)"-->
+<!--                                       style="cursor:not-allowed;" readonly="readonly">-->
+                                       
                                 <input type="text" name="school" lay-verify="school" autocomplete="off"
                                        placeholder="请输入所在学校" class="layui-input" th:value="${userInfo.school}"
                                        style="cursor:not-allowed;" readonly="readonly">
                             </div>
+                            <div class="layui-form-mid" th:if="${ userInfo.applyschoolstatus == 1 }" style="color: red;">审核中</div>
                         </div>
+
                         <div class="layui-form-item">
                             <label class="layui-form-label">院系</label>
                             <div class="layui-input-inline">
@@ -84,6 +111,16 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label" style="margin-top: 25px">学生证</label>
+                            <!--添加id是为了使用layer.photo放大图片，不过直接onclick也可 onclick="enlargePic()"-->
+                            <div class="layui-input-inline" id="stuidcarddiv">
+                                <img th:src="${userInfo.stuidcard}"
+                                     style="width:200px;cursor: not-allowed" alt="学生证">
+                            </div>
+                        </div>
+
                         <div class="layui-form-item">
                             <label class="layui-form-label">性别</label>
                             <div class="layui-input-block">

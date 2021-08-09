@@ -9,9 +9,7 @@ import java.util.List;
  * <p>
  *  收藏 Mapper 接口
  * </p>
- *
- * @author hlt
- * @since 2019-12-21
+ * 注意没有delete操作。如果取消收藏，直接update，修改相关信息和收藏状态即可，以此减少数据库的操作
  */
 public interface CollectMapper {
     /**添加收藏*/

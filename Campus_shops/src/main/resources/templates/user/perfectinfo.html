@@ -19,14 +19,14 @@
     <div class="layui-row layui-col-space15">
         <div class="layui-col-md12">
             <div class="layui-card">
-                <div class="layui-card-header">完善个人信息</div>
+                <div class="layui-card-header">确认并完善个人信息</div>
                 <div class="layui-card-body" pad15>
                     <form class="layui-form">
                         <div class="layui-form-item">
                             <label class="layui-form-label">用户名</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="username" lay-verify="required" lay-reqtext="用户名不能为空"
-                                       placeholder="请输入用户名"
+                                       placeholder="请确认用户名"
                                        autocomplete="off" class="layui-input" th:value="${perfectInfo.username}"
                                        style="cursor:not-allowed;" readonly="readonly">
                             </div>
@@ -34,6 +34,7 @@
                         <div class="layui-form-item">
                             <label class="layui-form-label" style="margin-top: 25px">头像</label>
                             <div class="layui-input-inline">
+                                <!--{/static/images/default_avatar.jpg}前面还要加艾特符号-->
                                 <img th:src="${perfectInfo.uimage}"
                                      style="margin-left:30px; width:100px;border-radius:50%;cursor: pointer"
                                      title="点击修改头像" alt="头像" id="uimage">
@@ -43,25 +44,103 @@
                             <label class="layui-form-label">邮箱</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="email" value="" lay-verify="email" autocomplete="off"
-                                       placeholder="请输入邮箱" class="layui-input" th:value="${perfectInfo.email}"
+                                       placeholder="请确认邮箱" class="layui-input" th:value="${perfectInfo.email}"
                                        style="cursor:not-allowed;" readonly="readonly">
                             </div>
                         </div>
-                        <div class="layui-form-item">
-                            <label class="layui-form-label">学校</label>
-                            <div class="layui-input-block">
-                                <select name="school" lay-filter="required">
 
-                                    <option value="北京大学">北京大学</option>
-                                    <option value="清华大学">清华大学</option>
-                                    <option value="复旦大学">复旦大学</option>
-                                    <option value="武汉大学">武汉大学</option>
-                                    <option value="中国人民大学">中国人民大学</option>
-                                </select>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">个性签名</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="sign" value="" lay-verify="sign" autocomplete="off"
+                                       placeholder="请自定义你的签名" class="layui-input" th:value="${perfectInfo.sign}">
                             </div>
                         </div>
+
+
+<!--                        <div class="layui-form-item">-->
+<!--                            <label class="layui-form-label">学生编号</label>-->
+<!--                            <div class="layui-input-inline">-->
+<!--                                <input type="text" name="username" lay-verify="required" lay-reqtext="学生编号不能为空"-->
+<!--                                       placeholder="请输入学生编号"-->
+<!--                                       autocomplete="off" class="layui-input">-->
+<!--                            </div>-->
+<!--                        </div>-->
+
                         <div class="layui-form-item">
-                            <label class="layui-form-label">院系</label>
+                            <label class="layui-form-label"><span style="color: red">*</span>学校</label>
+                            <!--如果是layui-input-block，会占满一行。layui-input-inline则不会-->
+                            <div class="layui-input-inline" id="selectSchool">
+                                <select name="school" lay-filter="required" id="schoolselectoptions" >
+                                    <option value="">请选择学校</option>
+                                    <option th:each="school : ${schoollist}"
+                                        th:value="${school.schoolname}" th:text="${school.schoolname}"></option>
+                                    <option value="暂不填写" disabled="disabled">暂不填写</option>
+
+                                    <!--其实应该用thymeleaf，从数据库读取，不然每次新增学校都要手动修改-->
+<!--                                    <option value="中山大学">中山大学</option>-->
+<!--                                    <option value="暨南大学">暨南大学</option>-->
+<!--                                    <option value="汕头大学">汕头大学</option>-->
+<!--                                    <option value="华南理工大学">华南理工大学</option>-->
+<!--                                    <option value="华南农业大学">华南农业大学</option>-->
+<!--                                    <option value="广东海洋大学">广东海洋大学</option>-->
+<!--                                    <option value="广州医科大学">广州医科大学</option>-->
+<!--                                    <option value="广东医科大学">广东医科大学</option>-->
+<!--                                    <option value="广州中医药大学">广州中医药大学</option>-->
+<!--                                    <option value="广东药科大学">广东药科大学</option>-->
+<!--                                    <option value="华南师范大学">华南师范大学</option>-->
+<!--                                    <option value="韶关学院">韶关学院</option>-->
+<!--                                    <option value="惠州学院">惠州学院</option>-->
+<!--                                    <option value="韩山师范学院">韩山师范学院</option>-->
+<!--                                    <option value="湛江师范学院">湛江师范学院</option>-->
+<!--                                    <option value="肇庆学院">肇庆学院</option>-->
+<!--                                    <option value="嘉应学院">嘉应学院</option>-->
+<!--                                    <option value="广州体育学院">广州体育学院</option>-->
+<!--                                    <option value="广州美术学院">广州美术学院</option>-->
+<!--                                    <option value="星海音乐学院">星海音乐学院</option>-->
+<!--                                    <option value="广东技术师范大学">广东技术师范大学</option>-->
+<!--                                    <option value="深圳大学">深圳大学</option>-->
+<!--                                    <option value="广东财经大学">广东财经大学</option>-->
+<!--                                    <option value="广州大学">广州大学</option>-->
+<!--                                    <option value="广州航海学院">广州航海学院</option>-->
+<!--                                    <option value="广东警官学院">广东警官学院</option>-->
+<!--                                    <option value="深圳职业技术学院">深圳职业技术学院</option>-->
+<!--                                    <option value="广东南华工商职业学院">广东南华工商职业学院</option>-->
+<!--                                    <option value="私立华联学院">私立华联学院</option>-->
+<!--                                    <option value="仲恺农业工程学院">仲恺农业工程学院</option>-->
+<!--                                    <option value="五邑大学">五邑大学</option>-->
+<!--                                    <option value="广东金融学院">广东金融学院</option>-->
+<!--                                    <option value="广东石油化工学院">广东石油化工学院</option>-->
+<!--                                    <option value="东莞理工学院">东莞理工学院</option>-->
+<!--                                    <option value="广东外语外贸大学">广东外语外贸大学</option>-->
+<!--                                    <option value="广东工业大学">广东工业大学</option>-->
+<!--                                    <option value="南方医科大学">南方医科大学</option>-->
+<!--                                    <option value="深圳信息职业技术学院">深圳信息职业技术学院</option>-->
+<!--                                    <option value="北京师范大学珠海分校">北京师范大学珠海分校</option>-->
+<!--                                    <option value="北京理工大学珠海学院">北京理工大学珠海学院</option>-->
+<!--                                    <option value="珠海科技学院">珠海科技学院</option>-->
+<!--                                    <option value="电子科技大学中山学院">电子科技大学中山学院</option>-->
+<!--                                    <option value="茂名职业技术学院">茂名职业技术学院</option>-->
+<!--                                    <option value="河源职业技术学院">河源职业技术学院</option>-->
+                                    
+                                </select>
+                            </div>
+
+
+                            <i id="addschoolok" class="layui-icon layui-icon-ok-circle"
+                                style="font-size: 30px; color: #01B961;display:none"></i>
+
+                            <!--a标签不需要lay-event="wantschool" 了-->
+                            <a id="wantnewschool" style="color: #01B961;cursor:pointer;">没有贵校？在这里填写提交申请</a>
+                            <p id="addschooltips" style="color: #01B961;display: none;">提交申请成功</p>
+                            <p id="addschooltips2" style="color: #01B961;display: none;">已经有同学提交过申请啦，无需重复提交</p>
+
+                            <input type="hidden" id="finalschoolname" name="finalschoolname">
+                        </div>
+
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span style="color: red">*</span>院系</label>
                             <div class="layui-input-inline">
                                 <input type="text" name="faculty" value="" lay-verify="faculty" autocomplete="off"
                                        placeholder="请输入所在院系" class="layui-input">
@@ -69,13 +148,26 @@
                         </div>
                         <div class="layui-form-item">
                             <div class="layui-inline">
-                                <label class="layui-form-label">入学时间</label>
+                                <label class="layui-form-label"><span style="color: red">*</span>入学年份</label>
                                 <div class="layui-input-inline">
                                     <input type="text" name="startime" class="layui-input" id="time"
-                                           placeholder="选择入学时间">
+                                           placeholder="请选择入学年份">
                                 </div>
                             </div>
                         </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span style="color: red">*</span>学生证图片</label>
+                            <div class="layui-inline">
+                                <button type="button" class="layui-btn" id="stuidcard">上传学生证</button>
+                                <i id="stuidcardsuccess" class="layui-icon layui-icon-ok-circle"
+                                style="font-size: 30px; color: #01B961;display:none"></i>
+                                <p id="addstuidcardtips" style="color: #01B961;display: none;">学生证上传成功</p>
+                            </div>
+                        </div>
+
+
+
                         <div class="layui-form-item">
                             <label class="layui-form-label">性别</label>
                             <div class="layui-input-block">

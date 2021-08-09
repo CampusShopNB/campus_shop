@@ -2,29 +2,46 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.UserInfoMapper">
 
-    <!--  查询用户信息-->
+    <!--  查询用户信息
+    根据主键userid查询用户信息-->
     <select id="LookUserinfo" resultType="com.entity.UserInfo" parameterType="java.lang.String">
         select * from user_info where userid=#{userid}
     </select>
-    <!-- 查询所有用户信息 -->
+
+
+    <!-- 查询所有用户信息
+
+    根据角色id和用户账号状态（正常or封号），查询数据
+    不明白为什么要分成2张表，user_info信息很多，唯独少了roleid，放在了login表中
+    在哪里使用？
+    -->
     <select id="queryAllUserInfo" resultType="com.entity.UserInfo">
-        select u.userid, u.username,u.uimage,u.sex,u.mobilephone,u.email,u.school,u.faculty,u.userstatus,l.roleid
+        select u.userid, u.username,u.uimage,u.sex,u.mobilephone,u.email,u.school,u.faculty,u.userstatus,u.star,l.roleid
         from user_info u,login l
         where u.userid=l.userid and l.roleid=#{roleid} and u.userstatus=#{userstatus}
         order by u.createtime desc limit #{page},#{count}
     </select>
-    <!--查看所有用户总数-->
+
+
+    <!--查看所有用户总数
+    查询两张表-->
     <select id="queryAllUserCount" resultType="java.lang.Integer">
         select count(*)
         from user_info u,login l
         where u.userid=l.userid and l.roleid=#{roleid}
     </select>
-    <!-- 添加用户信息 -->
+
+
+    <!-- 添加用户信息
+    只有几个字段。少了以下字段:sex,school,faculty,startime,userstatus,createtime-->
     <insert id="userReg" parameterType="com.entity.UserInfo">
         insert into user_info (userid,username,password,mobilephone,email,uimage,status,sign)
         values (#{userid},#{username},#{password},#{mobilephone},#{email},#{uimage},#{status},#{sign})
     </insert>
-    <!-- 修改用户信息 -->
+
+
+    <!-- 修改用户信息
+    根据主键userid，修改用户信息，少了字段createtime,sign-->
     <update id="UpdateUserInfo" parameterType="com.entity.UserInfo">
         update user_info
         <set>
@@ -39,11 +56,29 @@
             <if test="startime != null">startime=#{startime},</if>
             <if test="userstatus != null">userstatus=#{userstatus},</if>
             <if test="status != null">status=#{status}</if>
+            <if test="sign != null">sign=#{sign}</if>
+            <if test="star != null">star=#{star}</if>
+            <if test="stuidcard != null">stuidcard=#{stuidcard}</if>
+            <if test="applyschoolstatus != null">applyschoolstatus=#{applyschoolstatus}</if>
         </set>
         where userid=#{userid}
     </update>
-    <!--查询用户的昵称和头像-->
+
+        <!--查询用户的昵称和头像-->
     <select id="queryPartInfo" parameterType="java.lang.String" resultType="com.entity.UserInfo">
         select username,uimage from user_info where userstatus=1 and userid=#{userid}
     </select>
+
+
+    <!--根据学校名称，精准查询，查询到一个List，存放UserInfo，这些对象的学校名称一样，且applyschoolstatus=1-->
+    <update id="updateApplyStatusBySchool">
+        update user_info set applyschoolstatus=2 where school=#{school} and applyschoolstatus=1
+    </update>
+
+    <!--作为上一个方法的补充。先查询
+    select count(*) from user_info where school='中山大学' and applyschoolstatus=1;-->
+    <select id="queryApplyCountBySchool" resultType="java.lang.Integer">
+        select count(*) from user_info where school=#{school} and applyschoolstatus=1
+    </select>
+
 </mapper>

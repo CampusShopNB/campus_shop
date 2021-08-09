@@ -12,9 +12,6 @@ import java.util.List;
  * <p>
  *  收藏 服务类
  * </p>
- *
- * @author hlt
- * @since 2019-12-21
  */
 @Service
 @Transactional
@@ -22,7 +19,8 @@ public class CollectService {
     @Autowired
     private CollectMapper collectMapper;
 
-    /**添加收藏*/
+    /**添加收藏
+     * insert添加一条记录*/
     public Integer insertCollect(Collect collect){
         return collectMapper.insertCollect(collect);
     }
@@ -38,7 +36,11 @@ public class CollectService {
     public Collect queryCollectStatus(Collect collect){
         return collectMapper.queryCollectStatus(collect);
     }
-    /**查询我的收藏的总数*/
+
+    /**查询我的收藏的总数
+     * select count(*)
+     * couserid为收藏用户id，即collect_user_id
+     * 是user_info表中的主键。*/
     public Integer queryCollectCount(String couserid){
         return collectMapper.queryCollectCount(couserid);
     }

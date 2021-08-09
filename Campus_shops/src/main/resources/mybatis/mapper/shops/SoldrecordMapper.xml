@@ -5,15 +5,25 @@
     <!-- 开启二级缓存 -->
     <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
 
-    <!--插入售出记录-->
+    <!--插入售出记录
+    insert语句，少了soldtime,soldstatus
+    这里应该就是支付成功后进行记录插入。而且竟然只写了售出订单。。感觉要么合在一起，要么再加一个购入订单
+    这里soldstatus默认为1。所以可以不写。至于soldtime，估计是后台用Time生成当前时间？没有这部分代码-->
     <insert id="insertSold" parameterType="com.entity.Soldrecord">
         insert into soldrecord (id,commid,commname,commdesc,thinkmoney,userid) values (#{id},#{commid},#{commname},#{commdesc},#{thinkmoney},#{userid})
     </insert>
-    <!--删除售出记录-->
+
+
+    <!--删除售出记录
+    根据主键id删除记录
+    不是真正的delete，只是修改状态为2-->
     <update id="deleteSold" parameterType="java.lang.String">
         update soldrecord set soldstatus=2 where id=#{id}
     </update>
-    <!--分页展示售出记录-->
+
+
+    <!--分页展示售出记录
+    通过userid，并指定soldstatus=1，查询数据表中记录的其他字段，并排序分页。-->
     <select id="queryAllSoldrecord" resultType="com.entity.Soldrecord">
         select id,commid,commname,commdesc,thinkmoney,soldtime from soldrecord
         <where>
@@ -22,7 +32,10 @@
         </where>
         order by soldtime desc limit #{page},#{count}
     </select>
-    <!--查看售出记录总数-->
+
+
+    <!--查看售出记录总数
+    通过userid，并指定soldstatus=1，查询总条数-->
     <select id="querySoldCount" resultType="java.lang.Integer">
         select count(*) from soldrecord
         <where>

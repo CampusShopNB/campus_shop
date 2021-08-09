@@ -20,9 +20,6 @@ import java.util.List;
  * <p>
  *  消息通知控制器
  * </p>
- *
- * @author hlt
- * @since 2019-12-25
  */
 @Controller
 public class NoticesController {

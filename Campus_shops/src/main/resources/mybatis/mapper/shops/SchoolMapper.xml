@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.SchoolMapper">
+    <!-- 开启二级缓存 -->
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
+    <!--新增学校-->
+    <insert id="addSchool" parameterType="com.entity.School">
+        insert into school (id,schoolname,schoolcode,status) values (#{id},#{schoolname},#{schoolcode},#{status})
+    </insert>
+
+    <!-- 修改学校（名称、代号等）
+         包括：删除学校。修改状态为0不可用-->
+    <update id="updateSchool" parameterType="com.entity.School">
+        update school
+        <set>
+            <if test="schoolcode != null">schoolcode = #{schoolcode}</if>
+            <if test="schoolname != null">, schoolname = #{schoolname}</if>
+            <if test="status != null">, status = #{status}</if>
+        </set>
+        <where>
+            <if test="id != null">id = #{id}</if>
+            <if test="schoolcode != null">and schoolcode = #{schoolcode}</if>
+            <if test="schoolname != null">and schoolname = #{schoolname}</if>
+            <if test="status != null">and status = #{status}</if>
+        </where>
+    </update>
+
+    <!--查询所有学校-->
+    <select id="queryAllSchool" resultType="com.entity.School">
+        select * from school
+    </select>
+
+</mapper>
+

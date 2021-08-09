@@ -2,7 +2,6 @@ package com.service;
 
 import com.entity.Commodity;
 import com.mapper.CommodityMapper;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -15,9 +14,6 @@ import java.util.List;
  * <p>
  *  服务类
  * </p>
- *
- * @author hlt
- * @since 2019-12-21
  */
 @Service
 @Transactional
@@ -25,7 +21,14 @@ public class CommodityService {
     @Autowired
     private CommodityMapper commodityMapper;
 
-    /**插入商品*/
+
+/**个人中心start*/
+    /**插入商品
+     *
+     * https://www.cnblogs.com/jpfss/p/10273129.html
+     *    在Spring中，基于@Async标注的方法，称之为异步方法；
+     *    这些方法将在执行的时候，将会在独立的线程中被执行，调用者无需等待它的完成，即可继续其他的操作。
+     * */
     @Async
     public Integer InsertCommodity(Commodity commodity){
         return commodityMapper.InsertCommodity(commodity);
@@ -58,6 +61,13 @@ public class CommodityService {
     public Integer queryCommodityCount(String userid,Integer commstatus){
         return commodityMapper.queryCommodityCount(userid,commstatus);
     }
+
+
+
+
+
+
+/**前台start*/
     /**首页分类展示8条商品*/
     public List<Commodity> queryCommodityByCategory(String category){
         return commodityMapper.queryCommodityByCategory(category);

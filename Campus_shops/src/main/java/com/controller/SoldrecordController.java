@@ -7,7 +7,6 @@ import com.vo.LayuiPageVo;
 import com.vo.ResultVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -20,9 +19,6 @@ import java.util.List;
  * <p>
  *  销售记录控制器
  * </p>
- *
- * @author hlt
- * @since 2019-12-21
  */
 @Controller
 public class SoldrecordController {
@@ -53,7 +49,9 @@ public class SoldrecordController {
     @GetMapping("/soldrecord/lookuser")
     public LayuiPageVo LookUserSold(int limit, int page, HttpSession session) {
         String userid = (String) session.getAttribute("userid");
+        //查询数据
         List<Soldrecord> soldrecordList = soldrecordService.queryAllSoldrecord((page - 1) * limit, limit, userid);
+        //查询记录总数
         Integer dataNumber = soldrecordService.querySoldCount(userid);
         return new LayuiPageVo("",0,dataNumber,soldrecordList);
     }
@@ -62,6 +60,8 @@ public class SoldrecordController {
      * 分页查看全部的售出记录
      * 1.前端传入页码、分页数量
      * 2.查询分页数据
+     *
+     * 和上面方法唯一的区别就是没有传入userid
      */
     @ResponseBody
     @GetMapping("/soldrecord/queryall")

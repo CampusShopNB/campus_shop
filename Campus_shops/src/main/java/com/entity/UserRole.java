@@ -9,11 +9,8 @@ import java.io.Serializable;
 
 /**
  * <p>
- * 
+ * 实体类，对应数据表user_role
  * </p>
- *
- * @author hlt
- * @since 2019-12-25
  */
 @AllArgsConstructor//全参构造
 @NoArgsConstructor//无参构造
@@ -30,6 +27,7 @@ public class UserRole implements Serializable {
 	private Integer roleid;
     /**
      * 身份
+     * 网站用户，管理员，超级管理员
      */
 	private String identity;
 

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ch">
+<head>
+    <base th:href="${#request.getScheme()}+'://'+${#request.getServerName()}+':'+${#request.getServerPort()}+${#request.getContextPath()}">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购入订单</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/layui/css/layui.css}"/>
+    <script th:inline="javascript">
+        var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
+    </script>
+</head>
+<body style="margin:10px;background-color: white">
+<div class="wrapper wrapper-content">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="animated fadeIn">
+                <table class="layui-hide" id="selloutorder" lay-filter="test" style="width:100%"></table>
+                <!--表格列名，见buyinorder.js-->
+                <!--如果要针对数据进行修改，需要用模板引擎，因为后台数据无法使用
+                注意下面这个默认就是有div的，可以F12查看-->
+                <script type="text/html" id="orderStatusDemo">
+                    {{# if(d.orderstatus==0){ }}
+                        待支付
+                    {{# }  }}
+                    {{# if(d.orderstatus==1){ }}
+                        已支付
+                    {{# }  }}
+                    {{# if(d.orderstatus==2){ }}
+                        已发货
+                    {{# }  }}
+                    {{# if(d.orderstatus==3){ }}
+                        已收货
+                    {{# }  }}
+                    {{# if(d.orderstatus==4){ }}
+                        已售出
+                    {{# }  }}
+                    {{# if(d.orderstatus==5){ }}
+                        已完成
+                    {{# }  }}
+                    {{# if(d.orderstatus==6){ }}
+                        已取消
+                    {{# }  }}
+                </script>
+
+                <!--默认有详情按钮，所以不需要加禁止操作按钮-->
+                <script type="text/html" id="barDemo">
+                    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="xiangqing">详情</a>
+                    {{# if(d.orderstatus==1){ }}
+                        <a class="layui-btn layui-btn-xs layui-btn-orange" lay-event="deliver">发货</a>
+                    {{# } }}
+
+                    {{# if(d.orderstatus==3){ }}
+                        <a class="layui-btn layui-btn-xs layui-btn-orange" lay-event="offtheshelf">下架</a>
+                    {{# }  }}
+
+                    {{# if(d.orderstatus==4){ }}
+                        <a class="layui-btn layui-btn-xs layui-btn-orange" lay-event="score">评分</a>
+                    {{# } }}
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script th:src="@{/static/layui/jquery.min.js}"></script>
+<script th:src="@{/static/layui/layui.js}"></script>
+<script th:src="@{/static/js/userInfo/selloutorder.js}"></script>
+</html>

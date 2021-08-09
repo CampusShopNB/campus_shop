@@ -36,9 +36,6 @@ import java.util.concurrent.TimeUnit;
  * <p>
  *  登录注册 控制器
  * </p>
- *
- * @author hlt
- * @since 2019-12-21
  */
 @Controller
 public class LoginController {
@@ -135,7 +132,7 @@ public class LoginController {
         String username = userInfo.getUsername();
         String password = userInfo.getPassword();
         String mobilephone = userInfo.getMobilephone();
-        String vercode = userInfo.getVercode();
+//        String vercode = userInfo.getVercode();
         Login login = new Login().setMobilephone(mobilephone);
         //查询账号是否已经注册
         Login userIsExist = loginService.userLogin(login);
@@ -147,19 +144,19 @@ public class LoginController {
         if (!StringUtils.isEmpty(userNameIsExist)){//用户名已经存在
             return new ResultVo(false, StatusCode.ERROR,"用户名已存在，请换一个吧");
         }
-        String rel = phonecodemap1.get(mobilephone);
-        if (StringUtils.isEmpty(rel)) {//验证码到期 或者 没发送短信验证码
-            return new ResultVo(false,StatusCode.ERROR,"请重新获取验证码");
-        }
-        if (rel.equalsIgnoreCase(vercode)) {//验证码正确
+//        String rel = phonecodemap1.get(mobilephone);
+//        if (StringUtils.isEmpty(rel)) {//验证码到期 或者 没发送短信验证码
+//            return new ResultVo(false,StatusCode.ERROR,"请重新获取验证码");
+//        }
+//        if (rel.equalsIgnoreCase(vercode)) {//验证码正确
             //盐加密
             String passwords = new Md5Hash(password, "Campus-shops").toString();
             String userid = KeyUtil.genUniqueKey();
             login.setId(KeyUtil.genUniqueKey()).setUserid(userid).setMobilephone(mobilephone).setPassword(passwords);
             Integer integer = loginService.loginAdd(login);
             //新注册用户存入默认头像、存入默认签名
-            userInfo.setUserid(userid).setPassword(passwords).setUimage("/pic/d1d66c3ea71044a9b938b00859ca94df.jpg").
-                    setSign("如此清秋何吝酒，这般明月不须钱").setStatus("offline");
+            userInfo.setUserid(userid).setPassword(passwords).setUimage("/pic/default_avatar.jpg").
+                    setSign("才不是懒得写签名!只是还没想好要写什么").setStatus("offline");
             Integer integer1 = userInfoService.userReg(userInfo);
             if (integer==1 && integer1==1){
                 /**注册成功后存入session*/
@@ -173,8 +170,8 @@ public class LoginController {
                 return new ResultVo(true,StatusCode.OK,"注册成功");
             }
             return new ResultVo(false,StatusCode.ERROR,"注册失败");
-        }
-        return new ResultVo(false,StatusCode.ERROR,"验证码错误");
+//        }
+//        return new ResultVo(false,StatusCode.ERROR,"验证码错误");
     }
 
     /**登录
@@ -289,6 +286,8 @@ public class LoginController {
      * 2.查询手机号是否存在
      * 3.判断验证码是否有效或正确
      * 4.重置密码
+     *
+     * 应该是登录页面点击忘记密码后的，http://localhost:8996/forget
      * */
     @ResponseBody
     @PostMapping("/user/resetpwd")
