@@ -53,6 +53,21 @@ public class SoldrecordController {
     @GetMapping("/soldrecord/lookuser")
     public LayuiPageVo LookUserSold(int limit, int page, HttpSession session) {
         String userid = (String) session.getAttribute("userid");
+        System.out.println("useriddd: "+userid);
+        List<Soldrecord> soldrecordList = soldrecordService.queryAllSoldrecord((page - 1) * limit, limit, userid);
+        Integer dataNumber = soldrecordService.querySoldCount(userid);
+        return new LayuiPageVo("",0,dataNumber,soldrecordList);
+    }
+
+    /**
+     * 分页查看商家所有售出记录
+     * 1.前端传入页码、分页数量
+     * 2.查询分页数据
+     */
+    @ResponseBody
+    @GetMapping("/soldrecord/lookseller")
+    public LayuiPageVo LookSellerSold(int limit, int page, HttpSession session) {
+        String userid = (String) session.getAttribute("goodUser");
         List<Soldrecord> soldrecordList = soldrecordService.queryAllSoldrecord((page - 1) * limit, limit, userid);
         Integer dataNumber = soldrecordService.querySoldCount(userid);
         return new LayuiPageVo("",0,dataNumber,soldrecordList);
