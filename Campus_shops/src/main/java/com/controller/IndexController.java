@@ -198,4 +198,12 @@ public class IndexController {
     public String adminNews(){
         return "/admin/news/newslist";
     }
+
+    /**
+     * 商家个人中心
+     */
+    @GetMapping("/user/seller-home")
+    public String sellerhome(){
+        return "/user/seller-home";
+    }
 }
