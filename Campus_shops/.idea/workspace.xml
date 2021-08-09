@@ -1,0 +1,926 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="f274af99-2765-4e7d-9971-c62d0c687241" name="Default Changelist" comment="test.idea">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shop.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ShopsApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/DruidConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/ErrorConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/LoginHandlerInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/MyConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/RfcConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/config/WebSocketConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/ChatCtrl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/ChatWebSocket.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/CollectController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/CommentReplyController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/CommodityController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/IndexController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/NoticesController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/SoldrecordController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/User/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/User/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/User/UserHomeController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/admin/AdminController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/controller/admin/NewsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/Collect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/Comment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/Commimages.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/Commodity.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/Login.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/News.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/Notices.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/Reply.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/Soldrecord.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/UserInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/UserPerm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/UserRole.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/chat/ChatMsg.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/chat/Friend.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/chat/Friends.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/chat/Groups.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/chat/ImData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/entity/chat/InitImVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/exception/BaseExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/exception/GloableExceptionAop.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/log/WebLogAspect.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/ChatmsgMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/CollectMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/CommentMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/CommimagesMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/CommodityMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/FriendsMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/LoginMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/NewsMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/NoticesMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/ReplyMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/SoldrecordMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/UserInfoMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/UserPermMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mapper/UserRoleMapper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/ChatmsgService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/CollectService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/CommentService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/CommimagesService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/CommodityService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/FriendsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/LoginService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/NewsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/NoticesService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/ReplyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/SoldrecordService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/UserInfoService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/UserPermService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/service/UserRoleService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shiro/ShiroConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/shiro/UserRealm.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/GetCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/GetDate.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/HtmlSplit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/ImgFontByte.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/JsonReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/JustPhone.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/KeyUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/PageLength.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/SmsUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/StatusCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/StringSplit.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/util/ValidateCode.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vo/LayuiPageVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vo/PageVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/vo/ResultVo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application-prod.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/ChatmsgMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/CollectMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/CommentMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/CommimagesMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/CommodityMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/FriendsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/LoginMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/NewsMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/NoticesMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/ReplyMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/SoldrecordMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/UserInfoMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/UserPermMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mapper/shops/UserRoleMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mybatis/mybatis-config.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/resources/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/animate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/dropdowns.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/error/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/fontsgoogleapis.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/gooddetail.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/userInfo/lgrgfg.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/userInfo/lgstyle.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/userInfo/message.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/userInfo/relgoods.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/HELP-US-OUT.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/css/font-awesome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/FontAwesome.otf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/Giorgio.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/animated.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/bordered-pulled.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/core.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/fixed-width.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/font-awesome.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/icons.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/larger.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/list.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/mixins.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/path.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/rotated-flipped.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/screen-reader.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/stacked.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/less/variables.less" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_animated.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_bordered-pulled.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_core.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_fixed-width.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_icons.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_larger.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_list.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_mixins.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_path.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_rotated-flipped.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_screen-reader.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_stacked.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/_variables.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/font-awesome/scss/font-awesome.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/background/parallax.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/banner/home-banner-1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/banner/home-banner-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/blog/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/blog/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/blog/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/cart-preview/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/cart-preview/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/cart-preview/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/cloud.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/flag/japan.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/flag/singapore.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/flag/usa.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/hot-deal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/logo-white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe-detail/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe-detail/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe-detail/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/sidebar/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/sidebar/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/shoe/sidebar/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/slider/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/slider/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/testimonial/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/testimonial/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/images/testimonial/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/adminlist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/chatlog.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/echarts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/layuiim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/newslist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/productlist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/relnews.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/soldrecord.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/updatenews.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/updatephone.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/admin/userlist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common/listnews.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common/product-listing.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common/product-search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/common/productdetail.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/ditugoogle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/html5shiv.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/js.cookie.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/main.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/respond.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/timeago.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/changegoods.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/ckplayer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/collectlist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/forget.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/info.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/logreg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/perfectinfo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/productlist.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/relgoods.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/userInfo/soldrecord.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/vue.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/layui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/layui.mobile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/code.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/laydate/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/laydate/laydate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layer/default/icon-ext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layer/default/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layer/default/layer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layer/default/loading-0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layer/default/loading-1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layer/default/loading-2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/html/chatlog.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/html/find.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/html/getmsg.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/html/msgbox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/layim.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/mobile/layim.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/skin/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/skin/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/skin/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/skin/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/skin/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/skin/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/css/modules/layim/voice/default.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/font/iconfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/font/iconfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/font/iconfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/font/iconfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/10.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/11.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/12.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/13.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/14.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/15.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/17.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/18.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/19.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/20.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/21.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/22.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/23.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/24.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/25.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/26.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/27.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/28.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/29.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/30.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/31.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/32.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/33.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/34.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/35.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/36.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/37.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/38.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/39.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/40.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/41.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/42.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/43.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/44.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/45.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/46.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/47.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/48.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/49.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/50.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/51.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/52.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/53.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/54.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/55.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/56.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/57.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/58.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/59.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/60.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/61.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/62.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/63.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/65.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/66.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/67.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/68.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/69.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/70.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/71.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/8.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/images/face/9.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/dest/layui.all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/code.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/element.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/flow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/laydate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/layedit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/layer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/layim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/laypage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/laytpl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/mobile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/tree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/upload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/lay/modules/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layim/layui/layui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/layui.mobile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/code.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/laydate/default/laydate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/layer/default/icon-ext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/layer/default/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/layer/default/layer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/layer/default/loading-0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/layer/default/loading-1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/css/modules/layer/default/loading-2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/font/iconfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/font/iconfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/font/iconfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/font/iconfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/font/iconfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/10.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/11.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/12.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/13.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/14.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/15.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/17.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/18.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/19.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/20.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/21.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/22.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/23.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/24.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/25.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/26.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/27.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/28.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/29.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/30.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/31.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/32.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/33.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/34.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/35.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/36.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/37.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/38.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/39.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/40.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/41.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/42.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/43.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/44.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/45.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/46.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/47.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/48.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/49.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/50.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/51.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/52.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/53.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/54.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/55.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/56.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/57.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/58.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/59.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/60.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/61.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/62.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/63.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/65.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/66.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/67.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/68.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/69.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/70.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/71.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/8.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/images/face/9.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/carousel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/code.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/colorpicker.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/element.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/flow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/laydate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/layedit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/layer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/laypage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/laytpl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/mobile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/rate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/slider.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/transfer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/tree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/upload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/lay/modules/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/layui.all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layui/layui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/config.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/console/top-card.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/console/top-search.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/layer/photos.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/layim/getList.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/layim/getMembers.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/mall/order.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/menu.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/menu1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/message/all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/message/detail.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/message/direct.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/message/new.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/message/notice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/table/demo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/table/demo2.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/table/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/table/user30.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/user/forget.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/user/login.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/user/logout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/user/reg.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/user/resetpass.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/user/session.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/user/sms.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/json/说明.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/layui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/layui.mobile.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/code.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/laydate/default/laydate.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layer/default/icon-ext.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layer/default/icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layer/default/layer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layer/default/loading-0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layer/default/loading-1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layer/default/loading-2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/html/chatlog.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/html/find.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/html/getmsg.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/html/msgbox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/layim.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/mobile/layim.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/skin/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/skin/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/skin/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/skin/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/skin/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/skin/logo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/css/modules/layim/voice/default.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/font/iconfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/font/iconfont.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/font/iconfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/font/iconfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/10.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/11.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/12.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/13.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/14.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/15.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/17.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/18.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/19.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/20.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/21.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/22.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/23.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/24.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/25.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/26.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/27.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/28.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/29.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/30.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/31.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/32.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/33.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/34.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/35.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/36.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/37.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/38.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/39.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/40.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/41.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/42.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/43.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/44.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/45.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/46.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/47.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/48.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/49.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/50.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/51.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/52.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/53.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/54.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/55.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/56.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/57.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/58.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/59.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/60.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/61.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/62.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/63.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/65.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/66.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/67.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/68.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/69.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/70.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/71.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/8.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/images/face/9.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/carousel.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/code.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/element.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/flow.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/form.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/jquery.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/laydate.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/layedit.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/layer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/layim.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/laypage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/laytpl.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/mobile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/tree.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/upload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/lay/modules/util.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/layui.all.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/layui/layui.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/lib/admin.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/lib/extend/echarts.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/lib/extend/echartsTheme.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/lib/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/lib/view.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/modules/common.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/modules/console.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/modules/im.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/modules/message.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/modules/set.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/modules/user.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/style/admin.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/style/body.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/style/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/style/res/bg-none.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/style/res/logo-black.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/style/res/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/tpl/layim/demo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/tpl/system/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/tpl/system/get.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/tpl/system/more.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/tpl/system/theme.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/tpl/system/说明.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/layuiadmin/tpl/说明.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/.keep" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/elevatezoom/jquery.elevatezoom.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/font-awesome/css/font-awesome.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/font-awesome/fonts/fontawesome-webfont.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/font-awesome/fonts/fontawesome-webfont.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/font-awesome/fonts/fontawesome-webfont.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/font-awesome/fonts/fontawesome-webfont.woff2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/gmap3.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/imagesloaded.pkgd.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/isotope.pkgd.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/jquery-ui/images/ui-icons_444444_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/jquery-ui/images/ui-icons_555555_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/jquery-ui/images/ui-icons_777620_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/jquery-ui/images/ui-icons_777777_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/jquery-ui/images/ui-icons_cc0000_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/jquery-ui/images/ui-icons_ffffff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/jquery-ui/jquery-ui.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/jquery-ui/jquery-ui.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/jquery.matchHeight-min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/owl-carousel/assets/owl.carousel.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/owl-carousel/owl.carousel.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/ps-icon/fonts/ps-icon.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/ps-icon/fonts/ps-icon.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/ps-icon/fonts/ps-icon.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/ps-icon/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/assets/coloredbg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/assets/gridtile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/assets/gridtile_3x3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/assets/gridtile_3x3_white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/assets/gridtile_white.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/assets/loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/css/layers.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/css/navigation.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/css/settings.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/extensions/revolution.extension.actions.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/extensions/revolution.extension.migration.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/extensions/revolution.extension.navigation.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/extensions/revolution.extension.parallax.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/extensions/revolution.extension.video.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/jquery.themepunch.revolution.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/revolution/js/jquery.themepunch.tools.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/slick/slick/slick.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/plugins/slick/slick/slick.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/content/comment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/content/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/content/tags.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/forum/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/forum/replys.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/mall/category.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/mall/list.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/mall/specs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/message/detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/message/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/app/说明.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/echars/console.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/home/console.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/login/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/news/newslist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/news/relnews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/news/updatenews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/product/productlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/sold/soldrecord.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/system/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/system/get.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/system/more.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/system/theme.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/system/说明.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/user/adminlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/admin/user/userlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/contacts.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/listnews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/newsdetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/product-detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/product-listing.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/common/product-search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/400.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/401.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/error/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/chat/chatlog.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/collect/collectlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/forget.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/logreg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/message/alertmessage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/message/message.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/perfectinfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/product/changegoods.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/product/productlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/product/relgoods.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/seller-home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/sold/soldrecord.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/updatepass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/updatephone.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/user-center.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/user/userinfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/com/shops/ShopsApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="EndpointsView">
+    <option name="showSidePanel" value="false" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="333161ff-fa64-456c-a68f-8b59b052448f" />
+        <option name="url" value="https://github.com/CampusShopNB/campus_shop.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
+  <component name="ProjectId" id="1v14fdglRraHufHwFNNVIUNjK9G" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelOrder2" value="2" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RequestMappingsPanelWidth2" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/js/sellerInfo" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitHub\campus_shop\Campus_shops\src\main\resources\static\js\sellerInfo" />
+      <recent name="D:\GitHub\campus_shop\Campus_shops\src\main\resources\static\js\common" />
+      <recent name="D:\GitHub\campus_shop\Campus_shops\src\main\resources\templates\seller" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\GitHub\campus_shop\Campus_shops\src\main\resources\templates\seller" />
+      <recent name="D:\GitHub\campus_shop\Campus_shops\src\main\resources\templates\user" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Spring Boot.ShopsApplication">
+    <configuration name="All in shops" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="shops" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ShopsApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="shops" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.ShopsApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.All in shops" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f274af99-2765-4e7d-9971-c62d0c687241" name="Default Changelist" comment="" />
+      <created>1625716369281</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1625716369281</updated>
+      <workItem from="1625716370635" duration="1438000" />
+      <workItem from="1625718047350" duration="817000" />
+      <workItem from="1625721074136" duration="3577000" />
+      <workItem from="1625902870966" duration="1337000" />
+      <workItem from="1625965570417" duration="2093000" />
+      <workItem from="1626002860904" duration="727000" />
+      <workItem from="1626087290760" duration="1520000" />
+      <workItem from="1626438883187" duration="1852000" />
+      <workItem from="1626440904327" duration="5245000" />
+      <workItem from="1626488566126" duration="7446000" />
+      <workItem from="1626511434291" duration="5762000" />
+      <workItem from="1626699327368" duration="626000" />
+      <workItem from="1628040946400" duration="16386000" />
+      <workItem from="1628129607355" duration="28479000" />
+      <workItem from="1628172299685" duration="169000" />
+      <workItem from="1628172501407" duration="975000" />
+      <workItem from="1628173522893" duration="9000" />
+      <workItem from="1628173592220" duration="152000" />
+      <workItem from="1628173792137" duration="708000" />
+      <workItem from="1628174535617" duration="431000" />
+      <workItem from="1628213128695" duration="4426000" />
+      <workItem from="1628233633083" duration="6679000" />
+      <workItem from="1628299554288" duration="3090000" />
+      <workItem from="1628407375174" duration="1846000" />
+      <workItem from="1628436381747" duration="1704000" />
+      <workItem from="1628476233095" duration="6406000" />
+      <workItem from="1628495854146" duration="2544000" />
+      <workItem from="1628504787947" duration="288000" />
+    </task>
+    <task id="LOCAL-00001" summary="test.idea">
+      <created>1628496211391</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1628496211391</updated>
+    </task>
+    <task id="LOCAL-00002" summary="test.idea">
+      <created>1628496228418</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628496228418</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="test.idea" />
+    <option name="LAST_COMMIT_MESSAGE" value="test.idea" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.apache.shiro.authz.UnauthenticatedException" package="org.apache.shiro.authz" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
