@@ -35,13 +35,21 @@
 
             </div>
             <div class="layui-form-item">
+              <label th:if="${userInfo.sex}=='男'" class="layui-form-label" >他的评分</label>
+              <label th:if="${userInfo.sex}=='女'" class="layui-form-label" >她的评分</label>
+              <div class="layui-input-inline">
+                <input type="text" name="stars" lay-verify="required" lay-reqtext="用户名不能为空"
+                       readonly="readonly" style="cursor:not-allowed;"
+                       autocomplete="off" class="layui-input" th:value="${userInfo.username}" value="6">
+              </div>
+            </div>
+            <div class="layui-form-item">
               <label class="layui-form-label">用户名</label>
               <div class="layui-input-inline">
                 <input type="text" name="username" lay-verify="required" lay-reqtext="用户名不能为空"
                        readonly="readonly" style="cursor:not-allowed;"
                        autocomplete="off" class="layui-input" th:value="${userInfo.username}">
               </div>
-
             </div>
             <div class="layui-form-item">
               <label class="layui-form-label" style="margin-top: 25px">头像</label>
