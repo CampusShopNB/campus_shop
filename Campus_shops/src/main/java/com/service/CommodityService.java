@@ -25,7 +25,14 @@ public class CommodityService {
     @Autowired
     private CommodityMapper commodityMapper;
 
-    /**插入商品*/
+    /**个人中心start*/
+
+    /**插入商品
+     *
+     * https://www.cnblogs.com/jpfss/p/10273129.html
+     *    在Spring中，基于@Async标注的方法，称之为异步方法；
+     *    这些方法将在执行的时候，将会在独立的线程中被执行，调用者无需等待它的完成，即可继续其他的操作。
+     * */
     @Async
     public Integer InsertCommodity(Commodity commodity){
         return commodityMapper.InsertCommodity(commodity);

@@ -26,4 +26,9 @@ public interface UserInfoMapper {
     Integer UpdateUserInfo(UserInfo userInfo);
     /**查询用户的昵称和头像**/
     UserInfo queryPartInfo(String userid);
+
+    /**根据学校名称，精准查询，查询到一个List，存放UserInfo，这些对象的学校名称一样，且applyschoolstatus=1*/
+    Integer updateApplyStatusBySchool(String school);
+    /**作为上一个方法的补充。先查询*/
+    Integer queryApplyCountBySchool(String school);
 }

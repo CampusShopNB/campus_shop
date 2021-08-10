@@ -181,7 +181,11 @@ var app = new Vue({
 function submitregister() {
     var phone=$("#userphone").val();
     var nickname=$("#nickname").val();
+    //密码（因为登录注册在同一个html中定义，登录密码是password，注册密码是password2，以免冲突
     var password2=$("#password2").val();
+    //手机验证码
+    // var phonevercode=$("#phonevercode").val();
+    //邮箱
     var phonevercode=$("#phonevercode").val();
     var useremail=$("#useremail").val();
     var t=jiantingphone();
@@ -219,30 +223,30 @@ function submitregister() {
         $("#password2").focus();
         return;
     }
-    if (phonevercode.length === 0) {
-        layer.tips("请输入验证码", '#phonevercode', {
-            tips: [1, "#0FA6D8"],
-            tipsMore: !1,
-            time: 1300
-        });
-        $("#phonevercode").focus();
-        return;
-    } else if (phonevercode.length != 6) {
-        layer.tips("请输入正确验证码", '#phonevercode', {
-            tips: [1, "#FF5722"],
-            tipsMore: !1,
-            time: 1300
-        });
-        $("#phonevercode").focus();
-        return;
-    }
+    // if (phonevercode.length === 0) {
+    //     layer.tips("请输入验证码", '#phonevercode', {
+    //         tips: [1, "#0FA6D8"],
+    //         tipsMore: !1,
+    //         time: 1300
+    //     });
+    //     $("#phonevercode").focus();
+    //     return;
+    // } else if (phonevercode.length != 6) {
+    //     layer.tips("请输入正确验证码", '#phonevercode', {
+    //         tips: [1, "#FF5722"],
+    //         tipsMore: !1,
+    //         time: 1300
+    //     });
+    //     $("#phonevercode").focus();
+    //     return;
+    // }
     $("#submitrg").addClass("layui-btn-disabled");
     $("#submitrg").attr("disabled", true);
     var object = new Object(); //创建一个存放数据的对象
     object["username"] = nickname;
     object["mobilephone"] = phone;
     object["password"] = password2;
-    object["vercode"] = phonevercode;
+    // object["vercode"] = phonevercode;
     object["email"] = useremail;
     var jsonData = JSON.stringify(object); //根据数据生成json数据
     $.ajax({
@@ -288,7 +292,16 @@ function submitregister() {
                         content: basePath+'/user/perfectinfo',
                         end: function () {
                             location.href=basePath+"/";
-                        }
+                        },
+                        //右上角关闭按钮触发的回调
+                        // cancel: function(index, layero){
+                        //     // 该回调的2个参数：当前层索引参数（index）、当前层的DOM对象（layero），
+                        //     // 默认会自动触发关闭。如果不想关闭，return false即可，如；
+                        //     // if(confirm('确定要关闭么')){ //只有当点击confirm框的确定时，该层才会关闭
+                        //     //     layer.close(index)
+                        //     // }
+                        //     return false;
+                        // }
                     });
                 });
             }

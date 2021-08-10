@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.OrderMapper">
+    <!-- 开启二级缓存 -->
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
+    <!--添加订单-->
+    <insert id="addOrder" parameterType="com.entity.Order">
+        insert into orderrecord (id,commid,commname,commdesc,thinkmoney,soldtime,buyerid,sellerid,orderstatus) values (#{id},#{commid},#{commname},#{commdesc},#{thinkmoney},#{soldtime},#{buyerid},#{sellerid},#{orderstatus})
+    </insert>
+
+    <!--修改订单状态-->
+    <update id="updateOrder" parameterType="com.entity.Order">
+        <!--        update orderrecord set orderstatus=#{orderstatus}-->
+        <!--        <where>-->
+        <!--            <if test="id != null">and id = #{id}</if>-->
+        <!--            <if test="commid != null">and commid = #{commid}</if>-->
+        <!--            <if test="commname != null">and commname = #{commname}</if>-->
+        <!--            <if test="commdesc != null">and commdesc = #{commdesc}</if>-->
+        <!--            <if test="thinkmoney != null">and thinkmoney = #{thinkmoney}</if>-->
+        <!--            <if test="soldtime != null">and soldtime = #{soldtime}</if>-->
+        <!--            <if test="buyerid != null">and buyerid = #{buyerid}</if>-->
+        <!--            <if test="buyername != null">and buyername = #{buyername}</if>-->
+        <!--            <if test="sellerid != null">and sellerid = #{sellerid}</if>-->
+        <!--            <if test="sellername != null">and sellername = #{sellername}</if>-->
+        <!--        </where>-->
+        update orderrecord
+        <set>
+            <if test="id != null">id = #{id}</if>
+            <if test="soldtime != null">, soldtime = #{soldtime}</if>
+            <if test="buyerid != null">, buyerid = #{buyerid}</if>
+            <if test="buyername != null">, buyername = #{buyername}</if>
+            <if test="sellerid != null">, sellerid = #{sellerid}</if>
+            <if test="sellername != null">, sellername = #{sellername}</if>
+            <if test="orderstatus != null">, orderstatus = #{orderstatus}</if>
+            <if test="startobuyer != null">, startobuyer = #{startobuyer}</if>
+            <if test="startoseller != null">, startoseller = #{startoseller}</if>
+        </set>
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="commid != null">and commid = #{commid}</if>
+            <if test="commname != null">and commname = #{commname}</if>
+            <if test="commdesc != null">and commdesc = #{commdesc}</if>
+            <if test="thinkmoney != null">and thinkmoney = #{thinkmoney}</if>
+            <if test="soldtime != null">and soldtime = #{soldtime}</if>
+            <if test="buyerid != null">and buyerid = #{buyerid}</if>
+            <if test="buyername != null">and buyername = #{buyername}</if>
+            <if test="sellerid != null">and sellerid = #{sellerid}</if>
+            <if test="sellername != null">and sellername = #{sellername}</if>
+        </where>
+    </update>
+
+    <!--根据订单id,sellerid,修改订单的startoseller给卖家的评分-->
+    <update id="updateStartoseller" parameterType="com.entity.Order">
+        update orderrecord set startoseller=#{startoseller}
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="commid != null">and commid = #{commid}</if>
+            <if test="commname != null">and commname = #{commname}</if>
+            <if test="commdesc != null">and commdesc = #{commdesc}</if>
+            <if test="thinkmoney != null">and thinkmoney = #{thinkmoney}</if>
+            <if test="soldtime != null">and soldtime = #{soldtime}</if>
+            <if test="buyerid != null">and buyerid = #{buyerid}</if>
+            <if test="buyername != null">and buyername = #{buyername}</if>
+            <if test="sellerid != null">and sellerid = #{sellerid}</if>
+            <if test="sellername != null">and sellername = #{sellername}</if>
+        </where>
+    </update>
+
+    <!--根据订单id,sellerid,修改订单的startobuyer给买家的评分-->
+    <update id="updateStartobuyer" parameterType="com.entity.Order">
+        update orderrecord set startobuyer=#{startobuyer}
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="commid != null">and commid = #{commid}</if>
+            <if test="commname != null">and commname = #{commname}</if>
+            <if test="commdesc != null">and commdesc = #{commdesc}</if>
+            <if test="thinkmoney != null">and thinkmoney = #{thinkmoney}</if>
+            <if test="soldtime != null">and soldtime = #{soldtime}</if>
+            <if test="buyerid != null">and buyerid = #{buyerid}</if>
+            <if test="buyername != null">and buyername = #{buyername}</if>
+            <if test="sellerid != null">and sellerid = #{sellerid}</if>
+            <if test="sellername != null">and sellername = #{sellername}</if>
+        </where>
+    </update>
+
+
+    <!--分页查看所有购入订单内容-->
+    <select id="queryAllBuyInOrder" resultType="com.entity.Order">
+        select * from orderrecord where buyerid=#{buyerid} and orderstatus!=7 order by soldtime desc limit #{page},#{count}
+    </select>
+    <!--分页查看所有售出订单内容-->
+    <select id="queryAllSellOutOrder" resultType="com.entity.Order">
+        select * from orderrecord where sellerid=#{sellerid} and orderstatus!=7 order by soldtime desc limit #{page},#{count}
+    </select>
+
+    <!--查询购入订单的总数-->
+    <select id="queryBuyInOrderCount" resultType="java.lang.Integer">
+        select count(*) from orderrecord where buyerid=#{buyerid} and orderstatus!=7
+    </select>
+    <!--查询售出订单的总数-->
+    <select id="querySellOutOrderCount" resultType="java.lang.Integer">
+        select count(*) from orderrecord where sellerid=#{sellerid} and orderstatus!=7
+    </select>
+
+    <!--查询购入订单状态（估计是下拉列表进行分类）-->
+    <select id="queryBuyInOrderStatus" resultType="com.entity.Order">
+        select buyerid,orderstatus from orderrecord
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="commid != null">and commid = #{commid}</if>
+            and buyerid=#{buyerid}
+        </where>
+    </select>
+
+    <!--查询售出订单状态（估计是下拉列表进行分类）-->
+    <select id="querySellOutOrderStatus" resultType="com.entity.Order">
+        select sellerid,orderstatus from orderrecord
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="commid != null">and commid = #{commid}</if>
+            and sellerid=#{sellerid}
+        </where>
+    </select>
+
+    <!--通过id查询commid（为了售出，修改商品状态）-->
+    <select id="queryCommidById" resultType="java.lang.String">
+        select commid from orderrecord where id = #{id}
+    </select>
+
+
+    <!--根据sellerid，查询卖家用户近30日内，所有star!=0的记录（只查询startoseller字段，并放在List中
+     然后在控制器层：①计算所有star之和。 ②记录总数。 ③根据公式：所有star之和 ÷ 订单记录总数 = 最终评分
+
+     查询30天内的记录。soldtime是orderrecord表的字段名称。其他都是MySQL中的方法和关键字
+    其中<= date(soldtime)表示只显示有soldtime字段值的记录
+	    要不要改为半学期，或者近60天？？（算了，近30天的起码还有现成的）
+
+    SELECT * FROM orderrecord where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <= date(soldtime);
+
+    注意MyBatis中要用<![CDATA[ ]]>，以免在解析xml文件时sql中的特殊字符被转义
+    https://www.cnblogs.com/ferby/p/9799164.html
+    https://blog.csdn.net/tuntun1120/article/details/73603511-->
+    <select id="queryStarBySellerId" resultType="java.lang.Integer">
+        SELECT startoseller FROM orderrecord
+        where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <![CDATA[<=date(soldtime)]]>
+          and sellerid = #{sellerid}
+    </select>
+
+
+    <!--根据buyerid，查询买家用户。。。。（类似上一个方法）-->
+    <select id="queryStarByBuyerId" resultType="java.lang.Integer">
+        SELECT startobuyer FROM orderrecord
+        where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <![CDATA[<=date(soldtime)]]>
+          and buyerid = #{buyerid}
+    </select>
+
+</mapper>

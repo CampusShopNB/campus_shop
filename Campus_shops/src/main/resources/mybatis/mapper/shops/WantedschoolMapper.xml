@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.WantedschoolMapper">
+    <!-- 开启二级缓存 -->
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
+    <!--新增记录-->
+    <insert id="addSchool" parameterType="com.entity.Wantedschool">
+        insert into wantedschool (id,userid,schoolname,schoolcode,processstatus) values (#{id},#{userid},#{schoolname},#{schoolcode},#{processstatus})
+    </insert>
+
+    <!--通过主键。在按钮中放主键。修改学校处理状态，字段schoolproessstatus。管理员点击审核按钮时使用-->
+    <update id="updateSchoolStatus" parameterType="com.entity.Wantedschool">
+        update wantedschool set processstatus=1 where id = #{id}
+    </update>
+
+    <!--分页查看所有待处理记录（在后台给管理员使用）
+     select * from wantedschool where processstatus=0-->
+    <select id="queryAllUnprocessSchool" resultType="com.entity.Wantedschool">
+        select * from wantedschool where processstatus=0
+    </select>
+
+    <!--查询所有待处理记录的总数    select count(*)-->
+    <select id="queryAllUnprocessSchoolCount" resultType="java.lang.Integer">
+        select count(*) from wantedschool where processstatus=0
+    </select>
+
+    <!--新增记录前，看下表中有没有某学校，有就不要再添加了-->
+    <select id="querySchoolname" resultType="java.lang.Integer" parameterType="java.lang.String">
+        select count(*) from wantedschool where schoolname=#{schoolname}
+    </select>
+
+    <!--通过id查询所有字段，主要是为了userid和学校名称-->
+    <select id="queryAllFielById" resultType="com.entity.Wantedschool">
+        select * from wantedschool where id=#{id}
+    </select>
+
+</mapper>

@@ -1,6 +1,9 @@
 package com.controller;
 
+import com.entity.UserInfo;
+import com.service.UserInfoService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
@@ -13,6 +16,9 @@ import java.io.IOException;
 
 @Controller
 public class IndexController {
+    @Autowired
+    private UserInfoService userInfoService;
+
     /**
      * 网站首页
      * */
@@ -80,6 +86,17 @@ public class IndexController {
     }
 
     /**
+     * 售出订单
+     * 个人中心----订单管理--售出订单
+     * */
+    @GetMapping("/user/selloutorder")
+    public String toSellOutOrderList(){
+        //返回resources/templates/user/order/selloutorder.html页面
+        return "/user/order/selloutorder";
+    }
+
+
+    /**
      * 用户修改密码
      * */
     @RequiresPermissions("user:userinfo")
@@ -95,6 +112,32 @@ public class IndexController {
     @GetMapping("/user/phone")
     public String userphone(){
         return "/user/updatephone";
+    }
+
+    /**
+     * 用户修改个性签名
+     * 个人中心----个人信息--修改个性签名
+     * */
+    @RequiresPermissions("user:userinfo")
+    @GetMapping("/user/sign")
+    public String usersign(HttpSession session, ModelMap modelMap){
+        //通过session获取userid
+        String userid = (String) session.getAttribute("userid");
+        //查询用户信息
+        UserInfo userInfo = userInfoService.LookUserinfo(userid);
+        modelMap.put("userInfo",userInfo);
+        //返回resources/templates/user/updatesign.html页面
+        return "/user/updatesign";
+    }
+
+    /**
+     * 购入订单
+     * 个人中心----订单管理--购入订单
+     * */
+    @GetMapping("/user/buyinorder")
+    public String toBuyInOrderList(){
+        //返回resources/templates/user/order/buyinorder.html页面
+        return "/user/order/buyinorder";
     }
 
     /**

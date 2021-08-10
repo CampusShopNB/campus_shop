@@ -10,11 +10,14 @@ import java.util.Date;
 
 /**
  * <p>
- * 
+ *  实体类，对应数据表user_id
  * </p>
  *
- * @author hlt
- * @since 2019-12-25
+ * 实体类相比数据表，多了以下属性
+ * roleid,vercode,id,avatar,content,type,toid,sendtime
+ *
+ * @author
+ * @since
  */
 @AllArgsConstructor//全参构造
 @NoArgsConstructor//无参构造
@@ -84,6 +87,20 @@ public class UserInfo implements Serializable {
      * 在线状态
      */
     private String status;//在线状态 online：在线、hide：隐身
+
+    /**
+     * 学生证图片
+     */
+    private String stuidcard;
+    /**
+     * 是否提交了新增学校的申请。默认0没有，1有但未通过（包括第一位提交的和其他无法提交的），2表示已经通过
+     */
+    private Integer applyschoolstatus ;
+
+    /**
+     * 我的星级
+     */
+    private Double star;
 
     //补充的属性
     private String id; //我的ID

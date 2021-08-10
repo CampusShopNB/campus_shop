@@ -1,9 +1,9 @@
 package com.util;
 
 /**
- * @Author: hlt
+ * @Author:
  * @Description: 状态码工具
- * @Date: 2019/12/27 16:06
+ * @Date:
  */
 public class StatusCode {
 
@@ -16,5 +16,5 @@ public class StatusCode {
     public static final int REPERROR = 205;//重复操作
     public static final int FINDERROR = 404;//找不到
     public static final int SERVERERROR = 500;//服务器错误
-
+    public static final int ALREADYEXIST = 206;
 }

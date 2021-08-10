@@ -47,4 +47,15 @@ public class UserInfoService {
     public UserInfo queryPartInfo(String userid){
         return userInfoMapper.queryPartInfo(userid);
     }
+
+    /**根据学校名称，修改字段
+     * 精准查询（不要like，比如华商VS华南理工有重复前缀）
+     * 查询到一个List，存放UserInfo，这些对象的学校名称一样，且applyschoolstatus=1*/
+    public Integer updateApplyStatusBySchoolName(String school){
+        return userInfoMapper.updateApplyStatusBySchool(school);
+    }
+    /**作为上一个方法的补充。先查询*/
+    public Integer queryApplyCountBySchool(String school){
+        return userInfoMapper.queryApplyCountBySchool(school);
+    }
 }

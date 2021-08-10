@@ -6,9 +6,9 @@ import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.server.standard.ServerEndpointExporter;
 
 /**
- * @Author：JCccc
+ * @Author：
  * @Description：
- * @Date： created in 15:56 2019/5/13
+ * @Date：
  */
 @Configuration
 @EnableWebSocket

@@ -64,6 +64,7 @@ public class SellerController {
     @GetMapping("/seller/lookinfo")
     public String sellerlookinfo(HttpSession session, ModelMap modelMap) {
         String userid = (String) session.getAttribute("goodUser");
+        System.out.println("goodUser:"+userid);
         UserInfo userInfo = userInfoService.LookUserinfo(userid);
         modelMap.put("userInfo",userInfo);
         return "/seller/sellerinfo";

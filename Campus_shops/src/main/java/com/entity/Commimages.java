@@ -13,8 +13,8 @@ import java.util.Date;
  * 
  * </p>
  *
- * @author hlt
- * @since 2019-12-25
+ * @author
+ * @since
  */
 @AllArgsConstructor//全参构造
 @NoArgsConstructor//无参构造
@@ -43,6 +43,8 @@ public class Commimages implements Serializable {
 
     /**
      *  图片状态
+     *   1正常
+     *   2删除（删除图片时不是真的删除，而是修改状态）
      */
     private Integer imagestatus;
 }

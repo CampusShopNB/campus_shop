@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ch">
+<head>
+  <base th:href="${#request.getScheme()}+'://'+${#request.getServerName()}+':'+${#request.getServerPort()}+${#request.getContextPath()}">
+  <meta charset="UTF-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>购入订单</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/static/layui/css/layui.css}"/>
+  <script th:inline="javascript">
+    var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
+  </script>
+</head>
+<body style="margin:10px;background-color: white">
+<div class="wrapper wrapper-content">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="animated fadeIn">
+        <table class="layui-hide" id="buyinorder" lay-filter="test" style="width:100%"></table>
+        <!--表格列名的修改，见buyinorder.js-->
+        <script type="text/html" id="orderStatusDemo">
+          {{# if(d.orderstatus==0){ }}
+          待支付
+          {{# }  }}
+          {{# if(d.orderstatus==1){ }}
+          已支付
+          {{# }  }}
+          {{# if(d.orderstatus==2){ }}
+          已发货
+          {{# }  }}
+          {{# if(d.orderstatus==3){ }}
+          已收货
+          {{# }  }}
+          {{# if(d.orderstatus==4){ }}
+          已售出
+          {{# }  }}
+          {{# if(d.orderstatus==5){ }}
+          已完成
+          {{# }  }}
+          {{# if(d.orderstatus==6){ }}
+          已取消
+          {{# }  }}
+        </script>
+
+        <script type="text/html" id="barDemo">
+          <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="xiangqing">详情</a>
+
+          <!--if(d.orderstatus==0){ -->
+          <!--                         <a class="layui-btn layui-btn-xs layui-btn-orange" lay-event="pay">支付</a>-->
+          <!--                         <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="cancel">取消</a>-->
+          <!-- }  -->
+
+          {{# if(d.orderstatus==1 || d.orderstatus==3 || d.orderstatus==5){ }}
+          {{# }  }}
+
+          {{# if(d.orderstatus==2){ }}
+          <a class="layui-btn layui-btn-xs layui-btn-orange" lay-event="receive">确认收货</a>
+          {{# }  }}
+
+          {{# if(d.orderstatus==4){ }}
+          <a class="layui-btn layui-btn-xs layui-btn-orange" lay-event="score">评分</a>
+          {{# }  }}
+
+          <!--                     if(d.orderstatus==5){ -->
+          <!--                        <a class="layui-btn layui-btn-xs layui-btn-orange" lay-event="buyagain">再次购买</a>-->
+          <!--                     }  -->
+
+          {{# if(d.orderstatus==6){ }}
+          <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="shanchujilu">删除</a>
+          <!--                        <a class="layui-btn layui-btn-xs layui-btn-orange" lay-event="repurchase">重新下单</a>-->
+          {{# }  }}
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!--<div class="layui-form-item ">-->
+<!--    <label class="layui-form-label layui-bg-green layui-center">满意度</label>-->
+<!--    <div class="layui-input-block " id="rate">-->
+<!--        <div id="love"></div>-->
+<!--    </div>-->
+<!--</div>-->
+
+
+</body>
+<script th:src="@{/static/layui/jquery.min.js}"></script>
+<script th:src="@{/static/layui/layui.js}"></script>
+<script th:src="@{/static/js/userInfo/buyinorder.js}"></script>
+</html>

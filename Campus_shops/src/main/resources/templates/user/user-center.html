@@ -138,7 +138,7 @@
                             </dd>
                         </dl>
                     </li>
-                    <li data-name="sold" class="layui-nav-item">
+                    <!--<li data-name="sold" class="layui-nav-item">
                         <a href="javascript:;" lay-tips="售出记录" lay-direction="2">
                             <i class="layui-icon layui-icon-list"></i>
                             <cite>售出记录</cite>
@@ -148,7 +148,25 @@
                                 <a lay-href="/user/sold">我的售出记录</a>
                             </dd>
                         </dl>
+                    </li>-->
+
+                    <li data-name="order" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="订单管理" lay-direction="2">
+                            <i class="layui-icon layui-icon-list"></i>
+                            <cite>订单管理</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-href="/user/buyinorder">购入订单</a>
+                            </dd>
+                        </dl>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-href="/user/selloutorder">售出订单</a>
+                            </dd>
+                        </dl>
                     </li>
+
                     <li shiro:hasPermission="user:userinfo" data-name="set" class="layui-nav-item">
                         <a href="javascript:;" lay-tips="个人信息" lay-direction="2">
                             <i class="layui-icon layui-icon-user"></i>
@@ -156,6 +174,7 @@
                         </a>
                         <dl class="layui-nav-child">
                             <dd><a lay-href="/user/lookinfo">基本资料</a></dd>
+                            <dd><a lay-href="/user/sign">修改个性签名</a></dd>
                             <dd><a lay-href="/user/pass">修改密码</a></dd>
                             <dd><a lay-href="/user/phone">更换手机号</a></dd>
                         </dl>

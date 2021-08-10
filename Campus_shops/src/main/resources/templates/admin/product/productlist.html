@@ -27,11 +27,17 @@
                             <option th:title="1">正常</option>
                             <option th:title="0">违规</option>
                             <option th:title="4">已售出</option>
+                            <option th:title="2">已删除</option>
                         </select>
                     </div>
                 </div>
             </form>
             <div class="animated fadeIn">
+                <!--关于commstatus的取值：0违规、1正常、2删除、3待审核、4已完成交易
+                    操作：
+                        前台：编辑、已售（下架）、删除
+                        后台：编辑、违规、通过审核-->
+                <!--如果是删除状态，commstatus=2，则只显示禁止操作按钮-->
                 <table class="layui-hide" id="product" lay-filter="test"></table>
                 <script type="text/html" id="barDemo">
                     <a class="layui-btn layui-btn-xs" lay-event="xiangqing">详情</a>

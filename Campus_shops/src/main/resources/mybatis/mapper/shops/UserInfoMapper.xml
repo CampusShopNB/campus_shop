@@ -46,4 +46,15 @@
     <select id="queryPartInfo" parameterType="java.lang.String" resultType="com.entity.UserInfo">
         select username,uimage from user_info where userstatus=1 and userid=#{userid}
     </select>
+
+    <!--根据学校名称，精准查询，查询到一个List，存放UserInfo，这些对象的学校名称一样，且applyschoolstatus=1-->
+    <update id="updateApplyStatusBySchool">
+        update user_info set applyschoolstatus=2 where school=#{school} and applyschoolstatus=1
+    </update>
+
+    <!--作为上一个方法的补充。先查询
+    select count(*) from user_info where school='中山大学' and applyschoolstatus=1;-->
+    <select id="queryApplyCountBySchool" resultType="java.lang.Integer">
+        select count(*) from user_info where school=#{school} and applyschoolstatus=1
+    </select>
 </mapper>

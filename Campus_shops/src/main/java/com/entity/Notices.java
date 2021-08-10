@@ -42,6 +42,7 @@ public class Notices implements Serializable {
 	private Integer isread;
     /**
      * 通知类型
+     * 比如：商品审核、系统通知、评论、评论回复
      */
 	private String tpname;
     /**

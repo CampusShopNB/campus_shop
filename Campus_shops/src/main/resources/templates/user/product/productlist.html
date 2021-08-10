@@ -27,23 +27,40 @@
                             <option th:title="1">正常</option>
                             <option th:title="0">违规</option>
                             <option th:title="4">已售出</option>
+                            <option th:title="2">已删除</option>
                         </select>
                     </div>
                 </div>
             </form>
             <div class="animated fadeIn">
                 <table class="layui-hide" id="product" lay-filter="test"></table>
+                <!--layui模板引擎的写法
+                    感觉其实就是JavaScript写法，只不过每一行都用双括号加井号包围起来。注意if这里开头结尾
+
+                    关于commstatus的取值：0违规、1正常、2删除、3待审核、4已完成交易
+                    操作：
+                        前台：编辑、已售（下架）、删除
+                        后台：编辑、违规、通过审核-->
                 <script type="text/html" id="barDemo">
+                    {{# if(d.commstatus==2){ }}
+                    <button type="button" class="layui-btn-xs layui-btn-disabled">禁止操作</button>
+                    <!--如果是删除状态，commstatus=2，则只显示禁止操作按钮-->
+                    {{# } else{  }}
                     <a class="layui-btn layui-btn-xs" lay-event="xiangqing">详情</a>
+
+                    <!--commstatus!=3表示是0,1,4-->
                     {{# if(d.commstatus!=3){ }}
-                        {{# if(d.commstatus!=4){ }}
-                        <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="bianji">编辑</a>
-                        {{# } }}
-                        {{# if(d.commstatus!=4 && d.commstatus!=0){ }}
-                        <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="yishou">已售</a>
-                        {{# } }}
+                    <!--commstatus不为2,3,4，则为0,1，可以编辑-->
+                    {{# if(d.commstatus!=4){ }}
+                    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="bianji">编辑</a>
+                    {{# } }}
+                    <!--commstatus不为0,2,3,4，则为1，表示正常状态(已经通过审核)-->
+                    {{# if(d.commstatus!=4 && d.commstatus!=0){ }}
+                    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="yishou">下架</a>
+                    {{# } }}
                     {{# } }}
                     <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="shanchu">删除</a>
+                    {{# } }}
                 </script>
             </div>
         </div>

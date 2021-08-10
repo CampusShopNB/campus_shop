@@ -82,3 +82,18 @@ layui.use(['form', 'element', 'util', 'carousel', 'form', 'laypage', 'layer','ta
         return false;
     });
 });
+
+//放大图片。由于里面用到了layer所以外面要加上layui.use。
+//另外不要嵌套到别人的layui.use中！
+layui.use(['layer','jquery'], function () {
+    $('#stuidcarddiv img').on('click', function () {
+        // function enlargePic(){
+        layer.photos({
+            photos: '#stuidcarddiv',
+            shadeClose: false,
+            closeBtn: 2,
+            anim: 0
+        });
+    });
+// }
+});

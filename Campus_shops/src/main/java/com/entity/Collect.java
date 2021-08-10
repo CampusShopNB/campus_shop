@@ -66,6 +66,8 @@ public class Collect implements Serializable {
     private String couserid;
     /**
      * 收藏操作：收藏or取消收藏
+     * 只有下面这个不是数据表collect字段。
+     * 见CollectController.java注释，是前台商品详情页中收藏或取消操作
      */
     private Integer colloperate;
 }
