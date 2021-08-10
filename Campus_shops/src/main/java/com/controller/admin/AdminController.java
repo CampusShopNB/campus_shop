@@ -133,6 +133,14 @@ public class AdminController {
     }
 
     /**
+     * 跳转学校审核列表
+     */
+    @GetMapping("/admin/wantedschoollist")
+    public String adminSchoolList() {
+        return "/admin/school/school";
+    }
+
+    /**
      * 设置为管理员或普通成员（roleid）
      * 1：普通成员   2：管理员
      */
