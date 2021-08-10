@@ -690,11 +690,11 @@ CREATE TABLE `soldrecord`  (
                                `commname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品名',
                                `commdesc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品描述',
                                `thinkmoney` decimal(55, 2) NULL DEFAULT NULL COMMENT '售价',
-                               `soldtime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '售出时间',
+                               `soldtime` timestamp NULL DEFAULT CURRENT_TIMESTAMP COMMENT '售出时间',
                                `userid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '卖家用户id',
                                `soldstatus` int(10) NULL DEFAULT 1 COMMENT '1正常 2删除',
                                PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of soldrecord
@@ -852,18 +852,19 @@ INSERT INTO `user_role` VALUES ('1628079366429940552', 1, '网站用户');
 INSERT INTO `user_role` VALUES ('1628084808795360591', 1, '网站用户');
 INSERT INTO `user_role` VALUES ('1628086153878977047', 1, '网站用户');
 
+
 -- ----------------------------
 -- Table structure for traderecord
 -- ----------------------------
 DROP TABLE IF EXISTS `traderecord`;
 CREATE TABLE `traderecord`  (
-        `id` int(11) NOT NULL AUTO_INCREMENT,
-        `from` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资金流出',
-        `to` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资金流入',
-        `money` decimal(55, 2) NULL DEFAULT NULL COMMENT '交易金额',
-        `tradetime` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
-        PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+                                `id` int(11) NOT NULL AUTO_INCREMENT,
+                                `from` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资金流出',
+                                `to` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资金流入',
+                                `money` decimal(55, 2) NULL DEFAULT NULL COMMENT '交易金额',
+                                `tradetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+                                PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Table structure for wantedschool

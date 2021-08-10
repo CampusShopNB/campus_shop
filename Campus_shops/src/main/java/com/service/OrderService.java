@@ -96,4 +96,7 @@ public class OrderService {
     public List<Integer> queryStarByBuyerId(String buyerId){
         return orderMapper.queryStarByBuyerId(buyerId);
     }
+
+    /**根据id获取订单*/
+    public Order getOrderbyId(String id){   return orderMapper.selectById(id); }
 }
