@@ -1,5 +1,6 @@
 package com.mapper;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.entity.Order;
 import org.apache.ibatis.annotations.Param;
 
@@ -11,7 +12,7 @@ import java.util.List;
  * </p>
  * 注意没有delete操作。如果取消收藏，直接update，修改相关信息和收藏状态即可，以此减少数据库的操作
  */
-public interface OrderMapper {
+public interface OrderMapper extends BaseMapper<Order>{
     /**添加订单*/
     Integer addOrder(Order order);
 
