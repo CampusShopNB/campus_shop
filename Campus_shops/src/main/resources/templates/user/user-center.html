@@ -179,6 +179,22 @@
                             <dd><a lay-href="/user/phone">更换手机号</a></dd>
                         </dl>
                     </li>
+                    <!--如果该用户为管理员（2）或者超级管理员（3）-->
+                    <script type="text/html">
+                        {{# if(d.userstatus==3 && d.userstatus==2){ }}
+                            <li data-name="set" class="layui-nav-item">
+                                <a href="javascript:;" lay-tips="后台管理" lay-direction="2">
+                                    <i class="layui-icon layui-icon-user"></i>
+                                    <cite>后台管理</cite>
+                                </a>
+                                <dl class="layui-nav-child">
+                                    <dd><a  onclick="window.open('/admin');return false">后台管理</a></dd>
+                                </dl>
+                            </li>
+                        {{# } }}
+                    </script>
+
+
                     <!--<li data-name="username" class="layui-nav-item">-->
                         <!--<a href="javascript:;" lay-tips="个人主页" lay-direction="2">-->
                             <!--<i class="layui-icon layui-icon-username"></i>-->
