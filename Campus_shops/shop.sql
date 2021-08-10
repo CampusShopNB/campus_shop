@@ -83,6 +83,19 @@ CREATE TABLE `collect` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- ----------------------------
+-- Table structure for traderecord
+-- ----------------------------
+DROP TABLE IF EXISTS `traderecord`;
+CREATE TABLE `traderecord`  (
+        `id` int(11) NOT NULL AUTO_INCREMENT,
+        `from` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资金流出',
+        `to` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '资金流入',
+        `money` decimal(55, 2) NULL DEFAULT NULL COMMENT '交易金额',
+        `tradetime` datetime NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP,
+         PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
 -- Records of collect
 -- ----------------------------
 INSERT INTO `collect` VALUES ('1587114966615640492', '1583938997302470599', '旅行套装60ml三件套', '悦美时刻 INS北欧风化妆品分装瓶旅行套装60ml三件套 软管挤压式乳液瓶 清洁消毒分装瓶 便携空瓶 60ml*3(北欧色三件套）', '2020-04-17 17:16:06', '1', '1582184795951594874', '猫儿', '北京大学', '1582184795951594874');
