@@ -207,6 +207,7 @@ public class CommodityController {
         String couserid = (String) session.getAttribute("userid");
 
         Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid).setCommstatus(1));
+
         int i = 0;
         if (commodity.getCommstatus().equals(1)){//如果商品正常
             i=1;
@@ -244,6 +245,11 @@ public class CommodityController {
                     modelMap.put("collectstatus",2);
                 }
             }
+
+            String goodUser = commodity.getUserid();
+            session.setAttribute("goodUser",goodUser);
+
+
             return "/common/product-detail";
         }else{
             return "/error/404";
@@ -407,6 +413,32 @@ public class CommodityController {
     @ResponseBody
     public LayuiPageVo userCommodity(@PathVariable("commstatus") Integer commstatus, int limit, int page, HttpSession session) {
         String userid = (String) session.getAttribute("userid");
+        //如果未登录，给一个假id
+        if(StringUtils.isEmpty(userid)){
+            userid = "123456";
+        }
+        List<Commodity> commodityList=null;
+        Integer dataNumber;
+        if(commstatus==100){
+            commodityList = commodityService.queryAllCommodity((page - 1) * limit, limit, userid,null);
+            dataNumber = commodityService.queryCommodityCount(userid,null);
+        }else{
+            commodityList = commodityService.queryAllCommodity((page - 1) * limit, limit, userid,commstatus);
+            dataNumber = commodityService.queryCommodityCount(userid,commstatus);
+        }
+        return new LayuiPageVo("",0,dataNumber,commodityList);
+    }
+
+    /**
+     * 分页展示商家个人各类商品信息
+     *前端传入页码、分页数量
+     *前端传入商品信息状态码（commstatus）-->全部:100，已审核:1，待审核:3，违规:0，已完成:4
+     */
+    @GetMapping("/seller/commodity/{commstatus}")
+    @ResponseBody
+    public LayuiPageVo sellerCommodity(@PathVariable("commstatus") Integer commstatus, int limit, int page, HttpSession session) {
+        String userid = (String) session.getAttribute("goodUser");
+        System.out.println("gooduserid: "+userid);
         //如果未登录，给一个假id
         if(StringUtils.isEmpty(userid)){
             userid = "123456";
