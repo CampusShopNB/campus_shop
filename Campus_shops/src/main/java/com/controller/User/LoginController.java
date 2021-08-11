@@ -9,6 +9,7 @@ import com.service.UserInfoService;
 import com.service.UserRoleService;
 import com.util.*;
 import com.vo.ResultVo;
+import jnr.ffi.annotations.In;
 import net.sf.json.JSONObject;
 import org.apache.commons.lang3.concurrent.BasicThreadFactory;
 import org.apache.shiro.SecurityUtils;
@@ -133,7 +134,7 @@ public class LoginController {
     @PostMapping("/user/register")
     public  ResultVo userReg(@RequestBody UserInfo userInfo, HttpSession session) {
         String username = userInfo.getUsername();
-        String password = userInfo.getPassword();
+        String password = userInfo.getPassword();;
         String mobilephone = userInfo.getMobilephone();
         String vercode = userInfo.getVercode();
         Login login = new Login().setMobilephone(mobilephone);

@@ -1,7 +1,9 @@
 package com.controller;
 
 import com.entity.UserInfo;
+import com.entity.UserRole;
 import com.service.UserInfoService;
+import com.service.UserRoleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,9 +77,15 @@ public class IndexController {
     /**
      * 个人中心
      * */
+    @Autowired
+    private UserRoleService userRoleService;
     @GetMapping("/user/center")
-    public String usercenter(HttpSession session, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String usercenter(HttpSession session, HttpServletRequest request, HttpServletResponse response,ModelMap modelMap) throws IOException {
         String userid = (String) session.getAttribute("userid");
+        Integer userRole = userRoleService.LookUserRoleId(userid);
+        modelMap.put("userRole",userRole);
+        /*UserInfo userInfo = userInfoService.LookUserinfo("userid");*/
+        /*Integer userRole = userInfo.getRoleid();*/
         /**拦截器：如果不是用户角色登录，则进行重定向*/
         if (StringUtils.isEmpty(userid)){
             response.sendRedirect(request.getContextPath() + "/");//重定向
