@@ -4928,10 +4928,9 @@ textarea.form-control {
     font-family: "Archivo Narrow", sans-serif;
     font-size: 13px;
     text-align: center;
-    color: #8d8d8d;
+    color: #FFFFFF;
     text-transform: uppercase;
     line-height: 40px;
-    border-left: 1px solid #e5e5e5;
     vertical-align: top;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
@@ -4940,8 +4939,8 @@ textarea.form-control {
     .header__actions > a > i, .header__actions .ps-dropdown > a > i {
       margin-left: 5px; }
     .header__actions > a:hover, .header__actions .ps-dropdown > a:hover {
-      background-color: #e5e5e5;
-      color: #2AC37D; }
+      background-color: #009688;
+      color: #FFFFFF; }
   .header__actions > a {
     margin-right: -4px; }
   .header__actions .ps-dropdown {
@@ -4952,7 +4951,7 @@ textarea.form-control {
       -ms-box-shadow: none;
       box-shadow: none;
       background-color: #e5e5e5;
-      color: #2AC37D; }
+      color: #009688; }
     .header__actions .ps-dropdown .dropdown-menu {
       padding: 0;
       right: 0;
@@ -4968,7 +4967,7 @@ textarea.form-control {
         line-height: 20px;
         border-bottom: 1px solid #e5e5e5;
         font-size: 13px;
-        color: #8d8d8d;
+        color: #FFFFFF;
         text-transform: uppercase; }
         .header__actions .ps-dropdown .dropdown-menu li a img {
           max-width: 20px;
@@ -5001,7 +5000,7 @@ textarea.form-control {
       font-family: "Montserrat", sans-serif;
       font-size: 13px;
       text-align: left;
-      color: #5b5b5b;
+      color: #D0D0D0;
       line-height: 40px; }
   @media (max-width: 1199px) {
     .header {
