@@ -1,3 +1,70 @@
+/**
+ * Lolo自定义
+*/
+.myheader{
+}
+
+.menu > li > span{
+  position: relative;
+  z-index: 10;
+  display: inline-block;
+  font-family: "Archivo Narrow", sans-serif;
+  padding: 5px 20px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 80px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+
+.myshadow:before,.myshadow:after{
+  border-radius: 3px;
+  position: absolute;
+  content:"";
+  box-shadow:0 10px 20px 30px rgba(11, 11, 11, 0.76);
+  top:40px;left:20px;bottom:50px;
+  width:15%;
+  z-index:-1;
+  -webkit-transform: rotate(-3deg);
+  -moz-transform: rotate(-3deg);
+  transform: rotate(-3deg);
+}
+.myshadow:after{
+  border-radius: 3px;
+  -webkit-transform: rotate(3deg);
+  -moz-transform: rotate(3deg);
+  transform: rotate(3deg);
+  right: 20px;left: auto;
+}
+
+.myshadow > div,.myshadow > img{
+  border-radius: 8px;
+}
+
+.ps-shoe{
+  border-radius: 5px;
+  background-color: rgba(255, 0, 0, 0);
+  box-shadow: 0px 0px 10px 5px rgba(11, 11, 11, 0.03);
+  z-index: 5;
+  padding-top: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.ps-shoes--carousel {
+  padding: 30px 40px 80px; }
+
+.ps-shoe__detail{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.ps-shoe__categories{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+/*---------------------------------------------------------------------------------*/
 
 .masonry-wrapper .grid-item .grid-item__inner, .setting .grid-item .grid-item__inner {
   position: relative; }
@@ -2420,7 +2487,7 @@ textarea.form-control {
     margin-bottom: 0;
     position: relative;
     min-height: 60px;
-    background-color: #fff; }
+     }
   .ps-shoe .ps-shoe__name {
     font-family: "Archivo Narrow", sans-serif;
     font-size: 16px;
@@ -2564,8 +2631,7 @@ textarea.form-control {
     font-size: 12px;
     line-height: 15px; }
 
-.ps-shoes--carousel {
-  padding: 30px 10px 100px; }
+
 
 .ps-badge {
   display: inline-block;
@@ -3414,19 +3480,19 @@ textarea.form-control {
   .ps-section__title:before {
     content: attr(data-mask);
     position: absolute;
-    top: 50%;
+    top: 80%;
     -webkit-transform: translateY(-50%);
     -moz-transform: translateY(-50%);
     -ms-transform: translateY(-50%);
     -o-transform: translateY(-50%);
     transform: translateY(-50%);
-    left: -4px;
+    left: 80px;
     z-index: -1;
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
-    font-size: 100px;
+    font-size: 50px;
     line-height: 1em;
-    color: #f4f4f4;
+    color: rgba(255, 255, 255, 0.48);
     letter-spacing: .08em; }
 
 .ps-section__action {
@@ -4939,8 +5005,8 @@ textarea.form-control {
     .header__actions > a > i, .header__actions .ps-dropdown > a > i {
       margin-left: 5px; }
     .header__actions > a:hover, .header__actions .ps-dropdown > a:hover {
-      background-color: #009688;
-      color: #FFFFFF; }
+      background-color: #FFFFFF;
+      color: #009688; }
   .header__actions > a {
     margin-right: -4px; }
   .header__actions .ps-dropdown {

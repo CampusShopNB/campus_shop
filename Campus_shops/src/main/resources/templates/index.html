@@ -46,7 +46,7 @@
 <body class="ie9 lt-ie10"><![endif]-->
 <body class="ps-loading">
 <header class="header myheader" style="margin-top: -10px;" th:fragment="myheader">
-    <div class="header__top" style="border: none">
+    <div class="header__top" style="border: none;background-color: #009999;">
         <div class="container-fluid" >
             <div class="row no-gutters">
                 <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 ">
@@ -87,7 +87,7 @@
         </div>
     </div>
     <nav class="navigation">
-        <div class="container-fluid" style="background-color: #009688;">
+        <div class="container-fluid" style="background-color: #009999;">
             <div class="navigation__column left">
                 <div class="header__logo"><a class="ps-logo" th:href="@{/}">
                     <img th:src="@{/static/images/logo.png}" alt=""></a></div>
@@ -123,17 +123,21 @@
         <p class="ps-service"><i class="ps-icon-delivery"></i>环保公益两不误，与你相约在校园二手商城。</p>
     </div>
 </div>
-<div style="margin: 0 auto;" class="layui-carousel myshadow" id="test10" >
+<!--轮播图背景色background-color: #66CCCC;-->
+<div style="background-image: linear-gradient(to right, #66CCCC, rgba(255,0,0,0), #66CCCC);">
+<div style="width: 100%;z-index: -3;">
+<div style="margin: 0 auto;z-index: 1;" class="layui-carousel myshadow" id="test10" >
     <div carousel-item="" >
         <div><img th:src="@{/static/images/slider/3.jpg}" style="width:100%;height: 100%;"></div>
         <div><img th:src="@{/static/images/slider/2.jpg}" style="width:100%;height: 100%;"></div>
     </div>
 </div>
-<main class="ps-main" id="indexssss">
-    <div class="ps-section--features-product ps-section masonry-root">
+</div>
+<main class="ps-main" id="indexssss"><!--style="background-color: #CCFFFF"-->
+    <div class="ps-section--features-product ps-section masonry-root" >
         <div class="ps-container">
             <div class="ps-section__header mb-50">
-                <h3 class="ps-section__title" data-mask="features">- 全部商品</h3>
+                <h3 class="ps-section__title" data-mask="commodity">- 全部商品</h3>
                 <ul class="ps-masonry__filter">
                     <li v-for="(category, index) in categoryList" :key="index">
                         <!--:class="current : clilckCategory == category">-->
@@ -147,8 +151,8 @@
                      data-radio="100%">
                     <div class="layui-container">
                         <div class="layui-row layui-col-space1">
-                            <div class="layui-col-md3" v-for="commodity in indexData" :key="commodity.commid">
-                                <div class="ps-shoes--carousel">
+                            <div class="layui-col-md4" v-for="commodity in indexData" :key="commodity.commid" >
+                                <div class="ps-shoes--carousel" >
                                     <div class="ps-shoe">
                                         <div class="ps-shoe__thumbnail">
                                             <img v-bind:src="commodity.image" alt="商品主图" style="height:300px">
@@ -202,7 +206,7 @@
             <div class="ps-section__header mb-50">
                 <div class="row">
                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
-                        <h3 class="ps-section__title" data-mask="BEST SALE">- 最新商品</h3>
+                        <h3 class="ps-section__title" data-mask="Recent Posts">- 最新商品</h3>
                     </div>
                     <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
                         <!--<div class="ps-owl-actions"><a class="ps-prev" href="#"><i-->
@@ -216,7 +220,7 @@
                      data-radio="100%">
                     <div class="layui-container">
                         <div class="layui-row layui-col-space5">
-                            <div class="layui-col-md3" v-for="commodity in latestData" :key="commodity.commid">
+                            <div class="layui-col-md4" v-for="commodity in latestData" :key="commodity.commid">
                                 <div class="ps-shoes--carousel">
                                     <div class="ps-shoe">
                                         <div class="ps-shoe__thumbnail">
@@ -361,6 +365,7 @@
         </div>
     </div>
 </main>
+ <div>
 <!-- JS Library-->
 <script type="text/javascript" th:src="@{/static/plugins/jquery/dist/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/plugins/bootstrap/dist/js/bootstrap.min.js}"></script>
