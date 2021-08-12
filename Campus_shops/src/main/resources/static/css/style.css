@@ -87,7 +87,7 @@
 }
 
 .mycategory > a{
-  color: #fff;
+  color: #000000;
 }
 /*---------------------------------------------------------------------------------*/
 
@@ -761,7 +761,7 @@ h6 {
 p {
   font-size: 14px;
   line-height: 1.5em;
-  color: #fff9ec; }
+  color: #8f8f8f; }
   p span {
     font-family: inherit;
     color: inherit;
@@ -2517,10 +2517,10 @@ textarea.form-control {
     font-family: "Archivo Narrow", sans-serif;
     font-size: 16px;
     font-weight: 700;
-    color: #F2F2F2;
+    color: #3a3a3a;
     line-height: 1.4em; }
     .ps-shoe .ps-shoe__name:hover {
-      color: #0b0b0b; }
+      color: #adadad; }
   .ps-shoe .ps-shoe__categories {
     margin-bottom: 0; }
     .ps-shoe .ps-shoe__categories > a {
@@ -3784,7 +3784,7 @@ textarea.form-control {
       font-family: "Archivo Narrow", sans-serif;
       font-size: 16px;
       font-weight: 700;
-      color: #fff;
+      color: rgba(11, 11, 11, 0.83);
       text-transform: uppercase; }
       .ps-section--features-product .ps-masonry__filter li > a sup {
         font-family: "Montserrat", sans-serif;
@@ -3797,7 +3797,7 @@ textarea.form-control {
         -moz-transition: all 0.4s ease;
         transition: all 0.4s ease; }
       .ps-section--features-product .ps-masonry__filter li > a:hover {
-        color: #0b0b0b; }
+        color: #adadad; }
     .ps-section--features-product .ps-masonry__filter li:last-child {
       margin-right: 0; }
     .ps-section--features-product .ps-masonry__filter li.current > a {
