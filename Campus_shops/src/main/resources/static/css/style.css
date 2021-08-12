@@ -66,28 +66,35 @@
 }
 
 .header-color{
-  background-color: #8E9BAE;
+  background-color: #728A7A;
 }
 
 .mylunbo{
-  background-color: #E3D0CC;
+  background-color: #D4C3AA;
 }
 
 .mycommodity{
-  background-color: #BECBD3;
+  background-color: rgba(163, 145, 131, 0.82);
 }
 
+.mycategory > a{
+  color: #fff;
+}
 
 .mylatest{
-  background-color: #C4C1BC;
+  background-color: rgba(114, 138, 122, 0.66);
 }
 
 .myblog{
+<<<<<<< HEAD
   background-color: #BFC2CB;
 }
 
 .mycategory > a{
   color: #000000;
+=======
+  background-color: #C4C1BC;
+>>>>>>> parent of 4f7bc39 (index2.0)
 }
 /*---------------------------------------------------------------------------------*/
 
