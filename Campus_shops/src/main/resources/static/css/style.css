@@ -91,10 +91,14 @@
 }
 
 .mycategory > a{
+<<<<<<< HEAD
   color: #000000;
 =======
   background-color: #C4C1BC;
 >>>>>>> parent of 4f7bc39 (index2.0)
+=======
+  color: #fff;
+>>>>>>> parent of 99564aa (index2.0)
 }
 /*---------------------------------------------------------------------------------*/
 
@@ -768,7 +772,7 @@ h6 {
 p {
   font-size: 14px;
   line-height: 1.5em;
-  color: #8f8f8f; }
+  color: #fff9ec; }
   p span {
     font-family: inherit;
     color: inherit;
@@ -2524,10 +2528,10 @@ textarea.form-control {
     font-family: "Archivo Narrow", sans-serif;
     font-size: 16px;
     font-weight: 700;
-    color: #3a3a3a;
+    color: #F2F2F2;
     line-height: 1.4em; }
     .ps-shoe .ps-shoe__name:hover {
-      color: #adadad; }
+      color: #0b0b0b; }
   .ps-shoe .ps-shoe__categories {
     margin-bottom: 0; }
     .ps-shoe .ps-shoe__categories > a {
@@ -3791,7 +3795,7 @@ textarea.form-control {
       font-family: "Archivo Narrow", sans-serif;
       font-size: 16px;
       font-weight: 700;
-      color: rgba(11, 11, 11, 0.83);
+      color: #fff;
       text-transform: uppercase; }
       .ps-section--features-product .ps-masonry__filter li > a sup {
         font-family: "Montserrat", sans-serif;
@@ -3804,7 +3808,7 @@ textarea.form-control {
         -moz-transition: all 0.4s ease;
         transition: all 0.4s ease; }
       .ps-section--features-product .ps-masonry__filter li > a:hover {
-        color: #adadad; }
+        color: #0b0b0b; }
     .ps-section--features-product .ps-masonry__filter li:last-child {
       margin-right: 0; }
     .ps-section--features-product .ps-masonry__filter li.current > a {
