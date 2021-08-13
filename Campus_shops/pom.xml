@@ -10,6 +10,7 @@
     </parent>
     <groupId>Campus-shops</groupId>
     <artifactId>shops</artifactId>
+    <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>shops</name>
     <description>Demo project for Spring Boot</description>
@@ -177,6 +178,16 @@
             <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
 
+        <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-tomcat</artifactId>
+        <!--打包的时候可以不用包进去，别的设施会提供。事实上该依赖理论上可以参与编译，测试，运行等周期。
+            相当于compile，但是打包阶段做了exclude操作-->
+        <scope>provided</scope>
+        </dependency>
+
+
+
     </dependencies>
 
 
@@ -185,8 +196,18 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.3.6.RELEASE</version>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
             </plugin>
         </plugins>
+
     </build>
 
 </project>
