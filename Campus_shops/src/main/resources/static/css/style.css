@@ -47,9 +47,7 @@
   background-color: rgba(255, 0, 0, 0);
   box-shadow: 0px 0px 10px 5px rgba(11, 11, 11, 0.03);
   z-index: 5;
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
+  padding: 20px 30px 70px;
 }
 
 .ps-shoes--carousel {
@@ -88,6 +86,15 @@
 
 .mycategory > a{
   color: #000000;
+}
+
+.mysidebar{
+  background-color: #BECBD3;
+
+}
+
+.mypage > span,.mypage > a{
+  font-size: 15px!important;
 }
 /*---------------------------------------------------------------------------------*/
 
@@ -4134,7 +4141,7 @@ textarea.form-control {
         transform: translate(-50%, -50%);
         height: 30px;
         width: 100%;
-        background-color: #2AC37D;
+        background-color: #fff;
         z-index: -1;
         -webkit-transition: all 0.4s ease;
         -moz-transition: all 0.4s ease;
@@ -4151,7 +4158,7 @@ textarea.form-control {
         visibility: hidden;
         opacity: 0; }
       .menu > li > a:hover {
-        color: #fff; }
+        color: #7a8286; }
         .menu > li > a:hover:before {
           visibility: visible;
           opacity: 1;

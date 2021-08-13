@@ -62,8 +62,9 @@
     <div th:include="~{index :: myhdservices}"></div>
 </div>
 <main class="ps-main">
-    <div class="ps-products-wrap pt-80 pb-80" id="productlist">
-        <div class="ps-products" data-mh="product-listing">
+    <div class="mylunbo">
+    <div class="ps-products-wrap pt-50 pb-80 pl-0" id="productlist">
+        <div class="ps-products pt-20" data-mh="product-listing">
             <div class="ps-product-action">
                 <form class="layui-form" action="">
                     <div class="layui-form-item">
@@ -94,7 +95,7 @@
                                 <div class="ps-shoe">
                                     <div class="ps-shoe__thumbnail">
                                         <a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a>
-                                        <img v-bind:src="commodity.image" alt="商品主图" style="height:400px">
+                                        <img v-bind:src="commodity.image" alt="商品主图" style="height:300px">
                                         <a class="ps-shoe__overlay" :href="'/product-detail/'+commodity.commid"
                                            target="_blank"></a>
                                     </div>
@@ -127,11 +128,11 @@
             </div>
             <div class="ps-product-action">
                 <div class="ps-pagination">
-                    <div id="layuipage"></div>
+                    <div id="layuipage" class="mypage" style="font-size: 15px!important;"></div>
                 </div>
             </div>
         </div>
-        <div class="ps-sidebar" data-mh="product-listing">
+        <div class="ps-sidebar pt-30 pl-30 mysidebar" data-mh="product-listing">
             <aside class="ps-widget--sidebar ps-widget--category">
                 <div class="ps-widget__header">
                     <h3>类别</h3>
@@ -240,6 +241,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </main>
 <!-- JS Library-->
