@@ -69,10 +69,11 @@
             </div>
         </div>
     </div>
-    <div class="ps-product--detail pt-60">
+    <div class="ps-product--detail">
         <div class="ps-container">
-            <div class="row">
-                <div class="col-lg-10 col-md-12 col-lg-offset-1">
+            <div class="row mylunbo">
+
+                <div class="col-lg-10 col-md-12 col-lg-offset-1 pt-60">
                     <div class="ps-product__thumbnail">
                         <div class="ps-product__preview">
                             <div class="ps-product__variants">
@@ -154,16 +155,18 @@
                     </div>
                     <div class="clearfix"></div>
                 </div>
+
                 <div class="ps-product__content" style="margin-top:0px">
-                    <ul class="tab-list" role="tablist">
-                        <li class="active"><a href="#tab_01" aria-controls="tab_01" role="tab" data-toggle="tab">详情</a></li>
+                    <ul class="tab-list" role="tablist" style="border: none;">
+                        <li class="active mytablist"><a href="#tab_01" aria-controls="tab_01" role="tab" data-toggle="tab">详情</a></li>
                         <li><a href="#tab_02" aria-controls="tab_02" role="tab" data-toggle="tab">评论</a></li>
                     </ul>
                 </div>
                 <div class="tab-content mb-60" id="comments">
                     <div class="tab-pane active" role="tabpanel" id="tab_01">
-                        <fieldset class="layui-elem-field">
-                            <legend style="font-size:25px">商品详情</legend>
+                        <fieldset class="layui-elem-field" style="border: none;">
+                            <legend style="font-size: 30px">商品详情</legend>
+                            <hr style="height: 2px;margin: 0px 0px 0px 30px;width: 30%;z-index: 5;background-color: #2AC37D;">
                             <div class="layui-field-box">
                                 <div class="layui-container" style="font-size:18px;width:100%">
                                     <div class="layui-row" style="margin-top:10px">
@@ -228,7 +231,7 @@
                                 </div>
                             </div>
                         </div>
-                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;">
+                        <fieldset class="layui-elem-field layui-field-title" style="margin-top: 30px;border: none;">
                             <legend>评论</legend>
                         </fieldset>
                         <form class="layui-form" action="">
@@ -255,12 +258,12 @@
             </div>
         </div>
     </div>
-    <div class="ps-section ps-section--top-sales ps-owl-root pt-40 pb-80" id="latestp">
+    <div class="ps-section ps-section--top-sales ps-owl-root pt-40 pb-80 mylatest" id="latestp">
         <div class="ps-container">
             <div class="ps-section__header mb-50">
                 <div class="row">
                     <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12 ">
-                        <h3 class="ps-section__title" data-mask="Related item">- 最新商品</h3>
+                        <h3 class="ps-section__title" data-mask="Recent posts">- 最新商品</h3>
                     </div>
                 </div>
             </div>
@@ -313,75 +316,68 @@
         <div class="ps-footer__content">
             <div class="ps-container">
                 <div class="row">
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                    <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 " style="margin-left: 120px;">
                         <aside class="ps-widget--footer ps-widget--info">
                             <header><a class="ps-logo" th:href="@{/}"><img th:src="@{/static/images/logo-white.png}" alt=""></a>
-                                <h3 class="ps-widget__title">Address Office 1</h3>
+                                <h3 class="ps-widget__title">郭嘉霓</h3>
                             </header>
                             <footer>
-                                <p><strong>460 West 34th Street, 15th floor, New York</strong></p>
-                                <p>Email: <a href='mailto:support@store.com'>support@store.com</a></p>
-                                <p>Phone: +323 32434 5334</p>
-                                <p>Fax: ++323 32434 5333</p>
+                                <p><strong>Sno： 20182005135</strong></p>
+                                <p>Class: 2018级软件工程4班</p>
+                                <p>Email: <a href='mailto:support@store.com'>1240438212@qq.com</a></p>
+                                <p>Phone: +86 13431317321</p>
                             </footer>
                         </aside>
                     </div>
-                    <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12 ">
+                    <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 ">
                         <aside class="ps-widget--footer ps-widget--info second">
                             <header>
-                                <h3 class="ps-widget__title">Address Office 2</h3>
+                                <h3 class="ps-widget__title">陈丽莎</h3>
                             </header>
                             <footer>
-                                <p><strong>PO Box 16122 Collins Victoria 3000 Australia</strong></p>
-                                <p>Email: <a href='mailto:support@store.com'>support@store.com</a></p>
-                                <p>Phone: +323 32434 5334</p>
-                                <p>Fax: ++323 32434 5333</p>
+                                <p><strong>Sno： 20182005094</strong></p>
+                                <p>Class: 2018级软件工程4班</p>
+                                <p>Email: <a href='mailto:support@store.com'>Suyanyee@qq.com</a></p>
+                                <p>Phone: +86 18575748095</p>
                             </footer>
                         </aside>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
-                        <aside class="ps-widget--footer ps-widget--link">
+                        <aside class="ps-widget--footer ps-widget--info second">
                             <header>
-                                <h3 class="ps-widget__title">Find Our store</h3>
+                                <h3 class="ps-widget__title">张婉淳</h3>
                             </header>
                             <footer>
-                                <ul class="ps-list--link">
-                                    <li><a href="#">Coupon Code</a></li>
-                                    <li><a href="#">SignUp For Email</a></li>
-                                    <li><a href="#">Site Feedback</a></li>
-                                    <li><a href="#">Careers</a></li>
-                                </ul>
+                                <p><strong>Sno： 20182005224</strong></p>
+                                <p>Class: 2018级软件工程5班</p>
+                                <p>Email: <a href='mailto:support@store.com'>271820501@qq.com</a></p>
+                                <p>Phone: +86 15889960134</p>
                             </footer>
                         </aside>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
-                        <aside class="ps-widget--footer ps-widget--link">
+                        <aside class="ps-widget--footer ps-widget--info second">
                             <header>
-                                <h3 class="ps-widget__title">Get Help</h3>
+                                <h3 class="ps-widget__title">戴晗琳</h3>
                             </header>
                             <footer>
-                                <ul class="ps-list--line">
-                                    <li><a href="#">Order Status</a></li>
-                                    <li><a href="#">Shipping and Delivery</a></li>
-                                    <li><a href="#">Returns</a></li>
-                                    <li><a href="#">Payment Options</a></li>
-                                    <li><a href="#">Contact Us</a></li>
-                                </ul>
+                                <p><strong>Sno： 20182005168</strong></p>
+                                <p>Class: 2018级软件工程5班</p>
+                                <p>Email: <a href='mailto:support@store.com'>1106135995@qq.com</a></p>
+                                <p>Phone: +86 13670033097</p>
                             </footer>
                         </aside>
                     </div>
                     <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
-                        <aside class="ps-widget--footer ps-widget--link">
+                        <aside class="ps-widget--footer ps-widget--info second">
                             <header>
-                                <h3 class="ps-widget__title">Products</h3>
+                                <h3 class="ps-widget__title">刘佳乐</h3>
                             </header>
                             <footer>
-                                <ul class="ps-list--line">
-                                    <li><a href="#">Shoes</a></li>
-                                    <li><a href="#">Clothing</a></li>
-                                    <li><a href="#">Accessries</a></li>
-                                    <li><a href="#">Football Boots</a></li>
-                                </ul>
+                                <p><strong>Sno： 20182005242</strong></p>
+                                <p>Class: 2018级软件工程4班</p>
+                                <p>Email: <a href='mailto:s1035562400@qq.com'>1035562400@qq.com</a></p>
+                                <p>Phone: +86 13622472383</p>
                             </footer>
                         </aside>
                     </div>
