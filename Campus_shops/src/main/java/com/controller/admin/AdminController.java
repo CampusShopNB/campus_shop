@@ -268,6 +268,9 @@ public class AdminController {
 
         if(commstatus == 1){
             if(countname!=0 || countdesc!=0){
+                Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(commodity.getUserid()).setTpname("商品审核")
+                        .setWhys("您的商品 < a href= "+commodity.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</ a> 涉及侵权，色情，反动，不支持公布！请立即整改！");
+                noticesService.insertNotices(notices);
                 return new ResultVo(true,StatusCode.ERROR,"该商品涉及色情反动、低俗等信息，禁止通过！");
             }
         }

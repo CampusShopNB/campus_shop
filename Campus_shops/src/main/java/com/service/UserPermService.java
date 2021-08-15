@@ -26,3 +26,4 @@ public class UserPermService {
         return userPermMapper.LookPermsByUserid(id);
     }
 }
+
