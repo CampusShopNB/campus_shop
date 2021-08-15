@@ -31,11 +31,11 @@
                 <script type="text/html" id="barDemo">
                     {{# if(d.userstatus!=0){ }}
                     <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="fengjin">封禁</a>
+                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="setadmin">设为管理员</a>
                     {{# } }}
                     {{# if(d.userstatus!=1){ }}
                     <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="jiefeng">解封</a>
                     {{# } }}
-                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="setadmin">设为管理员</a>
                 </script>
             </div>
         </div>

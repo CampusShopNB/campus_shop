@@ -57,4 +57,10 @@
     <select id="queryApplyCountBySchool" resultType="java.lang.Integer">
         select count(*) from user_info where school=#{school} and applyschoolstatus=1
     </select>
+
+    <!-- 查询所有用户的评分 -->
+    <select id="queryAllUsersStar" resultType="com.entity.UserInfo">
+        select userid,star from user_info
+    </select>
+
 </mapper>

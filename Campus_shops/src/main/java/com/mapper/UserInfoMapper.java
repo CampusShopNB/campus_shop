@@ -31,4 +31,8 @@ public interface UserInfoMapper {
     Integer updateApplyStatusBySchool(String school);
     /**作为上一个方法的补充。先查询*/
     Integer queryApplyCountBySchool(String school);
+
+    /**铲鲟所有用户的星级，评分*/
+    List<UserInfo> queryAllUsersStar();
+
 }

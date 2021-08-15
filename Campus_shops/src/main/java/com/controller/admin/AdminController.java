@@ -2,10 +2,7 @@ package com.controller.admin;
 
 import com.entity.*;
 import com.service.*;
-import com.util.JustPhone;
-import com.util.KeyUtil;
-import com.util.StatusCode;
-import com.util.ValidateCode;
+import com.util.*;
 import com.vo.LayuiPageVo;
 import com.vo.ResultVo;
 import org.apache.shiro.SecurityUtils;
@@ -180,7 +177,24 @@ public class AdminController {
     @PutMapping("/admin/user/forbid/{userid}/{userstatus}")
     @ResponseBody
     public ResultVo adminuserlist(@PathVariable("userid") String userid,@PathVariable("userstatus") Integer userstatus) {
+        //  对账户的评分进行判断，如果分数低于某个值，不允解封；如果分数高于某个值，不允许封号。
+//        判断状态，1.如果是0，执行封号操作，如果高于（平均值+1），返回，该用户评分过高，禁止封号！
+//        2.如果是1，进行解封，如果低于（平均值-1），不允许解封，返回该用户评分过低，禁止解封！
+
+        List<UserInfo> list=userInfoService.queryAllUsersStar();
+        Double sum=0.0;
+        int    num=0;
+        for(UserInfo u:list){
+            sum+=u.getStar();
+            num+=1;
+        }
+        Double avg=(Double)sum/num;
+
         if (userstatus == 0){
+            if(userInfoService.LookUserinfo(userid).getStar()>(avg+1)){
+                return new ResultVo(true,StatusCode.ERROR,"该用户评分过高，禁止封号！");
+            }
+
             Integer i = loginService.updateLogin(new Login().setUserid(userid).setUserstatus(userstatus));
             Integer j = userInfoService.UpdateUserInfo(new UserInfo().setUserid(userid).setUserstatus(userstatus));
             if (i ==1 && j == 1){
@@ -192,6 +206,9 @@ public class AdminController {
             }
             return new ResultVo(true, StatusCode.ERROR, "封号失败");
         }else if (userstatus == 1){
+            if(userInfoService.LookUserinfo(userid).getStar()<(avg-1)){
+                return new ResultVo(true,StatusCode.ERROR,"该用户评分过高，禁止解封！");
+            }
             Integer i = loginService.updateLogin(new Login().setUserid(userid).setUserstatus(userstatus));
             Integer j = userInfoService.UpdateUserInfo(new UserInfo().setUserid(userid).setUserstatus(userstatus));
             if (i ==1 && j == 1){
@@ -242,10 +259,23 @@ public class AdminController {
     @ResponseBody
     @PutMapping("/admin/changecommstatus/{commid}/{commstatus}")
     public ResultVo ChangeCommstatus(@PathVariable("commid") String commid, @PathVariable("commstatus") Integer commstatus) {
+        Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
+        String commname = commodity.getCommname();
+        String commdesc = commodity.getCommdesc();
+
+        int countname = SensitivewordFilter.getSensitiveNum(commname);
+        int countdesc = SensitivewordFilter.getSensitiveNum(commdesc);
+
+        if(commstatus == 1){
+            if(countname!=0 || countdesc!=0){
+                return new ResultVo(true,StatusCode.ERROR,"该商品涉及色情反动、低俗等信息，禁止通过！");
+            }
+        }
+
         Integer i = commodityService.ChangeCommstatus(commid, commstatus);
         if (i == 1){
             /**发出商品审核结果的系统通知*/
-            Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
+
             if (commstatus == 0){
                 Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(commodity.getUserid()).setTpname("商品审核")
                         .setWhys("您的商品 <a href=/product-detail/"+commodity.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> 未通过审核，目前不支持公开发布。");

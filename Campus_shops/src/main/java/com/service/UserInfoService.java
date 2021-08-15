@@ -58,4 +58,10 @@ public class UserInfoService {
     public Integer queryApplyCountBySchool(String school){
         return userInfoMapper.queryApplyCountBySchool(school);
     }
+
+    /**查询用户的评分*/
+    public List<UserInfo> queryAllUsersStar(){
+        return userInfoMapper.queryAllUsersStar();
+    }
+
 }
