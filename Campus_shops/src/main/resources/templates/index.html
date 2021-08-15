@@ -19,7 +19,24 @@
     <link rel="stylesheet" th:href="@{/static/plugins/ps-icon/style.css}">
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}"/>
     <!-- CSS Library-->
-    <link rel="stylesheet" th:href="@{/static/css/lolo.css}">
+
+    <!--轮播图css-mybanner-->
+    <!-- Minify Version 显示背景图和左右按钮-->
+    <link rel="stylesheet" th:href="@{/static/css/mybanner/plugins.min.css}">
+    <link rel="stylesheet" th:href="@{/static/css/mybanner/style.min.css}">
+
+    <!--中间分割css-mediateSeg-->
+    <!-- Template CSS -->
+    <link rel="stylesheet" th:href="@{/static/css/mediateSeg/mystyle-starter.css}">
+    <!--最新商品和最新公告的分割线split line-->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    <!-- Stylesheets -->
+    <!-- <link href="../static/assets/css/bootstrap.css" rel="stylesheet"> -->
+    <link th:href="@{/static/css/splitLine/color.css}" rel="stylesheet">
+    <link th:href="@{/static/css/splitLine/style.css}" rel="stylesheet">
+
+
     <link rel="stylesheet" th:href="@{/static/plugins/bootstrap/dist/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/static/plugins/owl-carousel/assets/owl.carousel.css}">
     <link rel="stylesheet" th:href="@{/static/font-awesome/css/font-awesome.css}">
@@ -123,15 +140,210 @@
         <p class="ps-service"><i class="ps-icon-delivery"></i>环保公益两不误，与你相约在校园二手商城。</p>
     </div>
 </div>
-<!--轮播图背景色background-color: #66CCCC; style="background-image: linear-gradient(to right, #66CCCC, rgba(255,0,0,0), #66CCCC);"-->
+
 <div >
-<div style="width: 100%;z-index: -3;" class="mylunbo">
+<!--<div style="width: 100%;z-index: -3;" class="mylunbo">
 <div style="margin: 0 auto;z-index: 1;" class="layui-carousel myshadow" id="test10" >
     <div carousel-item="" >
         <div><img th:src="@{/static/images/slider/3.jpg}" style="width:100%;height: 100%;"></div>
         <div><img th:src="@{/static/images/slider/2.jpg}" style="width:100%;height: 100%;"></div>
     </div>
-</div>
+</div>-->
+    <div class="slider-area">
+        <!-- Main Slider -->
+        <div class="swiper-container main-slider swiper-arrow with-bg_white swiper-container-fade swiper-container-initialized swiper-container-horizontal swiper-container-pointer-events">
+            <div class="swiper-wrapper" id="swiper-wrapper-ed8bcf598fe60db9" aria-live="off"
+                 style="transition-duration: 750ms;">
+                <div class="swiper-slide animation-style-01 swiper-slide-duplicate swiper-slide-next swiper-slide-duplicate-prev"
+                     data-swiper-slide-index="1" role="group" aria-label="1 / 4"
+                     style="width: 4558px; opacity: 0; transform: translate3d(0px, 0px, 0px); transition-duration: 750ms;">
+                    <div class="slide-inner style-1 bg-height" data-bg-image="../static/images/mybannerbg/1-1.jpg"
+                         style="background-image: url(&quot;../static/images/mybannerbg/1-1.jpg&quot;);">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 order-2 order-lg-1 align-self-center">
+                                    <div class="slide-content text-black">
+                                        <!--                                <span class="offer">555% Off66</span>-->
+                                        <!--                                <h2 class="title">New Plant666</h2>-->
+                                        <!--                                <p class="short-desc">Pronia, With 100% Natural, Organic &amp; Plant Shop.999</p>-->
+                                        <!--发现1和4是不会出现的，只有2和3-->
+                                        <span class="offer"></span>
+                                        <!--既可以{listLength}==0也可以{listLength==0}-->
+                                        <h2 class="title" th:text="${listLength==0}?'暂无推荐':${recommendList[0].recomname}">
+                                            title111</h2>
+                                        <p class="short-desc"
+                                           th:text="${listLength==0}?'等待你的推荐':${recommendList[0].recomdesc}">desc111</p>
+                                        <div class="btn-wrap">
+                                            <!--th超链接跳转https://blog.csdn.net/huangdan891029/article/details/100524041-->
+                                            <a class="btn btn-custom-size xl-size btn-pronia-primary"
+                                               th:href="${listLength==0}?'#':@{'/product-detail/'+${recommendList[0].commid}}">Discover
+                                                Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-0 order-1 order-lg-2">
+                                    <div class="inner-img">
+                                        <div class="scene fill"
+                                             style="transform: translate3d(0px, 0px, 0px) rotate(0.0001deg); transform-style: preserve-3d; backface-visibility: hidden; position: relative; pointer-events: none;">
+                                            <div class="expand-width" data-depth="0.2"
+                                                 style="transform: translate3d(7.9px, -11.2px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: relative; display: block; left: 0px; top: 0px;">
+                                                <!--                                        <img src="static/picture/1-2-524x617.png" alt="Inner Image">-->
+                                                <!--                                        <img th:src="@{/static/images/slider/2.jpg}" alt="Inner Image">-->
+                                                <img th:src="${listLength==0}?@{/static/images/question.png}:${recommendList[0].recomimg}"
+                                                     alt="Inner Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide animation-style-01 swiper-slide-duplicate-active" data-swiper-slide-index="0"
+                     role="group" aria-label="2 / 4"
+                     style="width: 4558px; opacity: 0; transform: translate3d(-4558px, 0px, 0px); transition-duration: 750ms;">
+                    <div class="slide-inner style-1 bg-height" data-bg-image="../static/images/mybannerbg/1-1.jpg"
+                         style="background-image: url(&quot;../static/images/mybannerbg/1-1.jpg&quot;);">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 order-2 order-lg-1 align-self-center">
+                                    <div class="slide-content text-black">
+                                        <!--                                    <span class="offer">65% Off666</span>-->
+                                        <!--                                    <h2 class="title">New Plant6666</h2>-->
+                                        <!--                                    <p class="short-desc">Pronia, With 100% Natural, Organic &amp; Plant Shop.</p>-->
+                                        <span class="offer"></span>
+                                        <h2 class="title" th:text="${listLength}==0?'暂无推荐':${recommendList[0].recomname}">
+                                            title222</h2>
+                                        <p class="short-desc"
+                                           th:text="${listLength}==0?'等待你的推荐':${recommendList[0].recomdesc}">desc222</p>
+                                        <div class="btn-wrap">
+                                            <a class="btn btn-custom-size xl-size btn-pronia-primary"
+                                               th:href="${listLength==0}?'#':@{'/product-detail/'+${recommendList[0].commid}}">Discover
+                                                Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-0 order-1 order-lg-2">
+                                    <div class="inner-img">
+                                        <div class="scene fill"
+                                             style="transform: translate3d(0px, 0px, 0px) rotate(0.0001deg); transform-style: preserve-3d; backface-visibility: hidden; position: relative; pointer-events: none;">
+                                            <div class="expand-width" data-depth="0.2"
+                                                 style="transform: translate3d(7.9px, -11.2px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: relative; display: block; left: 0px; top: 0px;">
+                                                <!--                                            <img src="static/picture/1-1-524x617.png" alt="Inner Image">-->
+                                                <!--                                            <img th:src="@{/static/images/slider/3.jpg}" alt="Inner Image">-->
+                                                <img th:src="${listLength==0}?@{/static/images/question.png}:${recommendList[0].recomimg}"
+                                                     alt="Inner Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide animation-style-01 swiper-slide-prev swiper-slide-duplicate-next"
+                     data-swiper-slide-index="1" role="group" aria-label="3 / 4"
+                     style="width: 4558px; opacity: 0; transform: translate3d(-9115px, 0px, 0px); transition-duration: 750ms;">
+                    <div class="slide-inner style-1 bg-height" data-bg-image="../static/images/mybannerbg/1-1.jpg"
+                         style="background-image: url(&quot;../static/images/mybannerbg/1-1.jpg&quot;);">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 order-2 order-lg-1 align-self-center">
+                                    <div class="slide-content text-black">
+                                        <!--                                    <span class="offer">65% Off666</span>-->
+                                        <!--                                    <h2 class="title">New Plant666</h2>-->
+                                        <!--                                    <p class="short-desc">Pronia, With 100% Natural, Organic &amp; Plant Shop.</p>-->
+                                        <span class="offer"></span>
+                                        <h2 class="title"
+                                            th:text="${listLength}==0?'暂无推荐':(${listLength}==1?'暂无推荐':${recommendList[1].recomname})">
+                                            title333</h2>
+                                        <p class="short-desc"
+                                           th:text="${listLength}==0?'等待你的推荐':(${listLength}==1?'等待你的推荐':${recommendList[1].recomdesc})">
+                                            desc333</p>
+                                        <div class="btn-wrap">
+                                            <a class="btn btn-custom-size xl-size btn-pronia-primary"
+                                               th:href="${listLength==0}?'#':(${listLength==1}?'#':@{'/product-detail/'+${recommendList[1].commid}})">Discover
+                                                Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-0 order-1 order-lg-2">
+                                    <div class="inner-img">
+                                        <div class="scene fill"
+                                             style="transform: translate3d(0px, 0px, 0px) rotate(0.0001deg); transform-style: preserve-3d; backface-visibility: hidden; position: relative; pointer-events: none;">
+                                            <div class="expand-width" data-depth="0.2"
+                                                 style="transform: translate3d(7.9px, -11.2px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: relative; display: block; left: 0px; top: 0px;">
+                                                <!--                                            <img src="static/picture/1-2-524x617.png" alt="Inner Image">-->
+                                                <!--                                            <img th:src="@{/static/images/slider/2.jpg}" alt="Inner Image">-->
+                                                <img th:src="${listLength==0}?@{/static/images/question.png}:(${listLength==1}?@{/static/images/question.png}:${recommendList[1].recomimg})"
+                                                     alt="Inner Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide animation-style-01 swiper-slide-duplicate swiper-slide-active"
+                     data-swiper-slide-index="0" role="group" aria-label="4 / 4"
+                     style="width: 4558px; opacity: 0.999781; transform: translate3d(-13673px, 0px, 0px); transition-duration: 750ms;">
+                    <div class="slide-inner style-1 bg-height" data-bg-image="../static/images/mybannerbg/1-1.jpg"
+                         style="background-image: url(&quot;../static/images/mybannerbg/1-1.jpg&quot;);">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-6 order-2 order-lg-1 align-self-center">
+                                    <div class="slide-content text-black">
+                                        <!--                                    <span class="offer">65% Off666</span>-->
+                                        <!--                                    <h2 class="title">New Plant66</h2>-->
+                                        <!--                                    <p class="short-desc">Pronia, With 100% Natural, Organic &amp; Plant Shop.</p>-->
+                                        <span class="offer"></span>
+                                        <h2 class="title"
+                                            th:text="${listLength}==0?'暂无推荐':(${listLength}==1?'暂无推荐':${recommendList[1].recomname})">
+                                            title444</h2>
+                                        <p class="short-desc"
+                                           th:text="${listLength}==0?'等待你的推荐':(${listLength}==1?'等待你的推荐':${recommendList[1].recomdesc})">
+                                            desc444</p>
+                                        <div class="btn-wrap">
+                                            <a class="btn btn-custom-size xl-size btn-pronia-primary"
+                                               th:href="${listLength==0}?'#':(${listLength==1}?'#':@{'/product-detail/'+${recommendList[1].commid}})">Discover
+                                                Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-8 offset-md-2 offset-lg-0 order-1 order-lg-2">
+                                    <div class="inner-img">
+                                        <div class="scene fill"
+                                             style="transform: translate3d(0px, 0px, 0px) rotate(0.0001deg); transform-style: preserve-3d; backface-visibility: hidden; position: relative; pointer-events: none;">
+                                            <div class="expand-width" data-depth="0.2"
+                                                 style="transform: translate3d(7.9px, -11.2px, 0px); transform-style: preserve-3d; backface-visibility: hidden; position: relative; display: block; left: 0px; top: 0px;">
+                                                <!--                                            <img src="static/picture/1-1-524x617.png" alt="Inner Image">-->
+                                                <!--                                            <img th:src="@{/static/images/slider/3.jpg}" alt="Inner Image">-->
+                                                <img th:src="${listLength==0}?@{/static/images/question.png}:(${listLength==1}?@{/static/images/question.png}:${recommendList[1].recomimg})"
+                                                     alt="Inner Image">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination d-md-none swiper-pagination-clickable swiper-pagination-bullets"><span
+                    class="swiper-pagination-bullet swiper-pagination-bullet-active" tabindex="0" role="button"
+                    aria-label="Go to slide 1"></span><span class="swiper-pagination-bullet" tabindex="0" role="button"
+                                                            aria-label="Go to slide 2"></span></div>
+
+            <!-- Add Arrows -->
+            <div class="swiper-button-prev" tabindex="0" role="button" aria-label="Previous slide"
+                 aria-controls="swiper-wrapper-76a69eacdddceef9"></div>
+            <div class="swiper-button-next" tabindex="0" role="button" aria-label="Next slide"
+                 aria-controls="swiper-wrapper-76a69eacdddceef9"></div>
+            <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span></div>
+
+    </div>
 </div>
 <main class="ps-main" id="indexssss"><!--style="background-color: #CCFFFF"-->
     <div class="ps-section--features-product ps-section masonry-root mycommodity">
@@ -189,7 +401,7 @@
             </div>
         </div>
     </div>
-    <div class="ps-section--offer">
+    <!--<div class="ps-section&#45;&#45;offer">
         <div class="ps-column">
             <a class="ps-offer" th:href="@{/product-listing}" target="_blank">
                 <img th:src="@{/static/images/banner/home-banner-1.png}">
@@ -200,8 +412,29 @@
                 <img th:src="@{/static/images/banner/home-banner-2.png}">
             </a>
         </div>
-    </div>
-    <div class="ps-section ps-section--top-sales ps-owl-root mylatest">
+    </div>-->
+    <!--中间的banner分割start-->
+    <!--    height: 350px;-->
+
+    <section class="w3l-index5 py-5 text-center"
+             style="background-image: linear-gradient(to right, rgba(0, 0, 0, 0.53), rgba(116, 41, 51, 0.75)), url(./images/blog_06_th.jpg);">
+
+        <div class="container py-lg-5">
+            <div class="row">
+                <div class="col-lg-9 col-md-10 mx-auto">
+                    <div class="header-section white join mb-5">
+                        <h3>没看到喜欢的？</h3>
+                        <p class="my-3">点击按钮，浏览更多</p>
+                    </div>
+                    <div class="buttons mt-5">
+                        <a th:href="@{/product-listing}" class="btn btn-white btn-primary mr-2" style="width: 120px;height: 40px;font-size: small;">去浏览</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--中间的banner分割end-->
+    <div class="ps-section ps-section--top-sales ps-owl-root mylatest mt-100">
         <div class="ps-container">
             <div class="ps-section__header mb-50">
                 <div class="row">
@@ -256,6 +489,62 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="boxed_wrapper" style="margin-top: 50px">
+        <!--selection有个class 为bg-color-1，是灰色背景-->
+        <!-- feature-section -->
+        <section class="feature-section bg-color-1 centred">
+            <div class="auto-container">
+                <div class="row clearfix">
+                    <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
+                        <div class="feature-block-one">
+                            <div class="inner-box">
+                                <div class="icon-box"><i class="flaticon-mission"></i></div>
+                                <h2>省钱 <br />Less Money</h2>
+                                <figure class="image-box">
+                                    <img th:src="@{/static/images/splitline/6.jpg}" alt="">
+                                    <!--<a href="index.html" class="theme-btn-one">Read more</a>-->
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
+                        <div class="feature-block-one">
+                            <div class="inner-box">
+                                <div class="icon-box"><i class="flaticon-creative-idea"></i></div>
+                                <h2>省力 <br />Less Effort</h2>
+                                <figure class="image-box">
+                                    <img th:src="@{/static/images/splitline/1.jpg}" alt="">
+                                    <!--<a href="index.html" class="theme-btn-one">Read more</a>-->
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 col-sm-12 feature-block">
+                        <div class="feature-block-one">
+                            <div class="inner-box">
+                                <div class="icon-box"><i class="flaticon-solution"></i></div>
+                                <h2>省心 <br />Less Worry</h2>
+                                <figure class="image-box">
+                                    <img th:src="@{/static/images/splitline/7.jpg}" alt="">
+                                    <!--<a href="index.html" class="theme-btn-one">Read more</a>-->
+                                </figure>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- feature-section end -->
+
+        <div class="quote-box">
+            <div class="auto-container">
+                <div class="inner-box">
+                    <div class="icon-box">"</div>
+                    <p>面向学生的二手交易商城。你的闲置，或许是他人所需。</p>
                 </div>
             </div>
         </div>
@@ -359,6 +648,14 @@
 </main>
  <div>
 <!-- JS Library-->
+     <!--轮播图js-mybanner-->
+     <!-- Minify Version -->
+     <script th:src="@{/static/js/mybanner/plugins.min.js}"></script>
+
+     <!--最新商品和最新公告的分割线split line-->
+     <!-- main-js -->
+     <script th:src="@{/static/js/splitLine/script.js}"></script>
+
 <script type="text/javascript" th:src="@{/static/plugins/jquery/dist/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/plugins/bootstrap/dist/js/bootstrap.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/plugins/jquery-bar-rating/dist/jquery.barrating.min.js}"></script>

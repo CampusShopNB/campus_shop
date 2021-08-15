@@ -96,7 +96,7 @@
     <div id="otherimages" style="margin-top:0px;display: none;margin-left:100px;margin-bottom:10px">
         <div class="imgDiv" v-for="(img,index) in listimages"
              :key="index" :id="'img'+index" @mouseover="mouseOver(index)" @mouseleave="mouseLeave(index)">
-            <img :src="img.imgsrc" style="width:300px;height:200px;cursor: pointer"
+            <img :src="img.imgsrc" style="width:300px;height:300px;cursor: pointer"
                  @click="openimg(img.imgsrc)">
             <img th:src="@{/static/images/close.png}" class="delete"
                  @click="delimage(index)" :id="'del'+index" style="cursor: pointer">

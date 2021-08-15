@@ -4,9 +4,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @Author:
  * @Description: 修改RFC 3986规范
- * @Date:
  */
 @Configuration
 public class RfcConfig {

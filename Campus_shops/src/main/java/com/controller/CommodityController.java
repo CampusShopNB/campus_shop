@@ -4,6 +4,7 @@ package com.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.entity.*;
 import com.service.*;
+import com.util.GetDate;
 import com.util.KeyUtil;
 import com.util.StatusCode;
 import com.vo.LayuiPageVo;
@@ -27,9 +28,6 @@ import java.util.*;
  * <p>
  *  前端控制器
  * </p>
- *
- * @author
- * @since
  */
 @Controller
 public class CommodityController {
@@ -47,6 +45,12 @@ public class CommodityController {
     private CollectService collectService;
     @Autowired
     private NoticesService noticesService;
+    /**
+     *售出商品时查询是否首页推荐，是则取消首页推荐
+     */
+    @Autowired
+    private RecommendService recommendService;
+
 
     /**
      * 跳转到发布商品
@@ -68,7 +72,7 @@ public class CommodityController {
      * 跳转到修改商品
      *  --不能修改已删除、已完成的商品
      *  1、查询商品详情
-     *  2、查询商品得其他图
+     *  2、查询商品的其他图
      *
      *  个人中心----商品管理--商品清单--“编辑”按钮，显示商品的编辑界面
      *  （商品的原有数据需要显示出来，所以这里查询了数据表commodity和commimages，
@@ -173,6 +177,13 @@ public class CommodityController {
             /**如果商品已售出，则需要向售出数据表soldrecord添加一条记录
              * commstatus为4表示商品已经完成交易*/
             if (commstatus == 4){
+                //查询首页推荐，如果商品在首页推荐，需要根据commoid修改recommend表字段recomstatus=3.表示商品已经下架
+                Recommend recommend = new Recommend().setCommid(commid).setRecomstatus(3).setUpdatetime(GetDate.strToDate());
+                int recomUpdate = recommendService.updateRecommendStatus(recommend);
+
+                //由于soldrecord数据表废弃，以下操作废弃。
+                /**如果商品已售出，则需要向售出数据表soldrecord添加一条记录
+                 * commstatus为4表示商品已经完成交易*/
                 String userid = (String) session.getAttribute("userid");
                 /**查询售出商品的信息
                  * 查询commodity数据表是为了获取商品的相关信息，便于等下赋值给数据表soldrecord记录的字段。*/
@@ -366,6 +377,7 @@ public class CommodityController {
      * 最低价（minmoney）、最高价（maxmoney）
      * 后端根据session查出个人本校信息（school）
      * */
+
     @GetMapping("/list-number/{category}/{area}/{minmoney}/{maxmoney}")
     @ResponseBody
     public PageVo productListNumber(@PathVariable("category") String category, @PathVariable("area") String area,
@@ -387,6 +399,7 @@ public class CommodityController {
      * 最低价（minmoney）、最高价（maxmoney）、价格升序降序（price：0.不排序 1.升序 2.降序）
      * 后端根据session查出个人本校信息（school）
      * */
+
     @GetMapping("/product-listing/{category}/{nowPaging}/{area}/{minmoney}/{maxmoney}/{price}")
     @ResponseBody
     public ResultVo productlisting(@PathVariable("category") String category, @PathVariable("nowPaging") Integer page,

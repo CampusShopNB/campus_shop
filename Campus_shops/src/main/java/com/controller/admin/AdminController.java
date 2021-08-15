@@ -20,9 +20,7 @@ import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
- * @Author:
  * @Description: 管理员控制器
- * @Date:
  */
 @Controller
 public class AdminController {
@@ -55,9 +53,9 @@ public class AdminController {
     @PostMapping("/admin/login")
     public ResultVo adminlogin(@RequestBody Login login, HttpSession session){
         System.out.println("测试是否进入！！！");
-        String account=login.getUsername();
-        String password=login.getPassword();
-        String vercode=login.getVercode();
+        String account = login.getUsername();
+        String password = login.getPassword();
+        String vercode = login.getVercode();
         UsernamePasswordToken token;
         if(!ValidateCode.code.equalsIgnoreCase(vercode)){
             return new ResultVo(false,StatusCode.ERROR,"请输入正确的验证码");
@@ -127,6 +125,14 @@ public class AdminController {
         List<UserInfo> userInfoList = userInfoService.queryAllUserInfo((page - 1) * limit, limit,roleid,userstatus);
         Integer dataNumber = userInfoService.queryAllUserCount(roleid);
         return new LayuiPageVo("",0,dataNumber,userInfoList);
+    }
+
+    /**
+     * 跳转推荐商品列表
+     */
+    @GetMapping("/admin/recommendlist")
+    public String adminRecommendList() {
+        return "/admin/recommend/recommend";
     }
 
     /**

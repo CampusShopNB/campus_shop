@@ -34,6 +34,7 @@ public class Commimages implements Serializable {
 	private String commid;
     /**
      * 图片
+     * 存放图片路径
      */
 	private String image;
     /**

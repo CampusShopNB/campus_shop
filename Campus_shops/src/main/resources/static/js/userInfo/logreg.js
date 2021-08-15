@@ -288,7 +288,8 @@ function submitregister() {
                         shadeClose: true,
                         shade: 0.8,
                         maxmin: true,
-                        area: ['60%', '70%'],
+                        //窗体区域。高度太小，会影响年份选择器的弹出！
+                        area: ['60%', '90%'],
                         content: basePath+'/user/perfectinfo',
                         end: function () {
                             location.href=basePath+"/";

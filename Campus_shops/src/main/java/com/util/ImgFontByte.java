@@ -5,8 +5,6 @@ import java.io.ByteArrayInputStream;
 
 /**
  * ttf字体文件
- *
- * @author dsna
  */
 public class ImgFontByte {
     public Font getFont(int fontHeight) {

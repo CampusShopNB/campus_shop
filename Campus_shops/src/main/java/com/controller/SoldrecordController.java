@@ -20,9 +20,6 @@ import java.util.List;
  * <p>
  *  销售记录控制器
  * </p>
- *
- * @author
- * @since
  */
 @Controller
 public class SoldrecordController {
@@ -53,6 +50,7 @@ public class SoldrecordController {
     @GetMapping("/soldrecord/lookuser")
     public LayuiPageVo LookUserSold(int limit, int page, HttpSession session) {
         String userid = (String) session.getAttribute("userid");
+        //查询数据
         System.out.println("useriddd: "+userid);
         List<Soldrecord> soldrecordList = soldrecordService.queryAllSoldrecord((page - 1) * limit, limit, userid);
         Integer dataNumber = soldrecordService.querySoldCount(userid);

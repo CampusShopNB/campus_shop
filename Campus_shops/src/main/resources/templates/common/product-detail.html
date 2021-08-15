@@ -86,9 +86,13 @@
                                 <img th:src="${gddetail.image}" alt=""><i class="fa fa-play"></i></a>
                         </div>
                         <div class="ps-product__image layer-photos-demo" id="layer-photos-demo">
-                            <img th:src="${gddetail.image}" th:layer-src="${gddetail.image}" style="width:500px;height:500px;cursor: pointer;">
+                            <!--                            商品详情页的大图-->
+                            <!--                            <img th:src="${gddetail.image}" th:layer-src="${gddetail.image}" style="width:500px;height:500px;cursor: pointer;">-->
+                            <img th:src="${gddetail.image}" th:layer-src="${gddetail.image}" style="width:500px;cursor: pointer;">
+                            <!--                            <img th:each="imgs:${gddetail.otherimg}" th:src="${imgs}"-->
+                            <!--                                 th:layer-src="${imgs}" style="width:500px;height:500px;cursor: pointer;">-->
                             <img th:each="imgs:${gddetail.otherimg}" th:src="${imgs}"
-                                 th:layer-src="${imgs}" style="width:500px;height:500px;cursor: pointer;">
+                                 th:layer-src="${imgs}" style="width:500px;cursor: pointer;">
                         </div>
                     </div>
                     <div class="ps-product__info">
@@ -110,7 +114,6 @@
                         </h4>
                         <script>
                             if(userid===gooduser){
-                                console.log("userid === gooduser");
                                 $("#selleR").css('display','none');
                             }else{
                                 $("#useR").css('display','none');

@@ -39,6 +39,10 @@
             <if test="startime != null">startime=#{startime},</if>
             <if test="userstatus != null">userstatus=#{userstatus},</if>
             <if test="status != null">status=#{status}</if>
+            <if test="sign != null">sign=#{sign}</if>
+            <if test="star != null">star=#{star}</if>
+            <if test="stuidcard != null">stuidcard=#{stuidcard}</if>
+            <if test="applyschoolstatus != null">applyschoolstatus=#{applyschoolstatus}</if>
         </set>
         where userid=#{userid}
     </update>

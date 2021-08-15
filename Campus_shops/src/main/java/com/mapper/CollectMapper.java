@@ -9,9 +9,7 @@ import java.util.List;
  * <p>
  *  收藏 Mapper 接口
  * </p>
- *
- * @author hlt
- * @since 2019-12-21
+
  */
 public interface CollectMapper {
     /**添加收藏*/

@@ -13,9 +13,6 @@ import java.util.List;
  * <p>
  *  消息通知服务类
  * </p>
- *
- * @author hlt
- * @since 2019-12-25
  */
 @Service
 @Transactional

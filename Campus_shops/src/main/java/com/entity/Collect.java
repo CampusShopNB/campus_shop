@@ -10,11 +10,13 @@ import java.util.Date;
 
 /**
  * <p>
- * 
- * </p>
+ * 实体--收藏商品
  *
- * @author hlt
- * @since 2019-12-25
+ * 对应数据表collect（10个），11个属性，多了最后一个字段收藏操作colloperate
+ * CollectMapper.xml中使用
+ *
+ * </p>
+
  */
 @AllArgsConstructor//全参构造
 @NoArgsConstructor//无参构造

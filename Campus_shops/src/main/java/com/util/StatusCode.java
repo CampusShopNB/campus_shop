@@ -1,9 +1,7 @@
 package com.util;
 
 /**
- * @Author:
  * @Description: 状态码工具
- * @Date:
  */
 public class StatusCode {
 

@@ -12,8 +12,10 @@ public class JustPhone {
             return false;//不符合规则的账号
         }
         Pattern pattern = Pattern.compile("^[-\\+]?[\\d]*$");
-        if(!pattern.matcher(phoneNum).matches()){//判断是否包含字符
-            return false;//包含字符不是手机号
+        //判断是否包含字符
+        if(!pattern.matcher(phoneNum).matches()){
+            //包含字符不是手机号
+            return false;
         }
         return true;
     }

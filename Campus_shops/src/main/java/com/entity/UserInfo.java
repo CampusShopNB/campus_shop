@@ -15,9 +15,6 @@ import java.util.Date;
  *
  * 实体类相比数据表，多了以下属性
  * roleid,vercode,id,avatar,content,type,toid,sendtime
- *
- * @author
- * @since
  */
 @AllArgsConstructor//全参构造
 @NoArgsConstructor//无参构造

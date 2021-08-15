@@ -12,15 +12,14 @@ import java.util.List;
 
 /**
  * <p>
- * 
- * </p>
+ * 商品实体类，对应数据表commodity
  *
- * @author
- * @since
+ * 数据表commodity有16个字段，这里有18个属性，比数据表多了common2和otherimg
+ * </p>
  */
 @AllArgsConstructor//全参构造
 @NoArgsConstructor//无参构造
-@Data
+@Data//setter、getter
 @Accessors(chain = true)//链式写法
 public class Commodity implements Serializable {
 
@@ -99,5 +98,11 @@ public class Commodity implements Serializable {
      * 用户id
      */
     private String userid;
+
+    /**
+     * 请求首页推荐状态。
+     * 默认为0。0为没有申请，1为申请了推荐。
+     */
+    private Integer askrecomstatus;
 
 }

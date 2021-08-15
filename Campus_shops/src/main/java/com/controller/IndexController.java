@@ -1,7 +1,9 @@
 package com.controller;
 
+import com.entity.Recommend;
 import com.entity.UserInfo;
 import com.entity.UserRole;
+import com.service.RecommendService;
 import com.service.UserInfoService;
 import com.service.UserRoleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -15,35 +17,34 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 public class IndexController {
     @Autowired
     private UserInfoService userInfoService;
 
+    /*    ======================前台跳转start======================     */
+
+    /**
+     * 查询首页推荐商品
+     */
+    @Autowired
+    private RecommendService recommendService;
+
     /**
      * 网站首页
      * */
     @GetMapping("/")
-    public String index(){
+    public String index(ModelMap modelMap){
+        List<Recommend> recommendList = recommendService.queryIndexRecommendCommodity();
+        int num = recommendList.size();
+        //查询首页轮播推荐商品
+        modelMap.put("listLength", num);
+        modelMap.put("recommendList", recommendList);
         return "/index";
     }
 
-    /**
-     * 联系我们
-     * */
-    @GetMapping("/contacts")
-    public String contacts(){
-        return "/common/contacts";
-    }
-
-    /**
-     * 关于我们
-     * */
-    @GetMapping("/about")
-    public String about(){
-        return "/common/about";
-    }
 
     /**
      * 后台管理首页

@@ -9,9 +9,7 @@ import java.util.List;
  * <p>
  *  Mapper 接口
  * </p>
- *
- * @author hlt
- * @since 2019-12-21
+
  */
 public interface NewsMapper {
     /**发布公告*/

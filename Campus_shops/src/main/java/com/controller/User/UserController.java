@@ -36,9 +36,6 @@ import java.util.concurrent.TimeUnit;
  * <p>
  * 个人中心 控制器
  * </p>
- *
- * @author
- * @since
  */
 @Controller
 public class UserController {
@@ -280,16 +277,20 @@ public class UserController {
         //如果传入用户名
         if (!StringUtils.isEmpty(username)){
             login.setUsername(username);
+            //userLogin登录及判断用户是否存在
             Login login1 = loginService.userLogin(login);
             //如果该用户名对应有用户
             if (!StringUtils.isEmpty(login1)){
                 return new ResultVo(false, StatusCode.ERROR, "该用户名已存在");
             }
+            //设置对象的userid。便于修改数据表login的记录，因为它是根据userid或主键id来修改记录的。
             login.setUserid(userid);
-            //修改登录表中用户名
+            //修改login表中用户名
             loginService.updateLogin(login);
         }
+        //如果不是更改用户名，则给userInfo对象设置userid。注意现在没有给login对象设置任何属性。
         userInfo.setUserid(userid);
+        //修改userInfo表   ///待补充，为什么不修改login表？
         Integer integer1 = userInfoService.UpdateUserInfo(userInfo);
         if (integer1 == 1) {
             return new ResultVo(true, StatusCode.OK, "修改成功");

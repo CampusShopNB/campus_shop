@@ -9,9 +9,7 @@ import java.util.List;
  * <p>
  *  消息通知Mapper 接口
  * </p>
- *
- * @author hlt
- * @since 2019-12-25
+
  */
 public interface NoticesMapper {
     /**发出通知消息*/

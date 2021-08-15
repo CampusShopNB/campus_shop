@@ -20,9 +20,6 @@ import java.util.List;
  * <p>
  *  收藏控制器
  * </p>
- *
- * @author
- * @since
  */
 @Controller
 public class CollectController {

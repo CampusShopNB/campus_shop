@@ -8,9 +8,7 @@ import java.util.List;
  * <p>
  *  Mapper 接口
  * </p>
- *
- * @author hlt
- * @since 2019-12-21
+
  */
 public interface CommimagesMapper {
     /**插入商品的其他图*/

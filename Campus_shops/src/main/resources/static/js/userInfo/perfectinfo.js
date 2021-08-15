@@ -49,7 +49,7 @@ layui.use(['form', 'element', 'util', 'carousel', 'form', 'laypage', 'layer','ta
             layer.msg('上传成功', {
                 time: 1000,
                 icon: 1,
-                offset: '150px'
+                //offset: '150px'
             }, function () {
                 location.reload();
             });

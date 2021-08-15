@@ -12,9 +12,6 @@ import java.util.List;
  * <p>
  *  评论 服务类
  * </p>
- *
- * @author hlt
- * @since 2019-12-21
  */
 @Service
 @Transactional
