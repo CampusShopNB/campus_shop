@@ -7,8 +7,11 @@ import java.util.List;
 
 /**
  * <p>
- *  销售记录Mapper 接口
+ *  Mapper 接口
  * </p>
+ *
+ * @author hlt
+ * @since 2019-12-21
  */
 public interface SoldrecordMapper {
     /**插入售出记录*/

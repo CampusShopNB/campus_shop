@@ -10,8 +10,11 @@ import java.util.List;
 
 /**
  * <p>
- *  service层，操作(插入、查询、删除)商品的图片(直接调用mapper层方法)
+ *  服务类
  * </p>
+ *
+ * @author hlt
+ * @since 2019-12-21
  */
 @Service
 @Transactional
@@ -23,11 +26,11 @@ public class CommimagesService {
     public void InsertGoodImages(List<Commimages> list){
         commimagesMapper.InsertGoodImages(list);
     }
-    /**查询某个商品的其他图*/
+    /**查询某个商品得其他图*/
     public List<String> LookGoodImages(String commid){
         return commimagesMapper.LookGoodImages(commid);
     }
-    /**删除某个商品的其他图*/
+    /**删除某个商品得其他图*/
     public void DelGoodImages(String commid){
         commimagesMapper.DelGoodImages(commid);
     }

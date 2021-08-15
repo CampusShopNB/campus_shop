@@ -33,24 +33,20 @@
                 </div>
             </form>
             <div class="animated fadeIn">
-                <table class="layui-hide" id="product" lay-filter="test"></table>
                 <!--关于commstatus的取值：0违规、1正常、2删除、3待审核、4已完成交易
                     操作：
                         前台：编辑、已售（下架）、删除
                         后台：编辑、违规、通过审核-->
                 <!--如果是删除状态，commstatus=2，则只显示禁止操作按钮-->
+                <table class="layui-hide" id="product" lay-filter="test"></table>
                 <script type="text/html" id="barDemo">
-                    {{# if(d.commstatus==2){ }}
-                    <button type="button" class="layui-btn-xs layui-btn-disabled">禁止操作</button>
-                    {{# } else{ }}
-                        <a class="layui-btn layui-btn-xs" lay-event="xiangqing">详情</a>
-                        {{# if(d.commstatus!=4){ }}
-                            {{# if(d.commstatus!=0){ }}
-                                <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="weigui">违规</a>
-                            {{# } }}
-                            {{# if(d.commstatus!=1){ }}
-                                <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="shenhe">通过审核</a>
-                            {{# } }}
+                    <a class="layui-btn layui-btn-xs" lay-event="xiangqing">详情</a>
+                    {{# if(d.commstatus!=4){ }}
+                        {{# if(d.commstatus!=0){ }}
+                        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="weigui">违规</a>
+                        {{# } }}
+                        {{# if(d.commstatus!=1){ }}
+                        <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="shenhe">通过审核</a>
                         {{# } }}
                     {{# } }}
                 </script>

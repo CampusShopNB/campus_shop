@@ -2,11 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mapper.CommimagesMapper">
 
-    <!-- 插入商品的其他图
-    直接往数据表commimages插入数据，没有字段createtime,imagestatus
-    注意这里用到了mybatis的foreach用法（估计是因为一个商品可以有多个图片）
-    https://www.cnblogs.com/fnlingnzb-learner/p/10566452.html
-    -->
+    <!-- 插入商品的其他图 -->
     <insert id="InsertGoodImages" parameterType="com.entity.Commimages">
         insert into commimages (id, commid, image)
         values
@@ -14,16 +10,11 @@
             (#{item.id},#{item.commid},#{item.image})
         </foreach>
     </insert>
-
-    <!-- 查询某个商品的其他图
-     根据商品id查询其他图片，返回的image是图片的路径-->
+    <!-- 查询某个商品得其他图 -->
     <select id="LookGoodImages" resultType="java.lang.String" parameterType="java.lang.String">
         select image from commimages where commid=#{commid} and imagestatus=1
     </select>
-
-    <!-- 删除某个商品的其他图
-    根据商品id，修改图片的imagestatus状态字段
-     注意这里删除不是直接delete掉记录，而是修改图片的状态为2，表示删除，其实是不让他显示，而不是直接删除-->
+    <!-- 删除某个商品得其他图 -->
     <update id="DelGoodImages" parameterType="java.lang.String">
         update commimages set imagestatus=2 where commid=#{commid}
     </update>

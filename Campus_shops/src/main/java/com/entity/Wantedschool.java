@@ -1,5 +1,5 @@
-package com.entity;
 
+package com.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

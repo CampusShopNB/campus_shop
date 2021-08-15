@@ -48,7 +48,6 @@
                                        style="cursor:not-allowed;" readonly="readonly">
                             </div>
                         </div>
-
                         <div class="layui-form-item">
                             <label class="layui-form-label">个性签名</label>
                             <div class="layui-input-inline">
@@ -56,17 +55,6 @@
                                        placeholder="请自定义你的签名" class="layui-input" th:value="${perfectInfo.sign}">
                             </div>
                         </div>
-
-
-<!--                        <div class="layui-form-item">-->
-<!--                            <label class="layui-form-label">学生编号</label>-->
-<!--                            <div class="layui-input-inline">-->
-<!--                                <input type="text" name="username" lay-verify="required" lay-reqtext="学生编号不能为空"-->
-<!--                                       placeholder="请输入学生编号"-->
-<!--                                       autocomplete="off" class="layui-input">-->
-<!--                            </div>-->
-<!--                        </div>-->
-
                         <div class="layui-form-item">
                             <label class="layui-form-label"><span style="color: red">*</span>学校</label>
                             <!--如果是layui-input-block，会占满一行。layui-input-inline则不会-->
@@ -74,10 +62,10 @@
                                 <select name="school" lay-filter="required" id="schoolselectoptions" >
                                     <option value="">请选择学校</option>
                                     <option th:each="school : ${schoollist}"
-                                        th:value="${school.schoolname}" th:text="${school.schoolname}"></option>
+                                            th:value="${school.schoolname}" th:text="${school.schoolname}"></option>
                                     <option value="暂不填写" disabled="disabled">暂不填写</option>
 
-                                    <!--其实应该用thymeleaf，从数据库读取，不然每次新增学校都要手动修改-->
+ <!--其实应该用thymeleaf，从数据库读取，不然每次新增学校都要手动修改-->
 <!--                                    <option value="中山大学">中山大学</option>-->
 <!--                                    <option value="暨南大学">暨南大学</option>-->
 <!--                                    <option value="汕头大学">汕头大学</option>-->
@@ -122,13 +110,12 @@
 <!--                                    <option value="电子科技大学中山学院">电子科技大学中山学院</option>-->
 <!--                                    <option value="茂名职业技术学院">茂名职业技术学院</option>-->
 <!--                                    <option value="河源职业技术学院">河源职业技术学院</option>-->
-                                    
+
                                 </select>
                             </div>
 
-
                             <i id="addschoolok" class="layui-icon layui-icon-ok-circle"
-                                style="font-size: 30px; color: #01B961;display:none"></i>
+                               style="font-size: 30px; color: #01B961;display:none"></i>
 
                             <!--a标签不需要lay-event="wantschool" 了-->
                             <a id="wantnewschool" style="color: #01B961;cursor:pointer;">没有贵校？在这里填写提交申请</a>
@@ -137,7 +124,6 @@
 
                             <input type="hidden" id="finalschoolname" name="finalschoolname">
                         </div>
-
 
                         <div class="layui-form-item">
                             <label class="layui-form-label"><span style="color: red">*</span>院系</label>
@@ -161,12 +147,10 @@
                             <div class="layui-inline">
                                 <button type="button" class="layui-btn" id="stuidcard">上传学生证</button>
                                 <i id="stuidcardsuccess" class="layui-icon layui-icon-ok-circle"
-                                style="font-size: 30px; color: #01B961;display:none"></i>
+                                   style="font-size: 30px; color: #01B961;display:none"></i>
                                 <p id="addstuidcardtips" style="color: #01B961;display: none;">学生证上传成功</p>
                             </div>
                         </div>
-
-
 
                         <div class="layui-form-item">
                             <label class="layui-form-label">性别</label>

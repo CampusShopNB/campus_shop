@@ -2,6 +2,7 @@ package com.service;
 
 import com.entity.Commodity;
 import com.mapper.CommodityMapper;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,9 @@ import java.util.List;
  * <p>
  *  服务类
  * </p>
+ *
+ * @author hlt
+ * @since 2019-12-21
  */
 @Service
 @Transactional
@@ -21,8 +25,8 @@ public class CommodityService {
     @Autowired
     private CommodityMapper commodityMapper;
 
+    /**个人中心start*/
 
-/**个人中心start*/
     /**插入商品
      *
      * https://www.cnblogs.com/jpfss/p/10273129.html
@@ -61,13 +65,6 @@ public class CommodityService {
     public Integer queryCommodityCount(String userid,Integer commstatus){
         return commodityMapper.queryCommodityCount(userid,commstatus);
     }
-
-
-
-
-
-
-/**前台start*/
     /**首页分类展示8条商品*/
     public List<Commodity> queryCommodityByCategory(String category){
         return commodityMapper.queryCommodityByCategory(category);

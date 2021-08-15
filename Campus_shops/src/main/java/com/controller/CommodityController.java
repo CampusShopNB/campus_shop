@@ -4,6 +4,7 @@ package com.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.entity.*;
 import com.service.*;
+import com.util.GetDate;
 import com.util.KeyUtil;
 import com.util.StatusCode;
 import com.vo.LayuiPageVo;
@@ -27,6 +28,9 @@ import java.util.*;
  * <p>
  *  前端控制器
  * </p>
+ *
+ * @author
+ * @since
  */
 @Controller
 public class CommodityController {
@@ -44,6 +48,11 @@ public class CommodityController {
     private CollectService collectService;
     @Autowired
     private NoticesService noticesService;
+    /**
+     *售出商品时查询是否首页推荐，是则取消首页推荐
+     */
+    @Autowired
+    private RecommendService recommendService;
 
     /**
      * 跳转到发布商品
@@ -51,7 +60,6 @@ public class CommodityController {
      */
     @GetMapping("/user/relgoods")
     public String torelgoods(HttpSession session){
-        ///下面这段用shiro判断用户是否登录？？
         /*String userid = (String)session.getAttribute("userid");
         if(userid==null){
             return "redirect:/:";
@@ -61,12 +69,12 @@ public class CommodityController {
 
 
 /*===============================个人中心----商品管理--商品清单start=================================*/
+
     /**
      * 跳转到修改商品
      *  --不能修改已删除、已完成的商品
      *  1、查询商品详情
-     *  2、查询商品的其他图
-     *
+     *  2、查询商品得其他图
      *
      *  个人中心----商品管理--商品清单--“编辑”按钮，显示商品的编辑界面
      *  （商品的原有数据需要显示出来，所以这里查询了数据表commodity和commimages，
@@ -74,20 +82,16 @@ public class CommodityController {
      *  http://localhost:8996/user/editgoods/1577792919764240135
      */
     @GetMapping("/user/editgoods/{commid}")
-    public String toeditgoods(@PathVariable("commid")String commid, HttpSession session, ModelMap modelMap){        ///下面这段用shiro判断用户是否登录？？
-        ///下面这段用shiro判断用户是否登录？？
+    public String toeditgoods(@PathVariable("commid")String commid, HttpSession session, ModelMap modelMap){
         /*String userid = (String)session.getAttribute("userid");
         if(userid==null){
             return "redirect:/:";
         }*/
-
-        //LookCommodity()根据主键commid查询商品详情
         Commodity commodity=commodityService.LookCommodity(new Commodity().setCommid(commid));
-        //commstatus: 0违规 1正常 2删除  3待审核  4已完成交易
         if(commodity.getCommstatus().equals(2) || commodity.getCommstatus().equals(4)){
-            //商品已被删除或已完成交易
-            return "/error/404";
+            return "/error/404";//商品已被删除或已完成交易
         }
+
         //common→常用选项：自提，可小刀，不议价等选项
         //common和common2的区别见Commodity实体类注释
         String[] commons=commodity.getCommon().split("、");
@@ -100,25 +104,19 @@ public class CommodityController {
             https://blog.csdn.net/qq_26411021/article/details/79493308         */
         //对象commodity有一些其他的属性，用于显示在界面上
         modelMap.put("goods",commodity);
-        //LookGoodImages查询某个商品的其他图（与商品的主图相对）
         modelMap.put("otherimg",commimagesService.LookGoodImages(commid));
-        //返回视图
         return "/user/product/changegoods";
     }
 
     /**
-     * 完成/提交修改商品
+     * 修改商品
      * 1、修改商品信息
      * 2、修改商品的其他图的状态
      * 3、插入商品的其他图
-     *
-     *
-     * 提交修改按钮后进行的处理
      */
     @PostMapping("/changegoods/rel")
     @ResponseBody
     public String changegoods(@RequestBody Commodity commodity, HttpSession session){
-        //通过session获取用户id
         String userid = (String) session.getAttribute("userid");
         //链式赋值。设置修改时间和商品状态。3为待审核
         // ////待补充。关于审核。如果评分高于4.5就不审核，直接上架（修改状态为1，表示正常）
@@ -139,9 +137,9 @@ public class CommodityController {
             // 通过new得到每个item，用链式赋值来设置属性，便于等下执行insert语句
             commimagesList.add(
                     new Commimages()
-                    .setId(KeyUtil.genUniqueKey())
-                    .setCommid(commodity.getCommid())
-                    .setImage(list)
+                            .setId(KeyUtil.genUniqueKey())
+                            .setCommid(commodity.getCommid())
+                            .setImage(list)
             );
         }
         //执行insert语句，上传商品的其他图
@@ -178,25 +176,31 @@ public class CommodityController {
         Integer i = commodityService.ChangeCommstatus(commid, commstatus);
         //修改成功
         if (i == 1){
-            /**如果商品已售出，则需要向售出数据表soldrecord添加一条记录
-             * commstatus为4表示商品已经完成交易*/
             if (commstatus == 4){
-                String userid = (String) session.getAttribute("userid");
-                /**查询售出商品的信息
-                 * 查询commodity数据表是为了获取商品的相关信息，便于等下赋值给数据表soldrecord记录的字段。*/
-                Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
-                //实例化一个soldrecord对象，等下执行insert语句时要用到
-                Soldrecord soldrecord = new Soldrecord();
-                /**将商品信息添加到售出记录中*/
-                soldrecord
-                        .setId(KeyUtil.genUniqueKey())
-                        .setCommid(commid)
-                        .setCommname(commodity.getCommname())
-                        .setCommdesc(commodity.getCommdesc())
-                        .setThinkmoney(commodity.getThinkmoney())
-                        .setUserid(userid);
-                /**添加售出记录*/
-                soldrecordService.insertSold(soldrecord);
+                //查询首页推荐，如果商品在首页推荐，需要根据commoid修改recommend表字段recomstatus=3.表示商品已经下架
+                Recommend recommend = new Recommend().setCommid(commid).setRecomstatus(3).setUpdatetime(GetDate.strToDate());
+                int recomUpdate = recommendService.updateRecommendStatus(recommend);
+
+
+                //由于soldrecord数据表废弃，以下操作废弃。
+                /**如果商品已售出，则需要向售出数据表soldrecord添加一条记录
+                 * commstatus为4表示商品已经完成交易*/
+//                String userid = (String) session.getAttribute("userid");
+//                /**查询售出商品的信息
+//                 * 查询commodity数据表是为了获取商品的相关信息，便于等下赋值给数据表soldrecord记录的字段。*/
+//                Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
+//                //实例化一个soldrecord对象，等下执行insert语句时要用到
+//                Soldrecord soldrecord = new Soldrecord();
+//                /**将商品信息添加到售出记录中*/
+//                soldrecord
+//                        .setId(KeyUtil.genUniqueKey())
+//                        .setCommid(commid)
+//                        .setCommname(commodity.getCommname())
+//                        .setCommdesc(commodity.getCommdesc())
+//                        .setThinkmoney(commodity.getThinkmoney())
+//                        .setUserid(userid);
+//                /**添加售出记录*/
+//                soldrecordService.insertSold(soldrecord);
             }
 
             /*商品尚未售出。其实commstatus!=4，在这里一般就是commstatus=2，即删除按钮
@@ -207,7 +211,7 @@ public class CommodityController {
         //修改失败update语句执行失败
         return new ResultVo(false,StatusCode.ERROR,"操作失败");
     }
-/*===============================个人中心----商品管理--商品清单end=================================*/
+    /*===============================个人中心----商品管理--商品清单end=================================*/
 
 
 
@@ -252,7 +256,7 @@ public class CommodityController {
 
 
 
-/*===============================个人中心----商品管理--发布闲置start=================================*/
+    /*===============================个人中心----商品管理--发布闲置start=================================*/
     /**
      * 发布商品
      * 1、插入商品信息
@@ -294,10 +298,7 @@ public class CommodityController {
 
         //和修改商品类似，提交后也要经过审核。这里实例化一个notices对象然后链式赋值，不再赘述。
         /**发出待审核系统通知*/
-        Notices notices = new Notices()
-                .setId(KeyUtil.genUniqueKey())
-                .setUserid(userid)
-                .setTpname("商品审核")
+        Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(userid).setTpname("商品审核")
                 .setWhys("您的商品 <a href=/product-detail/"+commid+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> 进入待审核队列，请您耐心等待。");
         //插入一条记录
         noticesService.insertNotices(notices);
@@ -368,204 +369,8 @@ public class CommodityController {
         res.put("data", resUrl);
         return res;
     }
-/*===============================个人中心----商品管理--发布闲置end=================================*/
+    /*===============================个人中心----商品管理--发布闲置end=================================*/
 
-
-
-    /**
-     * 分页展示个人各类商品信息
-     *前端传入页码、分页数量
-     *前端传入商品信息状态码（commstatus）-->全部:100，已审核:1，待审核:3，违规:0，已完成:4
-     *
-     *
-     * 暂时不清楚，难道是个人中心--商品管理--商品清单的根据商品状态进行分页查询？
-     * 感觉应该是，我以为已经写过了，原来是之前先看了mapper.xml定义的sql语句
-     *
-     *
-     * 不明白这个方法有何意义。
-     * 直接访问地址访问不到，返回500，原因不明。。
-     * 而且这里还要给一个假id（虽然测试不到）
-     */
-    @GetMapping("/user/commodity/{commstatus}")
-    @ResponseBody
-    public LayuiPageVo userCommodity(@PathVariable("commstatus") Integer commstatus, int limit, int page, HttpSession session) {
-        String userid = (String) session.getAttribute("userid");
-        /*如果未登录，给一个假id
-        为什么要给一个假id，登录了才能进入个人中心。
-        除非登录过期了，但是如果给假的id，如何判断是本人发布的商品？*/
-        if(StringUtils.isEmpty(userid)){
-            userid = "123456";
-        }
-
-        //存放商品
-        List<Commodity> commodityList=null;
-        //分页总数
-        Integer dataNumber;
-
-        //看productlist.html，100表示全部商品
-        if(commstatus==100){
-            //状态“全部”，直接select所有语句，commstatus为null
-            commodityList = commodityService.queryAllCommodity((page - 1) * limit, limit, userid,null);
-            dataNumber = commodityService.queryCommodityCount(userid,null);
-        }else{
-            //其他状态，则根据commstatus进行查询
-            commodityList = commodityService.queryAllCommodity((page - 1) * limit, limit, userid,commstatus);
-            dataNumber = commodityService.queryCommodityCount(userid,commstatus);
-        }
-        return new LayuiPageVo("",0,dataNumber,commodityList);
-    }
-
-
-
-
-
-/*===============================前台start===============================*/
-/*===============================商品详情页start===============================*/
-    /**
-     * 商品详情
-     * 根据商品id（commid）查询商品信息、用户昵称及头像
-     * 用户可以查看正常的商品
-     * 商品发布者和管理员可以查看
-     *
-     *
-     * 直接跳转到前台商品详情页
-     * http://localhost:8996/product-detail/1577792919764240135
-     * */
-    @GetMapping("/product-detail/{commid}")
-    public String product_detail(@PathVariable("commid") String commid, ModelMap modelMap,HttpSession session){
-        String couserid = (String) session.getAttribute("userid");
-
-        Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid).setCommstatus(1));
-        int i = 0;
-        if (commodity.getCommstatus().equals(1)){//如果商品正常
-            i=1;
-        }else if (!StringUtils.isEmpty(couserid)){//如果用户已登录
-            Login login = loginService.userLogin(new Login().setUserid(couserid));
-            /**商品为违规状态时：本人和管理员可查看*/
-            if (commodity.getCommstatus().equals(0) && (commodity.getUserid().equals(couserid) || (login.getRoleid().equals(2) || login.getRoleid().equals(3)))){
-                i=1;
-                /**商品为待审核状态时：本人和管理员可查看*/
-            }else if (commodity.getCommstatus().equals(3) && (commodity.getUserid().equals(couserid) || (login.getRoleid().equals(2) || login.getRoleid().equals(3)))){
-                i=1;
-                /**商品为已售出状态时：本人和管理员可查看*/
-            }else if (commodity.getCommstatus().equals(4) && (commodity.getUserid().equals(couserid) || (login.getRoleid().equals(2) || login.getRoleid().equals(3)))){
-                i=1;
-            }
-        }
-        if(i==1){
-            commodity.setOtherimg(commimagesService.LookGoodImages(commid));
-            /**商品浏览量+1*/
-            commodityService.ChangeCommodity(new Commodity().setCommid(commid).setRednumber(1));
-            modelMap.put("userinfo",userInfoService.queryPartInfo(commodity.getUserid()));
-            modelMap.put("gddetail",commodity);
-            //如果没有用户登录
-            if (StringUtils.isEmpty(couserid)){
-                modelMap.put("collectstatus",2);
-            }else {
-                Collect collect = collectService.queryCollectStatus(new Collect().setCommid(commid).setCouserid(couserid));
-                if(collect!=null){
-                    if (collect.getCollstatus() == 2){
-                        modelMap.put("collectstatus",2);
-                    }else {
-                        modelMap.put("collectstatus",1);
-                    }
-                }else {
-                    modelMap.put("collectstatus",2);
-                }
-            }
-            return "/common/product-detail";
-        }else{
-            return "/error/404";
-        }
-    }
-/*===============================商品详情页end===============================*/
-
-/*===============================首页，分类start===============================*/
-    /**
-     * 查询最新发布的8条商品
-     *
-     * 前台首页下方。共8个商品。
-     * 如果直接访问地址，将返回很多数据，刚好和前台8个商品信息一致
-     * http://localhost:8996/product/latest
-     * */
-    @ResponseBody
-    @GetMapping("/product/latest")
-    public ResultVo latestCommodity() {
-        String category = "全部";
-        List<Commodity> commodityList = commodityService.queryCommodityByCategory(category);
-        for (Commodity commodity : commodityList) {
-            /**查询商品对应的其它图片*/
-            List<String> imagesList = commimagesService.LookGoodImages(commodity.getCommid());
-            commodity.setOtherimg(imagesList);
-        }
-        return new ResultVo(true,StatusCode.OK,"查询成功",commodityList);
-    }
-
-    /**
-     * 首页分类展示商品 --> 按照分类查询商品
-     * 前端传入商品类别（category）
-     *
-     * 前台首页，点击分类，查询（如果是“全部”，则结果与latestCommodity方法一致，感觉方法latestCommodity冗余了？）
-     * http://localhost:8996/index/product/3C%E6%95%B0%E7%A0%81
-     * */
-    @ResponseBody
-    @GetMapping("/index/product/{category}")
-    public ResultVo indexCommodity(@PathVariable("category") String category) {
-        List<Commodity> commodityList = commodityService.queryCommodityByCategory(category);
-        for (Commodity commodity : commodityList) {
-            /**查询商品对应的其它图片*/
-            List<String> imagesList = commimagesService.LookGoodImages(commodity.getCommid());
-            commodity.setOtherimg(imagesList);
-        }
-        return new ResultVo(true,StatusCode.OK,"查询成功",commodityList);
-    }
-/*===============================首页，分类end===============================*/
-
-/*===============================商品清单页面，分类start===============================*/
-    /**
-     * 搜索商品分页数据
-     * 前端传入搜索的商品名（commname）
-     *
-     * http://localhost:8996/product/search/number/Python 3网络爬虫开发实战
-     * {"status":200,"message":"查询成功","pages":null,"dataNumber":1,"data":null}
-     *
-     * 注意和直接搜索“Python 3网络爬虫开发实战”不同
-     * http://localhost:8996/product-search?keys=Python+3%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98
-     *
-     *
-     * http://localhost:8996/product/search/number/Python
-     *{"status":200,"message":"查询成功","pages":null,"dataNumber":3,"data":null}
-     *
-     * 估计是前台搜索后，分页按钮旁边的共X页的X
-     * */
-    @GetMapping("/product/search/number/{commname}")
-    @ResponseBody
-    public PageVo searchCommodityNumber(@PathVariable("commname") String commname){
-        //queryCommodityByNameCount模糊查询商品总数
-        Integer dataNumber = commodityService.queryCommodityByNameCount(commname);
-        return new PageVo(StatusCode.OK,"查询成功",dataNumber);
-    }
-
-    /**
-     * 搜索商品
-     * 前端传入当前页数（nowPaging）、搜索的商品名（commname）
-     * */
-    @GetMapping("/product/search/{nowPaging}/{commname}")
-    @ResponseBody
-    public ResultVo searchCommodity(@PathVariable("nowPaging") Integer page, @PathVariable("commname") String commname){
-        List<Commodity> commodityList = commodityService.queryCommodityByName((page - 1) * 20, 20, commname);
-
-        if(!StringUtils.isEmpty(commodityList)){//如果有对应商品
-            for (Commodity commodity : commodityList) {
-                /**查询商品对应的其它图片*/
-                List<String> imagesList = commimagesService.LookGoodImages(commodity.getCommid());
-                commodity.setOtherimg(imagesList);
-            }
-            return new ResultVo(true,StatusCode.OK,"查询成功",commodityList);
-        }else{
-            return new ResultVo(true,StatusCode.ERROR,"没有相关商品");
-        }
-    }
 
     /**
      * 产品清单分页数据
@@ -650,6 +455,228 @@ public class CommodityController {
         }
         return new ResultVo(true,StatusCode.OK,"查询成功",commodityList);
     }
-/*===============================商品清单页面，分类end===============================*/
-/*===============================前台end===============================*/
+
+    /**
+     * 分页展示个人各类商品信息
+     *前端传入页码、分页数量
+     *前端传入商品信息状态码（commstatus）-->全部:100，已审核:1，待审核:3，违规:0，已完成:4
+     *
+     *
+     * 暂时不清楚，难道是个人中心--商品管理--商品清单的根据商品状态进行分页查询？
+     * 感觉应该是，我以为已经写过了，原来是之前先看了mapper.xml定义的sql语句
+     *
+     *
+     * 不明白这个方法有何意义。
+     * 直接访问地址访问不到，返回500，原因不明。。
+     * 而且这里还要给一个假id（虽然测试不到）
+     */
+
+    @GetMapping("/user/commodity/{commstatus}")
+    @ResponseBody
+    public LayuiPageVo userCommodity(@PathVariable("commstatus") Integer commstatus, int limit, int page, HttpSession session) {
+        String userid = (String) session.getAttribute("userid");
+        /*如果未登录，给一个假id
+        为什么要给一个假id，登录了才能进入个人中心。
+        除非登录过期了，但是如果给假的id，如何判断是本人发布的商品？*/
+        if(StringUtils.isEmpty(userid)){
+            userid = "123456";
+        }
+
+        //存放商品
+        List<Commodity> commodityList=null;
+        //分页总数
+        Integer dataNumber;
+
+        //看productlist.html，100表示全部商品
+        if(commstatus==100){
+            //状态“全部”，直接select所有语句，commstatus为null
+            commodityList = commodityService.queryAllCommodity((page - 1) * limit, limit, userid,null);
+            dataNumber = commodityService.queryCommodityCount(userid,null);
+        }else{
+            //其他状态，则根据commstatus进行查询
+            commodityList = commodityService.queryAllCommodity((page - 1) * limit, limit, userid,commstatus);
+            dataNumber = commodityService.queryCommodityCount(userid,commstatus);
+        }
+        return new LayuiPageVo("",0,dataNumber,commodityList);
+    }
+
+
+
+    /*===============================前台start===============================*/
+    /*===============================商品详情页start===============================*/
+
+    /**
+     * 分页展示商家个人各类商品信息
+     *前端传入页码、分页数量
+     *前端传入商品信息状态码（commstatus）-->全部:100，已审核:1，待审核:3，违规:0，已完成:4
+     */
+    @GetMapping("/seller/commodity/{commstatus}")
+    @ResponseBody
+    public LayuiPageVo sellerCommodity(@PathVariable("commstatus") Integer commstatus, int limit, int page, HttpSession session) {
+        String userid = (String) session.getAttribute("goodUser");
+        System.out.println("gooduserid: "+userid);
+        //如果未登录，给一个假id
+        if(StringUtils.isEmpty(userid)){
+            userid = "123456";
+        }
+        List<Commodity> commodityList=null;
+        Integer dataNumber;
+        if(commstatus==100){
+            commodityList = commodityService.queryAllCommodity((page - 1) * limit, limit, userid,null);
+            dataNumber = commodityService.queryCommodityCount(userid,null);
+        }else{
+            commodityList = commodityService.queryAllCommodity((page - 1) * limit, limit, userid,commstatus);
+            dataNumber = commodityService.queryCommodityCount(userid,commstatus);
+        }
+        return new LayuiPageVo("",0,dataNumber,commodityList);
+    }
+
+    /**
+     * 商品详情
+     * 根据商品id（commid）查询商品信息、用户昵称及头像
+     * 用户可以查看正常的商品
+     * 商品发布者和管理员可以查看
+     *
+     *
+     * 直接跳转到前台商品详情页
+     * http://localhost:8996/product-detail/1577792919764240135
+     * */
+    @GetMapping("/product-detail/{commid}")
+    public String product_detail(@PathVariable("commid") String commid, ModelMap modelMap,HttpSession session){
+        String couserid = (String) session.getAttribute("userid");
+
+        Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid).setCommstatus(1));
+        int i = 0;
+        if (commodity.getCommstatus().equals(1)){//如果商品正常
+            i=1;
+        }else if (!StringUtils.isEmpty(couserid)){//如果用户已登录
+            Login login = loginService.userLogin(new Login().setUserid(couserid));
+            /**商品为违规状态时：本人和管理员可查看*/
+            if (commodity.getCommstatus().equals(0) && (commodity.getUserid().equals(couserid) || (login.getRoleid().equals(2) || login.getRoleid().equals(3)))){
+                i=1;
+                /**商品为待审核状态时：本人和管理员可查看*/
+            }else if (commodity.getCommstatus().equals(3) && (commodity.getUserid().equals(couserid) || (login.getRoleid().equals(2) || login.getRoleid().equals(3)))){
+                i=1;
+                /**商品为已售出状态时：本人和管理员可查看*/
+            }else if (commodity.getCommstatus().equals(4) && (commodity.getUserid().equals(couserid) || (login.getRoleid().equals(2) || login.getRoleid().equals(3)))){
+                i=1;
+            }
+        }
+        if(i==1){
+            commodity.setOtherimg(commimagesService.LookGoodImages(commid));
+            /**商品浏览量+1*/
+            commodityService.ChangeCommodity(new Commodity().setCommid(commid).setRednumber(1));
+            modelMap.put("userinfo",userInfoService.queryPartInfo(commodity.getUserid()));
+            modelMap.put("gddetail",commodity);
+            //如果没有用户登录
+            if (StringUtils.isEmpty(couserid)){
+                modelMap.put("collectstatus",2);
+            }else {
+                Collect collect = collectService.queryCollectStatus(new Collect().setCommid(commid).setCouserid(couserid));
+                if(collect!=null){
+                    if (collect.getCollstatus() == 2){
+                        modelMap.put("collectstatus",2);
+                    }else {
+                        modelMap.put("collectstatus",1);
+                    }
+                }else {
+                    modelMap.put("collectstatus",2);
+                }
+            }
+            session.setAttribute("goodUser",commodity.getUserid());
+            return "/common/product-detail";
+        }else{
+            return "/error/404";
+        }
+    }
+    /*===============================商品详情页end===============================*/
+
+    /*===============================首页，分类start===============================*/
+    /**
+     * 查询最新发布的8条商品
+     *
+     * 前台首页下方。共8个商品。
+     * 如果直接访问地址，将返回很多数据，刚好和前台8个商品信息一致
+     * http://localhost:8996/product/latest
+     * */
+    @ResponseBody
+    @GetMapping("/product/latest")
+    public ResultVo latestCommodity() {
+        String category = "全部";
+        List<Commodity> commodityList = commodityService.queryCommodityByCategory(category);
+        for (Commodity commodity : commodityList) {
+            /**查询商品对应的其它图片*/
+            List<String> imagesList = commimagesService.LookGoodImages(commodity.getCommid());
+            commodity.setOtherimg(imagesList);
+        }
+        return new ResultVo(true,StatusCode.OK,"查询成功",commodityList);
+    }
+
+    /**
+     * 首页分类展示商品 --> 按照分类查询商品
+     * 前端传入商品类别（category）
+     *
+     * 前台首页，点击分类，查询（如果是“全部”，则结果与latestCommodity方法一致，感觉方法latestCommodity冗余了？）
+     * http://localhost:8996/index/product/3C%E6%95%B0%E7%A0%81
+     * */
+    @ResponseBody
+    @GetMapping("/index/product/{category}")
+    public ResultVo indexCommodity(@PathVariable("category") String category) {
+        List<Commodity> commodityList = commodityService.queryCommodityByCategory(category);
+        for (Commodity commodity : commodityList) {
+            /**查询商品对应的其它图片*/
+            List<String> imagesList = commimagesService.LookGoodImages(commodity.getCommid());
+            commodity.setOtherimg(imagesList);
+        }
+        return new ResultVo(true,StatusCode.OK,"查询成功",commodityList);
+    }
+    /*===============================首页，分类end===============================*/
+
+    /*===============================商品清单页面，分类start===============================*/
+    /**
+     * 搜索商品分页数据
+     * 前端传入搜索的商品名（commname）
+     *
+     * http://localhost:8996/product/search/number/Python 3网络爬虫开发实战
+     * {"status":200,"message":"查询成功","pages":null,"dataNumber":1,"data":null}
+     *
+     * 注意和直接搜索“Python 3网络爬虫开发实战”不同
+     * http://localhost:8996/product-search?keys=Python+3%E7%BD%91%E7%BB%9C%E7%88%AC%E8%99%AB%E5%BC%80%E5%8F%91%E5%AE%9E%E6%88%98
+     *
+     *
+     * http://localhost:8996/product/search/number/Python
+     *{"status":200,"message":"查询成功","pages":null,"dataNumber":3,"data":null}
+     *
+     * 估计是前台搜索后，分页按钮旁边的共X页的X
+     * */
+    @GetMapping("/product/search/number/{commname}")
+    @ResponseBody
+    public PageVo searchCommodityNumber(@PathVariable("commname") String commname){
+        //queryCommodityByNameCount模糊查询商品总数
+        Integer dataNumber = commodityService.queryCommodityByNameCount(commname);
+        return new PageVo(StatusCode.OK,"查询成功",dataNumber);
+    }
+
+    /**
+     * 搜索商品
+     * 前端传入当前页数（nowPaging）、搜索的商品名（commname）
+     * */
+    @GetMapping("/product/search/{nowPaging}/{commname}")
+    @ResponseBody
+    public ResultVo searchCommodity(@PathVariable("nowPaging") Integer page, @PathVariable("commname") String commname){
+        List<Commodity> commodityList = commodityService.queryCommodityByName((page - 1) * 20, 20, commname);
+
+        if(!StringUtils.isEmpty(commodityList)){//如果有对应商品
+            for (Commodity commodity : commodityList) {
+                /**查询商品对应的其它图片*/
+                List<String> imagesList = commimagesService.LookGoodImages(commodity.getCommid());
+                commodity.setOtherimg(imagesList);
+            }
+            return new ResultVo(true,StatusCode.OK,"查询成功",commodityList);
+        }else{
+            return new ResultVo(true,StatusCode.ERROR,"没有相关商品");
+        }
+    }
+
 }
+

@@ -13,8 +13,7 @@
     <select id="queryAllCollect" resultType="com.entity.Collect">
         select * from collect where collstatus=1 and couserid=#{couserid} order by soldtime desc limit #{page},#{count}
     </select>
-    <!--修改收藏状态
-    除了商品用户ID、收藏用户ID、收藏状态，即cmuserid、couserid、collstatus，其他如果不为空则都修改-->
+    <!--修改收藏状态-->
     <update id="updateCollect" parameterType="com.entity.Collect">
         update collect set collstatus=#{colloperate}
         <where>
@@ -27,7 +26,7 @@
             <if test="soldtime != null">and soldtime = #{soldtime}</if>
         </where>
     </update>
-    <!--查询商品是否被某用户收藏-->
+    <!--查询商品是否被用户收藏-->
     <select id="queryCollectStatus" resultType="com.entity.Collect">
         select couserid,collstatus from collect
         <where>

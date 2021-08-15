@@ -10,22 +10,22 @@ import java.util.Date;
 
 /**
  * <p>
- * 实体--收藏商品
+ * 
  * </p>
- * 对应数据表collect（10个），11个属性，多了最后一个字段收藏操作colloperate
- * CollectMapper.xml中使用
+ *
+ * @author hlt
+ * @since 2019-12-25
  */
 @AllArgsConstructor//全参构造
 @NoArgsConstructor//无参构造
 @Data
-@Accessors(chain = true)//链式写法。在CollectController.java的方法insertcollect用到。
+@Accessors(chain = true)//链式写法
 public class Collect implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 收藏id
-     * 主键
      */
     private String id;
     /**

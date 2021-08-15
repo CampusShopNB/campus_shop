@@ -10,7 +10,7 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer', 'table'], 
     });
 });
 function lookallproduct(stuatus) {
-    layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], function () {
+    layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table','jquery'], function () {
         var table = layui.table;
         table.render({
             elem: '#product'
@@ -24,9 +24,9 @@ function lookallproduct(stuatus) {
                 {field: 'qid', title: 'ID',width:80, align:'center'}
                 , {field: 'commname', title: '名称', width: 300, align:'center'}
                 , {field: 'category', title: '类别', width: 100, align:'center'}
-                , {field: 'commdesc', title: '描述', width: 700, align:'center'}
+                , {field: 'commdesc', title: '描述', width: 500, align:'center'}
                 , {field: 'updatetime', title: '时间', width: 160,sort: true, align:'center'}
-                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:250, align:'center'}
+                , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:400, align:'center'}
             ]], done: function (res, curr, count) {
                 var i=1;
                 $("[data-field='qid']").children().each(function () {
@@ -152,7 +152,75 @@ function lookallproduct(stuatus) {
                     });
                 }, function(){
                 });
+            }else if (obj.event === 'askforrecommend') {
+                layer.confirm('确认申请推荐该商品吗？', {
+                    btn: ['确定','算了'], //按钮
+                    title:"申请推荐商品",
+                    offset:"50px"
+                }, function(){
+                    layer.closeAll();
+                    layer.open({
+                        type: 2,
+                        title: '填写推荐商品表单',
+                        shadeClose: true,
+                        shade: 0.8,
+                        maxmin: true,
+                        area: ['60%', '90%'],
+                        //请求地址对应UserController.java
+                        content: basePath+'/user/recommendform/'+data.commid,
+                        end: function () {
+                            //这里直接刷新页面
+                            location.reload();
+                        },
+                        //右上角关闭按钮触发的回调
+                        // cancel: function(index, layero){
+                        //     return false;//表示不关闭
+                        // }
+                    });
+                    // layer.closeAll();
+                    // $.ajax({
+                    //     url: basePath+'/user/changecommstatus/'+data.commid+"/4",
+                    //     data: "",
+                    //     contentType: "application/json;charset=UTF-8", //发送数据的格式
+                    //     type: "get",
+                    //     dataType: "json", //回调
+                    //     beforeSend: function () {
+                    //         layer.load(1, { //icon支持传入0-2
+                    //             content: '请稍等...',
+                    //             success: function (layero) {
+                    //                 layero.find('.layui-layer-content').css({
+                    //                     'padding-top': '39px',
+                    //                     'width': '60px'
+                    //                 });
+                    //             }
+                    //         });
+                    //     },
+                    //     complete: function () {
+                    //         layer.closeAll('loading');
+                    //     },
+                    //     success: function (data) {
+                    //         console.log(data)
+                    //         if(data.status===200){
+                    //             layer.msg(data.message, {
+                    //                 time: 1000,
+                    //                 icon: 1,
+                    //                 offset: '50px'
+                    //             }, function () {
+                    //                 location.reload();
+                    //             });
+                    //         }else {
+                    //             layer.msg(data.message, {
+                    //                 time: 1000,
+                    //                 icon: 2,
+                    //                 offset: '50px'
+                    //             });
+                    //         }
+                    //     }
+                    // });
+                }, function(){
+                });
             }
+
         });
     });
 }

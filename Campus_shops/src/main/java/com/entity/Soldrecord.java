@@ -11,9 +11,11 @@ import java.util.Date;
 
 /**
  * <p>
- * 销售记录实体类。对应数据表soldrecord
+ * 
  * </p>
- * 属性和字段一致
+ *
+ * @author hlt
+ * @since 2019-12-25
  */
 @AllArgsConstructor//全参构造
 @NoArgsConstructor//无参构造
@@ -25,7 +27,6 @@ public class Soldrecord implements Serializable {
 
     /**
      * 售出记录id
-     * 主键
      */
     private String id;
     /**
@@ -50,7 +51,6 @@ public class Soldrecord implements Serializable {
     private Date soldtime;
     /**
      * 用户id
-     * 是卖家id
      */
     private String userid;
     /**

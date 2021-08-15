@@ -20,6 +20,9 @@ import java.util.List;
  * <p>
  *  收藏控制器
  * </p>
+ *
+ * @author
+ * @since
  */
 @Controller
 public class CollectController {
@@ -28,35 +31,30 @@ public class CollectController {
 
     /**
      * 商品详情界面：收藏商品or取消收藏
-     *
-     *
      * 前端传入收藏操作（colloperate：1收藏，2取消收藏）,获取session中用户id信息，判断是否登录
      * (1). 收藏商品
      * 1.前端传入商品id（commid）、商品名（commname）、商品描述（commdesc）、商品用户id（cmuserid）
      *   商品用户名（username）、商品所在学校（school）
-     *      ///对应数据表中的6个字段
-     * 2.session中获取收藏用户id（couserid）     ///对应数据表中的字段
-     * 3.进行收藏操作      ///即insert
-     *
+     * 2.session中获取收藏用户id（couserid）
+     * 3.进行收藏操作
      * (2). 取消收藏
      * 1.前端传入商品id（commid）
      * 2.判断是否本人取消收藏
      * 3.进行取消收藏操作
      *
-     *  ///其中返回类型Resulto见com.vo包
-     *
-     *
+     * ///其中返回类型Resulto见com.vo包
+     *      *
+     *      *
      * 具体判断流程如下：
      * 1.判断用户是否登录
      * 2.colloperate=1表示收藏商品
-     *      2.1先查询商品是否已经收藏（前端是查询数据后直接根据字段status来判断是否显示爱心）
-     *      （1）如果已经收藏过（数据表中有记录），只需update修改相关信息
-     *      （2）如果从未收藏过（数据表中没有任何记录），则直接执行insert语句
-     *
+     *   2.1先查询商品是否已经收藏（前端是查询数据后直接根据字段status来判断是否显示爱心）
+     *     （1）如果已经收藏过（数据表中有记录），只需update修改相关信息
+     *     （2）如果从未收藏过（数据表中没有任何记录），则直接执行insert语句
      * 3.colloperate!=1表示取消收藏商品（说明数据表中已经有记录了）
-     *      3.1先判断是否为本人操作（//个人感觉有点多余）
-     *      （1）是本人：执行update语句，修改相关信息。注意不是直接delete掉
-     *      （2）不是本人：禁止操作
+     *   3.1先判断是否为本人操作（//个人感觉有点多余）
+     *     （1）是本人：执行update语句，修改相关信息。注意不是直接delete掉
+     *     （2）不是本人：禁止操作
      */
     @ResponseBody
     @PostMapping("/collect/operate")
@@ -74,24 +72,19 @@ public class CollectController {
             //通过有参构造(有2个,区别在于参数data)实例化一个ResultVo对象。com.util.StatusCode为状态码。
             return new ResultVo(false, StatusCode.ACCESSERROR,"请先登录");
         }
-
         //colloperate为1表示收藏
         if (colloperate == 1){
             //queryCollectStatus查询商品是否被用户收藏。resultType="com.entity.Collect"
             Collect collect1 = collectService.queryCollectStatus(collect);
-
             //数据表collect中有记录，说明之前已经收藏过该商品
             //？？返回不是collect对象？为何可以用StringUtils
             if(!StringUtils.isEmpty(collect1)){
                 /**更改原来的收藏信息和状态
-                 *
                  * Java中的链式设置属性。（实现：在setter中return this，就可以继续setXX()
                  * https://blog.csdn.net/weixin_42541479/article/details/117772915
                  * Collect.java中加了注解@Accessors(chain = true)
                  * */
-                collect1.setCommname(collect.getCommname())
-                        .setCommdesc(collect.getCommdesc())
-                        .setSchool(collect.getSchool())
+                collect1.setCommname(collect.getCommname()).setCommdesc(collect.getCommdesc()).setSchool(collect.getSchool())
                         .setSoldtime(GetDate.strToDate());
                 //update修改收藏状态。返回的数字表示修改情况是否成功
                 Integer i = collectService.updateCollect(collect);
@@ -111,15 +104,12 @@ public class CollectController {
                 }
                 return new ResultVo(false,StatusCode.ERROR,"收藏失败");
             }
-
-        }
         //colloperate不为1（实际上是2），表示取消收藏
-        else {
+        }else {
             //查询商品是否被用户收藏
             Collect collect1 = collectService.queryCollectStatus(collect);
             /**判断是否为本人操作*/
             if (collect1.getCouserid().equals(couserid)){
-                //修改收藏状态
                 Integer i = collectService.updateCollect(collect);
                 if (i == 1){
                     return new ResultVo(true, StatusCode.OK,"取消成功");
@@ -148,26 +138,18 @@ public class CollectController {
     @ResponseBody
     @PutMapping("/collect/delete/{id}")
     public ResultVo deletecollect(@PathVariable("id") String id,HttpSession session){
-        //获取session存取的收藏用户id
         String couserid = (String) session.getAttribute("userid");
-        //多了这一句，collect对象用于操作数据库。方法insert中参数有所以不需要new，这里没有参数Collect，需要new
         Collect collect = new Collect().setId(id).setCouserid(couserid);
-
-        //以下一段，基本与方法insertcollect中的一致
-        //查询商品是否被用户收藏
         Collect collect1 = collectService.queryCollectStatus(collect);
         /**判断是否为本人操作*/
         if (collect1.getCouserid().equals(couserid)){
-            //多了这一句，修改“收藏操作”（//暂不清楚用意），表示取消收藏
             collect.setColloperate(2);
-            //修改收藏状态
             Integer i = collectService.updateCollect(collect);
             if (i == 1){
                 return new ResultVo(true, StatusCode.OK,"取消成功");
             }
             return new ResultVo(false,StatusCode.ERROR,"取消失败");
         }
-        //不是本人，禁止修改
         return new ResultVo(false,StatusCode.ACCESSERROR,"禁止操作");
     }
 
@@ -175,9 +157,6 @@ public class CollectController {
      * 分页查看用户所有收藏内容
      * 前端传入页码、分页数量
      * 查询分页数据
-     *
-     *  ///不清楚作用，感觉是layui用于分页的，分页过程中还用到收藏表collect一些条数的数据
-     *  其中返回类型LayuiPageVo见com.vo包
      */
     @ResponseBody
     @GetMapping("/user/collect/queryall")

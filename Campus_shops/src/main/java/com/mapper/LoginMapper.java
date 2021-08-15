@@ -6,6 +6,9 @@ import com.entity.Login;
  * <p>
  *  Mapper 接口
  * </p>
+ *
+ * @author hlt
+ * @since 2019-12-21
  */
 public interface LoginMapper {
     /**注册*/

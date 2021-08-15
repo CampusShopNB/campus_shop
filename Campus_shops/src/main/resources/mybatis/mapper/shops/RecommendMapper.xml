@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.RecommendMapper">
+    <!-- 开启二级缓存 -->
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
+
+    <!--添加推荐商品insert。没有updatetime，自动根据时间戳更新-->
+    <insert id="addRecommend" parameterType="com.entity.Recommend">
+        insert into recommend (id,commid,recomname,recomimg,recomdesc,recomstatus,updatetime) values (#{id},#{commid},#{recomname},#{recomimg},#{recomdesc},#{recomstatus},#{updatetime})
+    </insert>
+
+    <!--查询首页展示的2个被推荐商品
+     废弃select * from recommend where recomstatus=1
+     之前那样需要人工手动推荐，这次只要商品被下架，就自动补位。
+     SELECT * FROM `recommend` where recomstatus=2 ORDER BY updatetime LIMIT 0,2;
+     之前2表示审核通过待推荐，1表示正在首页展示，现在删除后者。即1审核通过，2审核不通过
+     故找recomstatus=1而不是2-->
+    <select id="queryIndexRecommendCommodity" resultType="com.entity.Recommend">
+        SELECT * FROM recommend where recomstatus=1 ORDER BY updatetime LIMIT 0,2;
+    </select>
+
+    <!--后台。根据recomstatus状态，分页查看所有推荐商品的内容
+    https://www.jb51.net/article/125394.htm-->
+    <select id="queryRecommendByRecomStatus" resultType="com.entity.Recommend">
+        select *
+        from recommend
+        <where>
+            <if test="recomstatus != null">and recomstatus = #{recomstatus}</if>
+        </where>
+        order by updatetime limit #{page},#{count}
+    </select>
+
+    <!--根据状态，查询推荐商品总数，用于分页的-->
+    <select id="queryRecommendCountByRecomStatus" resultType="java.lang.Integer">
+        select count(*)
+        from recommend
+        <where>
+            <if test="recomstatus != null">and recomstatus = #{recomstatus}</if>
+        </where>
+    </select>
+
+    <!--修改推荐商品信息，包含修改状态，后者包含删除，即修改状态为4-->
+    <update id="updateRecommendStatus" parameterType="com.entity.Recommend">
+        update recommend set recomstatus = #{recomstatus}, updatetime = #{updatetime}
+        <where>
+            <if test="id != null">and id = #{id}</if>
+            <if test="commid != null">and commid = #{commid}</if>
+            <if test="recomname != null">and recomname = #{recomname}</if>
+            <if test="recomimg != null">and recomimg = #{recomimg}</if>
+            <if test="recomdesc != null">and recomdesc = #{recomdesc}</if>
+        </where>
+    </update>
+
+</mapper>

@@ -43,24 +43,26 @@
                         后台：编辑、违规、通过审核-->
                 <script type="text/html" id="barDemo">
                     {{# if(d.commstatus==2){ }}
-                        <button type="button" class="layui-btn-xs layui-btn-disabled">禁止操作</button>
-                        <!--如果是删除状态，commstatus=2，则只显示禁止操作按钮-->
+                    <button type="button" class="layui-btn-xs layui-btn-disabled">禁止操作</button>
+                    <!--如果是删除状态，commstatus=2，则只显示禁止操作按钮-->
                     {{# } else{  }}
-                        <a class="layui-btn layui-btn-xs" lay-event="xiangqing">详情</a>
+                    <a class="layui-btn layui-btn-xs" lay-event="xiangqing">详情</a>
 
-                        <!--commstatus!=3表示是0,1,4-->
-                        {{# if(d.commstatus!=3){ }}
-                            <!--commstatus不为2,3,4，则为0,1，可以编辑-->
-                            {{# if(d.commstatus!=4){ }}
-                                <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="bianji">编辑</a>
-                            {{# } }}
-                            <!--commstatus不为0,2,3,4，则为1，表示正常状态(已经通过审核)-->
-                            {{# if(d.commstatus!=4 && d.commstatus!=0){ }}
-                                <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="yishou">下架</a>
-                            {{# } }}
+                    <!--commstatus!=3表示是0,1,4-->
+                    {{# if(d.commstatus!=3){ }}
+                    <!--commstatus不为2,3,4，则为0,1，可以编辑-->
+                    {{# if(d.commstatus!=4){ }}
+                    <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="bianji">编辑</a>
+                    {{# } }}
+                    <!--commstatus不为0,2,3,4，则为1，表示正常状态(已经通过审核)-->
+                    {{# if(d.commstatus!=4 && d.commstatus!=0){ }}
+                        {{# if(d.askrecomstatus!=1){ }}
+                        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="askforrecommend">申请推荐</a>
                         {{# } }}
-                        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="shanchu">删除</a>
-
+                    <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="yishou">下架</a>
+                    {{# } }}
+                    {{# } }}
+                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="shanchu">删除</a>
                     {{# } }}
                 </script>
             </div>

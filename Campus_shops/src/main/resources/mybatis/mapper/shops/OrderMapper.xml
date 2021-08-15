@@ -11,19 +11,19 @@
 
     <!--修改订单状态-->
     <update id="updateOrder" parameterType="com.entity.Order">
-<!--        update orderrecord set orderstatus=#{orderstatus}-->
-<!--        <where>-->
-<!--            <if test="id != null">and id = #{id}</if>-->
-<!--            <if test="commid != null">and commid = #{commid}</if>-->
-<!--            <if test="commname != null">and commname = #{commname}</if>-->
-<!--            <if test="commdesc != null">and commdesc = #{commdesc}</if>-->
-<!--            <if test="thinkmoney != null">and thinkmoney = #{thinkmoney}</if>-->
-<!--            <if test="soldtime != null">and soldtime = #{soldtime}</if>-->
-<!--            <if test="buyerid != null">and buyerid = #{buyerid}</if>-->
-<!--            <if test="buyername != null">and buyername = #{buyername}</if>-->
-<!--            <if test="sellerid != null">and sellerid = #{sellerid}</if>-->
-<!--            <if test="sellername != null">and sellername = #{sellername}</if>-->
-<!--        </where>-->
+        <!--        update orderrecord set orderstatus=#{orderstatus}-->
+        <!--        <where>-->
+        <!--            <if test="id != null">and id = #{id}</if>-->
+        <!--            <if test="commid != null">and commid = #{commid}</if>-->
+        <!--            <if test="commname != null">and commname = #{commname}</if>-->
+        <!--            <if test="commdesc != null">and commdesc = #{commdesc}</if>-->
+        <!--            <if test="thinkmoney != null">and thinkmoney = #{thinkmoney}</if>-->
+        <!--            <if test="soldtime != null">and soldtime = #{soldtime}</if>-->
+        <!--            <if test="buyerid != null">and buyerid = #{buyerid}</if>-->
+        <!--            <if test="buyername != null">and buyername = #{buyername}</if>-->
+        <!--            <if test="sellerid != null">and sellerid = #{sellerid}</if>-->
+        <!--            <if test="sellername != null">and sellername = #{sellername}</if>-->
+        <!--        </where>-->
         update orderrecord
         <set>
             <if test="id != null">id = #{id}</if>
@@ -102,7 +102,7 @@
     <select id="querySellOutOrderCount" resultType="java.lang.Integer">
         select count(*) from orderrecord where sellerid=#{sellerid} and orderstatus!=7
     </select>
-   
+
     <!--查询购入订单状态（估计是下拉列表进行分类）-->
     <select id="queryBuyInOrderStatus" resultType="com.entity.Order">
         select buyerid,orderstatus from orderrecord
@@ -144,7 +144,7 @@
     <select id="queryStarBySellerId" resultType="java.lang.Integer">
         SELECT startoseller FROM orderrecord
         where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <![CDATA[<=date(soldtime)]]>
-        and sellerid = #{sellerid}
+          and sellerid = #{sellerid}
     </select>
 
 
@@ -152,8 +152,7 @@
     <select id="queryStarByBuyerId" resultType="java.lang.Integer">
         SELECT startobuyer FROM orderrecord
         where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <![CDATA[<=date(soldtime)]]>
-        and buyerid = #{buyerid}
+          and buyerid = #{buyerid}
     </select>
 
 </mapper>
-

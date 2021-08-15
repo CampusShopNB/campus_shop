@@ -8,7 +8,8 @@ layui.use(['form', 'util','layer','carousel'], function () {
     carousel.render({
         elem: '#test1'
         ,arrow: 'always'
-        ,height: '500px'
+        ,height: '620px'//之前500px
+        ,width: '620px' //自己加的，本来没有，默认600px
     });
     util.fixbar({
         bar1: false,

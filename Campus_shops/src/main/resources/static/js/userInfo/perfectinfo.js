@@ -49,16 +49,14 @@ layui.use(['form', 'element', 'util', 'carousel', 'form', 'laypage', 'layer','ta
             layer.msg('上传成功', {
                 time: 1000,
                 icon: 1,
-                // offset: '150px'
+                offset: '150px'
             }, function () {
-                //如果刷新下面就被清空了，但是不刷新就无法显示图片
                 location.reload();
             });
         },error: function(){
             layer.msg('上传失败');
         }
     });
-
     //上传学生证
     upload.render({
         elem: '#stuidcard'
@@ -94,8 +92,6 @@ layui.use(['form', 'element', 'util', 'carousel', 'form', 'laypage', 'layer','ta
             layer.msg('上传失败');
         }
     });
-
-
     form.on('submit(demo1)', function(data){
         var object = new Object();
         object["sign"] = data.field.sign;
@@ -111,7 +107,7 @@ layui.use(['form', 'element', 'util', 'carousel', 'form', 'laypage', 'layer','ta
         var case4 = (object["sex"] == "" || object["sex"] == null);
         //任何一个没填
         var case5 = (case1 || case2 || case3 || case4);
-        
+
         if( case1 && ($('#addschoolok').css('display') == 'none')){
             layer.msg('请填写学校');
         }
@@ -128,67 +124,64 @@ layui.use(['form', 'element', 'util', 'carousel', 'form', 'laypage', 'layer','ta
         if(!case5 || ($('#addschoolok').css('display') !== 'none')){
 
 
-        if($('#stuidcard').css('display') !== 'none' && $('#stuidcardsuccess').css('display') === 'none'){
-            //说明还没有上传学生证，不允许提交
-            layer.msg('请上传学生证');
-        }else{
-            //如果图标显示了，就重新设置school的值为暂不设置，即隐藏域的值
-            if($('#addschoolok').css('display') !== 'none'){
-                object["school"] = $("#finalschoolname").val();
-            }
-            var jsonData = JSON.stringify(object);
-            $.ajax({
-                url: basePath + "/user/updateinfo",
-                data: jsonData,
-                contentType: "application/json;charset=UTF-8",
-                type: "post",
-                dataType: "json",
-                beforeSend: function () {
-                    layer.load(1, { //icon支持传入0-2
-                        content: '完善中...',
-                        success: function (layero) {
-                            layero.find('.layui-layer-content').css({
-                                'padding-top': '39px',
-                                'width': '60px'
+            if($('#stuidcard').css('display') !== 'none' && $('#stuidcardsuccess').css('display') === 'none'){
+                //说明还没有上传学生证，不允许提交
+                layer.msg('请上传学生证');
+            }else{
+                //如果图标显示了，就重新设置school的值为暂不设置，即隐藏域的值
+                if($('#addschoolok').css('display') !== 'none'){
+                    object["school"] = $("#finalschoolname").val();
+                }
+                var jsonData = JSON.stringify(object);
+                $.ajax({
+                    url: basePath + "/user/updateinfo",
+                    data: jsonData,
+                    contentType: "application/json;charset=UTF-8",
+                    type: "post",
+                    dataType: "json",
+                    beforeSend: function () {
+                        layer.load(1, { //icon支持传入0-2
+                            content: '完善中...',
+                            success: function (layero) {
+                                layero.find('.layui-layer-content').css({
+                                    'padding-top': '39px',
+                                    'width': '60px'
+                                });
+                            }
+                        });
+                    },
+                    complete: function () {
+                        layer.closeAll('loading');
+                    },
+                    success: function (data) {
+                        if (data.status == 200) {
+                            layer.msg(data.message, {
+                                time: 1000,
+                                icon: 1,
+                                offset: '100px'
+                            }, function () {
+                                var mylay = parent.layer.getFrameIndex(window.name);
+                                parent.layer.close(mylay);
+                            });
+                        } else {
+                            layer.msg(data.message, {
+                                time: 1000,
+                                icon: 2,
+                                offset: '100px'
                             });
                         }
-                    });
-                },
-                complete: function () {
-                    layer.closeAll('loading');
-                },
-                success: function (data) {
-                    if (data.status == 200) {
-                        layer.msg(data.message, {
-                            time: 1000,
-                            icon: 1,
-                            offset: '100px'
-                        }, function () {
-                            var mylay = parent.layer.getFrameIndex(window.name);
-                            parent.layer.close(mylay);
-                        });
-                    } else {
-                        layer.msg(data.message, {
-                            time: 1000,
-                            icon: 2,
-                            offset: '100px'
-                        });
+                    },error:function () {
+                        layer.msg('系统异常');
                     }
-                },error:function () {
-                    layer.msg('系统异常');
-                }
-            });
-            //ajax end
+                });
+                //ajax end
+            }
         }
-
-    }
-    
         //else end
         return false;
     });
     //form.on
 });
-
 
 //点击“没有贵校？在这里填写提交申请”后弹窗（参考评分）
 layui.use(['layer','jquery'], function () {
@@ -362,10 +355,7 @@ layui.use(['layer','jquery'], function () {
                 //do something
                 layer.close(index); //如果设定了yes回调，需进行手工关闭
             }
-
         });
-
-
-
+        return false;
     });
 });

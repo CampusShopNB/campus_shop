@@ -179,15 +179,14 @@ var app = new Vue({
 });
 
 function submitregister() {
-    //账号，也是手机号
     var phone=$("#userphone").val();
-    //用户名
     var nickname=$("#nickname").val();
     //密码（因为登录注册在同一个html中定义，登录密码是password，注册密码是password2，以免冲突
     var password2=$("#password2").val();
     //手机验证码
     // var phonevercode=$("#phonevercode").val();
     //邮箱
+    var phonevercode=$("#phonevercode").val();
     var useremail=$("#useremail").val();
     var t=jiantingphone();
     if(t==0){
@@ -286,13 +285,10 @@ function submitregister() {
                     layer.open({
                         type: 2,
                         title: '完善信息',
-                        //shadeClose: true,//是否点击遮罩关闭，默认false
+                        shadeClose: true,
                         shade: 0.8,
-                        //close关闭按钮，0表示不显示关闭按钮
-                        closeBtn: 0,
                         maxmin: true,
-                        //窗体区域。高度太小，会影响年份选择器的弹出！
-                        area: ['60%', '90%'],
+                        area: ['60%', '70%'],
                         content: basePath+'/user/perfectinfo',
                         end: function () {
                             location.href=basePath+"/";

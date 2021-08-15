@@ -1,7 +1,6 @@
 package com.mapper;
 
 import com.entity.School;
-
 import java.util.List;
 
 /**

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>填写推荐商品信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{/layuiadmin/style/admin.css}" media="all">
+    <script th:inline="javascript">
+        var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
+    </script>
+</head>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">确认并完善推荐商品信息</div>
+                <div class="layui-card-body" pad15>
+                    <form class="layui-form">
+                        <div class="layui-form-item">
+                            <label class="layui-form-label">商品id</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="commid" lay-verify="required" lay-reqtext="商品id不能为空"
+                                       placeholder="商品id"
+                                       autocomplete="off" class="layui-input" th:value="${commodityInfo.commid}"
+                                       style="cursor:not-allowed;" readonly="readonly">
+                            </div>
+                        </div>
+                        <!--不上传商品推荐图片了额，直接用主图得了。-->
+
+<!--                        <div class="layui-form-item">-->
+<!--                            <label class="layui-form-label" style="margin-top: 25px"><span style="color: red">*</span>商品推荐图片</label>-->
+<!--                            <div class="layui-input-inline">-->
+<!--                                <img th:src="${commodityInfo.image}"-->
+<!--                                     style="margin-left:30px; width:100px;cursor: not-allowed"-->
+<!--                                     title="商品推荐图片" alt="商品推荐图片" id="recomimg">-->
+<!--                            </div>-->
+<!--                            &lt;!&ndash;隐藏域存放商品图片，默认是commodity表的image&ndash;&gt;-->
+<!--&lt;!&ndash;                            <input type="hidden" id="recomimgvalue" th:value="${commodityInfo.image}">&ndash;&gt;-->
+<!--                        </div>-->
+
+                        <!--商品主图一般是jpg，而且不是透明的，所以必须上传新的图片-->
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span style="color: red">*</span>商品推荐图片</label>
+                            <div class="layui-inline">
+                                <button type="button" class="layui-btn" id="recomimg">上传商品推荐图片</button>
+                                <i id="recomimgsuccess" class="layui-icon layui-icon-ok-circle"
+                                   style="font-size: 30px; color: #01B961;display:none"></i>
+                                <p id="addrecomimgtips" style="color: #01B961;display: none;">商品推荐图片上传成功</p>
+                                <!--隐藏域存放商品图片-->
+                                <input type="hidden" id="recomimgvalue" value="">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span style="color: red">*</span>商品推荐名称</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="recomname" lay-verify="required" lay-reqtext="商品推荐名称不能为空"
+                                       placeholder="请填写商品推荐名称"
+                                       autocomplete="off" class="layui-input" th:value="${commodityInfo.commname}">
+                            </div>
+                        </div>
+                        <div class="layui-form-item">
+                            <label class="layui-form-label"><span style="color: red">*</span>商品推荐描述</label>
+                            <div class="layui-input-block">
+                                <input type="text" name="recomdesc" lay-verify="required" lay-reqtext="商品推荐描述不能为空"
+                                       placeholder="请填写商品推荐描述"
+                                       autocomplete="off" class="layui-input" th:value="${commodityInfo.commdesc}">
+                            </div>
+                        </div>
+
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" th:src="@{/static/layui/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/userInfo/recommendform.js}"></script>
+</body>
+</html>
