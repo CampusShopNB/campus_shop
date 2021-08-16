@@ -33,7 +33,7 @@ public class MyConfig extends WebMvcConfigurerAdapter {
             @Override
             public void addResourceHandlers(ResourceHandlerRegistry registry) {
                 //图片资源直接放在file下，不需要再加pic文件夹了。但是数据库中img字段还是要加/pic/前缀。应该只是个虚拟拦截
-                registry.addResourceHandler("/pic/**").addResourceLocations("file:D:/campusshops/file/");
+                registry.addResourceHandler("/pic/**").addResourceLocations("file:C:/campusshops/file/");
                 super.addResourceHandlers(registry);
             }
         };
