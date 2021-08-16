@@ -326,7 +326,7 @@ public class CommodityController {
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());
         String filenames = filename + "." + ext;
         //路径名称，注意这里是硬盘绝对路径
-        String pathname = "C:\\campusshops\\file\\" + filenames;
+        String pathname = "D:\\campusshops\\file\\" + filenames;
         file.transferTo(new File(pathname));
         //下面这里看起来和数据表中的img字段一样，不知道是不是上面file文件夹下的pic文件夹
         resUrl.put("src", "/pic/"+filenames);
@@ -355,7 +355,7 @@ public class CommodityController {
             String ext = FilenameUtils.getExtension(files.getOriginalFilename());
             String filenames = filename + "." + ext;
             //注意这里是拼接图片路径。前面是硬盘绝对路径
-            String pathname = "C:\\campusshops\\file\\" + filenames;
+            String pathname = "D:\\campusshops\\file\\" + filenames;
             files.transferTo(new File(pathname));
             //下面这一步和上一个方法有出入
             //下面这里看起来和数据表中的img字段一样，不知道是不是上面file文件夹下的pic文件夹

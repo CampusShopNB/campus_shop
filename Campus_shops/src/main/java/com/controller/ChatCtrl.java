@@ -40,7 +40,7 @@ public class ChatCtrl {
         String filename = UUID.randomUUID().toString().replaceAll("-", "");
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());//获得文件扩展名
         String filenames = filename + "." + ext;
-        file.transferTo(new File("C:\\campusshops\\file\\" + filenames));
+        file.transferTo(new File("D:\\campusshops\\file\\" + filenames));
         resUrl.put("src", "/pic/" + filenames);
         res.put("msg", "");
         res.put("code", 0);
@@ -58,7 +58,7 @@ public class ChatCtrl {
         String filename = UUID.randomUUID().toString().replaceAll("-", "");
         String ext = FilenameUtils.getExtension(file.getOriginalFilename());//获得文件扩展名
         String filenames = filename + "." + ext;
-        file.transferTo(new File("C:\\campusshops\\file\\" + filenames));
+        file.transferTo(new File("D:\\campusshops\\file\\" + filenames));
         resUrl.put("src", "/pic/" + filenames);
         resUrl.put("name",file.getOriginalFilename());
         res.put("msg", "");

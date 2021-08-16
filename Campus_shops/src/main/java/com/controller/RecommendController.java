@@ -166,7 +166,7 @@ public class RecommendController {
         //文件全名
         String filenames = filename + "." + ext;
         //图片路径
-        String pathname = "C:\\campusshops\\file\\" + filenames;
+        String pathname = "D:\\campusshops\\file\\" + filenames;
         //上传文件
         file.transferTo(new File(pathname));
         resUrl.put("src", "/pic/"+filenames);

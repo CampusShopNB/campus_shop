@@ -27,7 +27,7 @@
   box-shadow:0 10px 20px 30px rgba(11, 11, 11, 0.76);
   top:40px;left:20px;bottom:50px;
   width:15%;
-  z-index:-1;
+  z-index:-2;
   -webkit-transform: rotate(-3deg);
   -moz-transform: rotate(-3deg);
   transform: rotate(-3deg);
@@ -2320,7 +2320,6 @@ textarea.form-control {
 
 .ps-widget--info > header .ps-logo {
   margin-bottom: 15px;
-  max-width: 120px;
   display: inline-block; }
 
 .ps-widget--info p {
