@@ -14,9 +14,10 @@
  Date: 15/08/2021 22:06:19
 */
 
+CREATE DATABASE IF NOT EXIST shop;
+USE shop;
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
-
 -- ----------------------------
 -- Table structure for chatmsg
 -- ----------------------------
