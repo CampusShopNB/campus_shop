@@ -137,6 +137,10 @@
                         </h4>
                         <div class="ps-product__shopping">
                             <a class="ps-btn mb-10" style="cursor: pointer"
+                               th:id="gobuy">立即下单<i class="ps-icon-next"></i></a>
+                        </div>
+                        <div class="ps-product__shopping">
+                            <a class="ps-btn mb-10" style="cursor: pointer"
                                th:onclick="|ganxingqu()|">联系商家<i class="ps-icon-next"></i></a>
                             <div class="ps-product__actions" id="shoucang"><!--点击收藏-->
                                 <a class="mr-10" onclick="dianjicllect(1)" style="cursor: pointer"><i class="ps-icon-heart"></i></a>
@@ -153,6 +157,19 @@
                                     $("#quxiaoshoucang").show();
                                     $("#shoucang").hide();
                                 }
+                                $("#gobuy").click(function () {
+                                    layui.use('layer',function () {
+                                        var layer = layui.layer;
+
+                                        layer.open({
+                                            type: 2,//iframe层
+                                            title: "填写订单信息（请确保已和商家协商收件地址）",//标题
+                                            area: ['40%', '550px'],//弹出区域
+                                            content: "/trade/orderinfo",//所需弹出的界面
+                                            offset: '50px'//设置弹出层在距离顶部，100px 水平居中
+                                        });
+                                    })
+                                })
                             </script>
                         </div>
                     </div>

@@ -1,7 +1,9 @@
 package com.controller;
 
+import com.alipay.api.AlipayApiException;
 import com.entity.Commodity;
 import com.entity.Order;
+import com.entity.OrderVo;
 import com.request.CreateOrderRequest;
 import com.service.CommodityService;
 import com.service.OrderService;
@@ -11,9 +13,7 @@ import com.vo.ResultVo;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
@@ -46,13 +46,22 @@ public class TradeController {
         String userId = (String) session.getAttribute("userid");
         String commid = request.getCommid();
         Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
-        if(commodity.getCommstatus() == 1 && pay(commodity.getThinkmoney(), userId, commodity.getUserid())){
-            commodityService.ChangeCommstatus(commid, 4);
+        if(commodity.getCommstatus() == 1 ){
             // 新建订单
             Order order = new Order();
             BeanUtils.copyProperties(commodity, order);
             order.setBuyerid(userId);
             order.setBuyername((String) session.getAttribute("username"));
+            try {
+                String result = tradeService.pay(new OrderVo().setOut_trade_no(order.getId())
+                        .setSubject(commodity.getCommname())
+                        .setTotal_amount(new StringBuffer().append(1))
+                        .setTotal_amount(new StringBuffer().append(commodity.getThinkmoney())));
+                System.out.println("payResult : " + result);
+            }catch (AlipayApiException e) {
+                return new ResultVo(false, StatusCode.ERROR,"支付失败");
+            }
+            commodityService.ChangeCommstatus(commid, 4);
             order.setOrderstatus(1);
             orderService.addOrder(order);
             // 生成付款交易记录
@@ -87,23 +96,26 @@ public class TradeController {
         return new ResultVo(false, StatusCode.ERROR,"取消订单失败");
     }
 
-    /**
-     * 支付宝支付
-     * @param
-     * @return
-     */
-    private boolean pay(BigDecimal money, String buyerId, String sellerId){
-        // 调用aliPay
-        return true;
+    @RequestMapping("return")
+    public String PayReturn(){
+        return "支付成功";
     }
+    @RequestMapping("notify")
+    public String PayNotify(){
+        return "支付失败";
+    }
+
     /**
      * 退款
-     * @param
-     * @return
      */
     private boolean refund(BigDecimal money, String buyerId, String sellerId){
         // 调用aliPay
         return true;
+    }
+
+    @GetMapping("/trade/orderinfo")
+    public String orderinfo(){
+        return "/common/orderinfo";
     }
 
 }
