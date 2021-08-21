@@ -3,6 +3,9 @@
 
 <script type="text/javascript" th:src="@{/static/js/common/order.js}"></script>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script th:inline="javascript">
+  var goodid =  [[${session.goodid}]];
+</script>
 <head>
     <meta charset="UTF-8">
     <title>填写订单信息</title>

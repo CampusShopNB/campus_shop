@@ -585,6 +585,7 @@ public class CommodityController {
                 }
             }
             session.setAttribute("goodUser",commodity.getUserid());
+            session.setAttribute("goodid",commid);
             return "/common/product-detail";
         }else{
             return "/error/404";

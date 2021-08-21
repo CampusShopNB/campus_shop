@@ -114,7 +114,9 @@ public class TradeController {
     }
 
     @GetMapping("/trade/orderinfo")
-    public String orderinfo(){
+    public String orderinfo(HttpSession session){
+        String commid = (String) session.getAttribute("goodid");
+        //System.out.println("goodid:" + commid);
         return "/common/orderinfo";
     }
 

@@ -1,6 +1,6 @@
 function createOrder() {
     var object = new Object();
-    object["commid"] = commid;   //这里这里这里
+    object["commid"] = goodid;   //这里这里这里
     object["receiverName"] = $("#receiverName").text();
     object["receiverTel"] = $("#receiverTel").text();
     object["address"] = $("#address").text();
