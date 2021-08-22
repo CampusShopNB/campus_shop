@@ -25,6 +25,7 @@ public class AlipayUtil {
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
         //页面跳转同步通知页面路径
         alipayRequest.setReturnUrl(AlipayConfig.getKey("return_url"));
+        System.out.println("return-url"+AlipayConfig.getKey("return_url"));
         // 服务器异步通知页面路径
         alipayRequest.setNotifyUrl(AlipayConfig.getKey("notify_url"));
         //封装参数

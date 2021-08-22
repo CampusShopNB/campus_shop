@@ -1,5 +1,6 @@
 package com.config;
 
+import jnr.ffi.annotations.In;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationEvent;
@@ -36,7 +37,8 @@ public class AlipayConfig implements ApplicationListener {
         PathMatchingResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
             //加载resource文件(也可以加载resources)
-            Resource resources = resolver.getResource("classpath:alipay.properties");
+            Resource resources = resolver.getResource("classpath:./alipay.properties");
+            System.out.println("resource: " + resources.exists());//判断文件是否检索成功
             PropertiesFactoryBean config = new PropertiesFactoryBean();
             config.setLocation(resources);
             config.afterPropertiesSet();
@@ -44,6 +46,7 @@ public class AlipayConfig implements ApplicationListener {
             //循环遍历所有得键值对并且存入集合
             for (String key : prop.stringPropertyNames()) {
                 map.put(key, (String) prop.get(key));
+                System.out.println(key +" : "+ (String) prop.get(key));
             }
         } catch (Exception e) {
             new Exception("配置文件加载失败");
