@@ -1,6 +1,9 @@
 package com.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 import org.hibernate.validator.constraints.NotBlank;
 
 import javax.validation.constraints.NotNull;
@@ -14,8 +17,14 @@ import java.io.Serializable;
  * @author ajiu
  * @since 2021-08-09
  */
+@AllArgsConstructor//全参构造
+@NoArgsConstructor//无参构造
+@Accessors(chain = true)//链式写法
 @Data
 public class CreateOrderRequest implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     /**
      * 商品id
      */

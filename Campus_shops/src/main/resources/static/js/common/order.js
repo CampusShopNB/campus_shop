@@ -1,6 +1,12 @@
 function createOrder() {
+    var layer;
+    var util;
+    layui.use(['layer','util'], function(){
+        layer = layui.layer;
+        util = layui.util;
+    });
     var object = new Object();
-    object["commid"] = goodid;   //这里这里这里
+    object["commid"] = goodid;
     object["receiverName"] = $("#receiverName").text();
     object["receiverTel"] = $("#receiverTel").text();
     object["address"] = $("#address").text();

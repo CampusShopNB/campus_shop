@@ -3,7 +3,11 @@
 
 <script type="text/javascript" th:src="@{/static/js/common/order.js}"></script>
 <script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
-<script th:inline="javascript">
+<script type="text/javascript" th:src="@{/static/layui/layui.all.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/jquery/dist/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/layui/jquery.min.js}"></script>
+<script type="text/css" src="@{/static/layuiadmin/style/login.css"></script>
+<script inline="javascript">
   var goodid =  [[${session.goodid}]];
 </script>
 <head>
@@ -20,21 +24,21 @@
     <div class="layui-form-item">
       <div class="layui-row">
         <div class="layui-col-xs7">
-          <input type="text" id="receiverName"  lay-verify="required" placeholder="您的称呼" class="layui-input">
+          <input type="text" id="receiverName"  lay-verify="required" placeholder="您的称呼" class="layui-input"/>
         </div>
       </div>
     </div>
     <div class="layui-form-item">
       <div class="layui-row">
         <div class="layui-col-xs7">
-          <input type="text" id="receiverTel"  lay-verify="required" placeholder="联系电话" class="layui-input">
+          <input type="text" id="receiverTel"  lay-verify="required" placeholder="联系电话" class="layui-input"/>
         </div>
       </div>
     </div>
     <div class="layui-form-item">
       <div class="layui-row">
         <div class="layui-col-xs7">
-          <input type="text" id="address"  lay-verify="required" placeholder="收件地址" class="layui-input">
+          <input type="text" id="address"  lay-verify="required" placeholder="收件地址" class="layui-input"/>
         </div>
       </div>
     </div>
