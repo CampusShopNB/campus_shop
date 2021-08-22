@@ -9,6 +9,8 @@
 <script type="text/css" src="@{/static/layuiadmin/style/login.css"></script>
 <script inline="javascript">
   var goodid =  [[${session.goodid}]];
+  //这里获取的gooid其实是错误的，session中存储的gooid是string，但是这种方式获取之后会自动从string类型的值转化为int，导致尾三位四舍五入，没有找到合适的解决办法
+  //可以用 + ""  是为了将int转化为string,虽然本身int就是错误的
 </script>
 <head>
     <meta charset="UTF-8">

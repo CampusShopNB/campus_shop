@@ -4,10 +4,13 @@ import com.alipay.api.AlipayApiException;
 import com.entity.Commodity;
 import com.entity.Order;
 import com.entity.OrderVo;
+import com.entity.UserInfo;
 import com.request.CreateOrderRequest;
 import com.service.CommodityService;
 import com.service.OrderService;
 import com.service.TradeService;
+import com.service.UserInfoService;
+import com.util.KeyUtil;
 import com.util.StatusCode;
 import com.vo.ResultVo;
 import org.springframework.beans.BeanUtils;
@@ -35,6 +38,8 @@ public class TradeController {
     private CommodityService commodityService;
     @Autowired
     private OrderService orderService;
+    @Autowired
+    private UserInfoService userinfoService;
 
     /**
      * 生成订单
@@ -44,14 +49,41 @@ public class TradeController {
     @PostMapping("/createOrder")
     public ResultVo createOrder(@RequestBody CreateOrderRequest request, HttpSession session){
         String userId = (String) session.getAttribute("userid");
-        String commid = request.getCommid();
+//        String commid = request.getCommid();//从request获取的是int类型值
+        String commid = (String) session.getAttribute("goodid");
+
+        //根据商品id得到商品实体类
         Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
+        //根据商品信息得到卖家id
+        String sellerid = commodity.getUserid();
+        //根据卖家id得到卖家name
+        UserInfo seller = userinfoService.LookUserinfo(sellerid);
+        String sellername = seller.getUsername();
+
         if(commodity.getCommstatus() == 1 ){
             // 新建订单
             Order order = new Order();
             BeanUtils.copyProperties(commodity, order);
+
+            //随机产生一个order的id
+            String id = KeyUtil.genUniqueKey();
+            order.setId(id);
+
+            order.setCommid(commid);
+            order.setCommname(commodity.getCommname());
+            order.setCommdesc(commodity.getCommdesc());
+            order.setThinkmoney(commodity.getThinkmoney());
+
+            //应该是商家售出时间，这里先暂时用当前时间。
+            order.setSoldtime(new Date());
+
             order.setBuyerid(userId);
             order.setBuyername((String) session.getAttribute("username"));
+            order.setSellerid(sellerid);
+            order.setSellername(sellername);
+            order.setOrderstatus(1);
+            order.setStartobuyer(0);
+            order.setStartoseller(0);
             try {
                 String result = tradeService.pay(new OrderVo().setOut_trade_no(order.getId())
                         .setSubject(commodity.getCommname())
@@ -62,7 +94,7 @@ public class TradeController {
                 return new ResultVo(false, StatusCode.ERROR,"支付失败");
             }
             commodityService.ChangeCommstatus(commid, 4);
-            order.setOrderstatus(1);
+
             orderService.addOrder(order);
             // 生成付款交易记录
             tradeService.addRecord(userId, commodity.getUserid(), commodity.getThinkmoney());

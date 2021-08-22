@@ -7,9 +7,12 @@ function createOrder() {
     });
     var object = new Object();
     object["commid"] = goodid;
-    object["receiverName"] = $("#receiverName").text();
-    object["receiverTel"] = $("#receiverTel").text();
-    object["address"] = $("#address").text();
+    // object["receiverName"] = $("#receiverName").text();
+    // object["receiverTel"] = $("#receiverTel").text();
+    // object["address"] = $("#address").text();
+    object["receiverName"] = document.getElementById("receiverName").value;
+    object["receiverTel"] = document.getElementById("receiverTel").value;
+    object["address"] = document.getElementById("address").value;
     var jsonData = JSON.stringify(object);
     $.ajax({
         url: "/createOrder",
