@@ -7,7 +7,7 @@
 
     <!-- 插入评论 -->
     <insert id="insertComment" parameterType="com.entity.Comment">
-        insert into comment (cid,commid,cuserid,spuserid,content) values (#{cid},#{commid},#{cuserid},#{spuserid},#{content})
+        insert into comment (cid,commid,cuserid,spuserid,content) value (#{cid},#{commid},#{cuserid},#{spuserid},#{content})
     </insert>
     <!-- 查询评论 -->
     <select id="queryComments" parameterType="java.lang.String" resultType="com.entity.Comment">

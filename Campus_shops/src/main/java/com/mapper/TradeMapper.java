@@ -12,6 +12,7 @@ import com.entity.Traderecord;
  * @author ajiu
  * @since 2021-08-09
  */
-public interface TradeMapper extends BaseMapper<Traderecord> {
+public interface TradeMapper{
+    Integer insertRecord(Traderecord traderecord);
 
 }

@@ -71,7 +71,7 @@ public class TradeController {
 
             order.setCommid(commid);
             order.setCommname(commodity.getCommname());
-            order.setCommdesc(commodity.getCommdesc());
+            order.setCommdesc("commodity.getCommdesc()");
             order.setThinkmoney(commodity.getThinkmoney());
 
             //应该是商家售出时间，这里先暂时用当前时间。

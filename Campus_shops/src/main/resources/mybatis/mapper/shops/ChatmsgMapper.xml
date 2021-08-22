@@ -4,7 +4,7 @@
 
     <!-- 插入发送的消息记录 -->
   <insert id="insertChatmsg" parameterType="com.entity.chat.ChatMsg">
-    insert into chatmsg (senduserid, reciveuserid, msgtype, content)values (#{senduserid}, #{reciveuserid},#{msgtype}, #{content})
+    insert into chatmsg (senduserid, reciveuserid, msgtype, content)values (#{senduserid}, #{reciveuserid}, #{msgtype}, #{content})
   </insert>
 
     <!-- 查询聊天记录 -->

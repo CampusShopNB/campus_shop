@@ -5,10 +5,13 @@ import com.entity.OrderVo;
 import com.entity.Traderecord;
 import com.mapper.TradeMapper;
 import com.util.AlipayUtil;
+import com.util.KeyUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.math.BigDecimal;
+import java.util.Date;
+import java.util.Random;
 
 /**
  * <p>
@@ -26,7 +29,9 @@ public class TradeService{
     TradeMapper tradeMapper;
 
     public Integer addRecord(String from, String to, BigDecimal money){
-        return tradeMapper.insert(new Traderecord().setFrom(from).setTo(to).setMoney(money));
+        Random random = new Random();
+        String id = String.valueOf(random.nextInt(9999)+10000);
+        return tradeMapper.insertRecord(new Traderecord().setId(id).setFromid(from).setToid(to).setMoney(money).setTradetime(new Date()));
     }
 
     public String pay(OrderVo orderVo) throws AlipayApiException {

@@ -23,11 +23,11 @@ import java.util.Date;
 public class Traderecord {
 
     // 交易ID
-    private Integer id;
+    private String id;
     // 付款方
-    private String from;
+    private String fromid;
     // 收款方
-    private String to;
+    private String toid;
     // 交易金额
     private BigDecimal money;
     // 交易时间
