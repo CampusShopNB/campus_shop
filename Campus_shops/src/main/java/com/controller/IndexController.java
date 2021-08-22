@@ -232,7 +232,7 @@ public class IndexController {
     public String usercollect(){
         return "/user/collect/collectlist";
     }
-
+    
     /**
      * 用户售出记录
      * */

@@ -39,6 +39,8 @@ public class AdminController {
     private CommodityService commodityService;
     @Autowired
     private NoticesService noticesService;
+    @Autowired
+    private WantedgoodsService wantedgoodsService;
 
 
     /**
@@ -263,6 +265,15 @@ public class AdminController {
                 Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(commodity.getUserid()).setTpname("商品审核")
                         .setWhys("您的商品 <a href=/product-detail/"+commodity.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> 已通过审核，快去看看吧。");
                 noticesService.insertNotices(notices);
+
+                List<Wantedgoods>wantedgoodsList = wantedgoodsService.queryWantgoodsByCategory(new Wantedgoods().setWantcategory(commodity.getCategory()));
+                if(wantedgoodsList.size()!=0){
+                    for(Wantedgoods wg:wantedgoodsList){
+                        Notices n = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(wg.getUserid()).setTpname("求购商品")
+                                .setWhys("有人上传了与您的求购类别【"+wg.getWantcategory()+"】一致的商品，快去看看吧。");
+                        noticesService.insertNotices(n);
+                    }
+                }
             }
             return new ResultVo(true,StatusCode.OK,"操作成功");
         }
