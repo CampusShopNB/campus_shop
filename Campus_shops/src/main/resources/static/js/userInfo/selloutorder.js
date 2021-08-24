@@ -9,7 +9,8 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table','jq
             , limits: [20, 50, 100]
             , limit: 20
         }, cols: [[
-            {field: 'id', title: '订单编号',width:180, align:'center'}
+            {field: 'qid', title: 'ID',width:45, align:'center'}
+            , {field: 'id', title: '订单编号',width:129, align:'center'}
             , {field: 'commname', title: '商品名称', width: 150, align:'center'}
             , {field: 'commdesc', title: '商品描述', width: 200, align:'center'}
             , {field: 'thinkmoney', title: '售价', width: 80, align:'center'}
@@ -20,6 +21,16 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table','jq
             , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:220, align:'center'}
         ]]
         ,height: 500
+        , done: function (res, curr, count) {
+            var i=1;
+            $("[data-field='qid']").children().each(function () {
+                if($(this).text() == 'ID') {
+                    $(this).text("ID")
+                }else{
+                    $(this).text(i++)
+                }
+            });
+        }
     });
     //监听行工具事件
     table.on('tool(test)', function (obj) {

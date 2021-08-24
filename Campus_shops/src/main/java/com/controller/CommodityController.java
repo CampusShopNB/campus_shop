@@ -174,7 +174,7 @@ public class CommodityController {
         Integer i = commodityService.ChangeCommstatus(commid, commstatus);
         //修改成功
         if (i == 1){
-            /**如果商品已售出，则需要向售出数据表soldrecord添加一条记录
+            /**如果商品已售出，则需要向售出数据表soldrecord添加一条记录（现在soldrecord已经无效）
              * commstatus为4表示商品已经完成交易*/
             if (commstatus == 4){
                 //查询首页推荐，如果商品在首页推荐，需要根据commoid修改recommend表字段recomstatus=3.表示商品已经下架
@@ -377,7 +377,6 @@ public class CommodityController {
      * 最低价（minmoney）、最高价（maxmoney）
      * 后端根据session查出个人本校信息（school）
      * */
-
     @GetMapping("/list-number/{category}/{area}/{minmoney}/{maxmoney}")
     @ResponseBody
     public PageVo productListNumber(@PathVariable("category") String category, @PathVariable("area") String area,
@@ -399,7 +398,6 @@ public class CommodityController {
      * 最低价（minmoney）、最高价（maxmoney）、价格升序降序（price：0.不排序 1.升序 2.降序）
      * 后端根据session查出个人本校信息（school）
      * */
-
     @GetMapping("/product-listing/{category}/{nowPaging}/{area}/{minmoney}/{maxmoney}/{price}")
     @ResponseBody
     public ResultVo productlisting(@PathVariable("category") String category, @PathVariable("nowPaging") Integer page,

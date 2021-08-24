@@ -43,6 +43,7 @@
             }
         },
         mounted: function () {
+            //点击之后，查看消息列表。并取消新通知（小红点），见user-center.html中的方法justredspot，影响顶部小铃铛红点
             this.lookmessagelistData();
             this.CancelLatest();
             window.lookmessagelistData = this.lookmessagelistData;

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.WantedgoodsMapper">
+    <!-- 开启二级缓存 -->
+    <cache eviction="FIFO" flushInterval="60000" size="512" readOnly="true"/>
+
+    <!--新增记录-->
+    <insert id="insertWantgoods" parameterType="com.entity.Wantedgoods">
+        insert into wantedgoods (id,userid,wanttitle,wantcontent,wantcategory,expectprice,expectplace,createtime,updatetime,wantstatus) values (#{id},#{userid},#{wanttitle},#{wantcontent},#{wantcategory},#{expectprice},#{expectplace},#{createtime},#{updatetime},#{wantstatus})
+    </insert>
+
+    <!--通过主键。修改状态，字段wantstatus。在按钮中放主键。①自己下架时使用②管理员点击审核按钮时使用-->
+    <update id="updateWantStatus" parameterType="com.entity.Wantedgoods">
+        update wantedgoods set wantstatus=#{wantstatus} where id = #{id}
+    </update>
+
+    <!--根据id查询-->
+    <select id="queryWantgoodsById" resultType="com.entity.Wantedgoods">
+         select * from wantedgoods where id = #{id}
+    </select>
+
+    <!--查看所有待处理记录（在后台给管理员使用）
+     select * from wantedschool where wantstatus=0-->
+    <select id="queryAllUnprocessWantgoods" resultType="com.entity.Wantedgoods">
+        select * from wantedgoods where wantstatus=0
+    </select>
+
+    <!--查询所有待处理记录的总数（在后台给管理员使用）    select count(*)-->
+    <select id="queryAllUnprocessWantgoodsCount" resultType="java.lang.Integer">
+        select count(*) from wantedgoods where wantstatus=0
+    </select>
+
+    <!--用户中心、前台分页查看不同状态的求购记录-->
+    <select id="queryWantgoodsByStatus" resultType="com.entity.Wantedgoods">
+        select *
+        from wantedgoods
+        <where>
+            <if test="wantstatus != null">and wantstatus = #{wantstatus}</if>
+            <if test="userid != null">and userid = #{userid}</if>
+        </where>
+        order by updatetime limit #{page},#{count}
+    </select>
+
+    <!--用户中心分页查看不同状态的求购记录总数    select count(*)-->
+    <select id="queryWantgoodsCountByStatus" resultType="java.lang.Integer">
+        select count(*) from wantedgoods
+        <where>
+            <if test="wantstatus != null">and wantstatus = #{wantstatus}</if>
+            <if test="userid != null">and userid = #{userid}</if>
+        </where>
+    </select>
+
+
+    <select id="queryAdminAllByStatus" resultType="com.entity.Wantedgoods">
+        select *
+        from wantedgoods
+        <where>
+            <if test="wantstatus != null">and wantstatus = #{wantstatus}</if>
+        </where>
+        order by updatetime limit #{page},#{count}
+    </select>
+
+
+    <select id="queryAdminCountByStatus" resultType="java.lang.Integer">
+        select count(*)
+        from wantedgoods
+        <where>
+            <if test="wantstatus != null">and wantstatus = #{wantstatus}</if>
+        </where>
+    </select>
+
+    <!--根据分类查询-->
+    <select id="queryWantgoodsByCategory" resultType="com.entity.Wantedgoods">
+        select *
+        from wantedgoods
+        <where>
+            <if test="wantcategory != null">and wantcategory = #{wantcategory}</if>
+            <if test="userid != null">and userid = #{userid}</if>
+        </where>
+    </select>
+
+</mapper>

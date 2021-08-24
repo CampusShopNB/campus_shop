@@ -85,6 +85,8 @@ var productList = new Vue({
                             ,limits: [16, 32, 48]
                             , layout: ['count', 'prev', 'page', 'next']
                             , jump: function (obj) {
+                                //共N条的背景色，与页面背景色保持一致
+                                $(".layui-laypage-count").css("background-color","#F3EBE9");
                                 lookproductlistData(obj.curr);
                             }
                         });

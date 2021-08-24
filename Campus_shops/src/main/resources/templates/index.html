@@ -20,14 +20,18 @@
     <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}"/>
     <!-- CSS Library-->
 
+
     <!--轮播图css-mybanner-->
     <!-- Minify Version 显示背景图和左右按钮-->
     <link rel="stylesheet" th:href="@{/static/css/mybanner/plugins.min.css}">
     <link rel="stylesheet" th:href="@{/static/css/mybanner/style.min.css}">
 
+
     <!--中间分割css-mediateSeg-->
     <!-- Template CSS -->
     <link rel="stylesheet" th:href="@{/static/css/mediateSeg/mystyle-starter.css}">
+
+
     <!--最新商品和最新公告的分割线split line-->
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
@@ -36,6 +40,9 @@
     <link th:href="@{/static/css/splitLine/color.css}" rel="stylesheet">
     <link th:href="@{/static/css/splitLine/style.css}" rel="stylesheet">
 
+
+
+    
 
     <link rel="stylesheet" th:href="@{/static/plugins/bootstrap/dist/css/bootstrap.min.css}">
     <link rel="stylesheet" th:href="@{/static/plugins/owl-carousel/assets/owl.carousel.css}">
@@ -62,10 +69,10 @@
 <!--[if IE 9]>
 <body class="ie9 lt-ie10"><![endif]-->
 <body class="ps-loading">
-<header class="header myheader" style="margin-top: -10px;" th:fragment="myheader">
+<header class="header myheader" th:fragment="myheader">
     <div class="header__top header-color" style="border: none;">
-        <div class="container-fluid" >
-            <div class="row no-gutters">
+        <div class="container-fluid">
+            <div class="row no-gutters" id="indextopdiv" style="margin-top:0px">
                 <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 ">
                     <p>校园二手商城，让您的闲置商品不再闲置，发现更多好玩好物！</p>
                 </div>
@@ -115,6 +122,8 @@
                     <li class="menu-item menu-item-has-children dropdown"><span>|</span></li>
                     <li class="menu-item menu-item-has-children has-mega-menu"><a th:href="@{/product-listing}">商品清单</a></li>
                     <li class="menu-item menu-item-has-children dropdown"><span>|</span></li>
+					<li class="menu-item menu-item-has-children has-mega-menu"><a th:href="@{/wantgoodslist}">求购列表</a></li>
+                    <li class="menu-item menu-item-has-children dropdown"><span>|</span></li>
                     <li class="menu-item menu-item-has-children dropdown"><a th:href="@{/user/newslist}">网站公告</a></li>
                     <!--<li class="menu-item menu-item-has-children dropdown"><span>|</span></li>
                     <li class="menu-item menu-item-has-children dropdown"><a th:href="@{/about}">关于我们</a></li>-->
@@ -163,7 +172,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 order-2 order-lg-1 align-self-center">
-                                    <div class="slide-content text-black">
+                                    <div class="slide-content text-black" style="margin-left: 75px">
                                         <!--                                <span class="offer">555% Off66</span>-->
                                         <!--                                <h2 class="title">New Plant666</h2>-->
                                         <!--                                <p class="short-desc">Pronia, With 100% Natural, Organic &amp; Plant Shop.999</p>-->
@@ -208,7 +217,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 order-2 order-lg-1 align-self-center">
-                                    <div class="slide-content text-black">
+                                    <div class="slide-content text-black" style="margin-left: 75px">
                                         <!--                                    <span class="offer">65% Off666</span>-->
                                         <!--                                    <h2 class="title">New Plant6666</h2>-->
                                         <!--                                    <p class="short-desc">Pronia, With 100% Natural, Organic &amp; Plant Shop.</p>-->
@@ -250,7 +259,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 order-2 order-lg-1 align-self-center">
-                                    <div class="slide-content text-black">
+                                    <div class="slide-content text-black" style="margin-left: 75px">
                                         <!--                                    <span class="offer">65% Off666</span>-->
                                         <!--                                    <h2 class="title">New Plant666</h2>-->
                                         <!--                                    <p class="short-desc">Pronia, With 100% Natural, Organic &amp; Plant Shop.</p>-->
@@ -294,7 +303,7 @@
                         <div class="container">
                             <div class="row">
                                 <div class="col-lg-6 order-2 order-lg-1 align-self-center">
-                                    <div class="slide-content text-black">
+                                    <div class="slide-content text-black" style="margin-left: 75px">
                                         <!--                                    <span class="offer">65% Off666</span>-->
                                         <!--                                    <h2 class="title">New Plant66</h2>-->
                                         <!--                                    <p class="short-desc">Pronia, With 100% Natural, Organic &amp; Plant Shop.</p>-->
@@ -389,7 +398,8 @@
                                                     {{ commodity.school }}
                                                 </p>
                                                 <span class="ps-shoe__price">
-                                            <del> ￥ {{ commodity.orimoney }}</del> ￥ {{ commodity.thinkmoney }}
+<!--                                            <del> ￥ {{ commodity.orimoney }}</del>-->
+                                                    ￥ {{ commodity.thinkmoney }}
                                         </span>
                                             </div>
                                         </div>
@@ -402,18 +412,20 @@
             </div>
         </div>
     </div>
-    <!--<div class="ps-section&#45;&#45;offer">
-        <div class="ps-column">
-            <a class="ps-offer" th:href="@{/product-listing}" target="_blank">
-                <img th:src="@{/static/images/banner/home-banner-1.png}">
-            </a>
-        </div>
-        <div class="ps-column">
-            <a class="ps-offer" th:href="@{/product-listing}" target="_blank">
-                <img th:src="@{/static/images/banner/home-banner-2.png}">
-            </a>
-        </div>
-    </div>-->
+
+    <!--    <div class="ps-section&#45;&#45;offer">-->
+    <!--        <div class="ps-column">-->
+    <!--            <a class="ps-offer" th:href="@{/product-listing}" target="_blank">-->
+    <!--                <img th:src="@{/static/images/banner/home-banner-1.png}">-->
+    <!--            </a>-->
+    <!--        </div>-->
+    <!--        <div class="ps-column">-->
+    <!--            <a class="ps-offer" th:href="@{/product-listing}" target="_blank">-->
+    <!--                <img th:src="@{/static/images/banner/home-banner-2.png}">-->
+    <!--            </a>-->
+    <!--        </div>-->
+    <!--    </div>-->
+
     <!--中间的banner分割start-->
     <!--    height: 350px;-->
 
@@ -435,6 +447,9 @@
         </div>
     </section>
     <!--中间的banner分割end-->
+	
+	
+	
     <div class="ps-section ps-section--top-sales ps-owl-root mylatest mt-100">
         <div class="ps-container">
             <div class="ps-section__header mb-50">
@@ -459,7 +474,7 @@
                                     <div class="ps-shoe">
                                         <div class="ps-shoe__thumbnail">
                                             <div class="ps-badge"><span>New</span></div>
-                                            <a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a>
+<!--                                            <a class="ps-shoe__favorite" href="#"><i class="ps-icon-heart"></i></a>-->
                                             <img v-bind:src="commodity.image" alt="商品主图" style="height:300px">
                                             <a class="ps-shoe__overlay" :href="'/product-detail/'+commodity.commid"
                                                target="_blank"></a>
@@ -481,7 +496,8 @@
                                                     {{ commodity.school }}
                                                 </p>
                                                 <span class="ps-shoe__price">
-                                            <del> ￥ {{ commodity.orimoney }}</del> ￥ {{ commodity.thinkmoney }}
+<!--                                            <del> ￥ {{ commodity.orimoney }}</del>-->
+                                                    ￥ {{ commodity.thinkmoney }}
                                         </span>
                                             </div>
                                         </div>
@@ -494,6 +510,9 @@
             </div>
         </div>
     </div>
+
+
+
     <div class="boxed_wrapper" style="margin-top: 50px">
         <!--selection有个class 为bg-color-1，是灰色背景-->
         <!-- feature-section -->
@@ -560,8 +579,9 @@
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12" v-for="news in newsData" :key="news.id">
                         <div class="ps-post">
                             <div class="ps-post__thumbnail"><a class="ps-post__overlay" style="cursor: pointer" @click="showNewsDetail(news.id)"></a>
-                                <img :src="news.image" alt=""></div>
-                            <div class="ps-post__content"><a class="ps-post__title" href="#">{{news.newstitle}}</a>
+<!--                                <img :src="news.image" alt="">-->
+                            </div>
+                            <div class="ps-post__content"><a class="ps-post__title" @click="showNewsDetail(news.id)">{{news.newstitle}}</a>
                                 <p class="ps-post__meta"><span>By:<a class="mr-5" href="#">网站管理员</a></span>
                                     -<span class="ml-5">{{news.createtime}}</span></p>
                                 <p>{{news.newsdesc}}</p><a class="ps-morelink" style="cursor: pointer" @click="showNewsDetail(news.id)">阅读全文<i
@@ -649,13 +669,23 @@
 </main>
  <div>
 <!-- JS Library-->
-     <!--轮播图js-mybanner-->
-     <!-- Minify Version -->
-     <script th:src="@{/static/js/mybanner/plugins.min.js}"></script>
 
-     <!--最新商品和最新公告的分割线split line-->
-     <!-- main-js -->
-     <script th:src="@{/static/js/splitLine/script.js}"></script>
+<!--轮播图js-mybanner-->
+<!-- Minify Version -->
+<script th:src="@{/static/js/mybanner/plugins.min.js}"></script>
+
+
+
+<!--最新商品和最新公告的分割线split line-->
+<!-- main-js -->
+<script th:src="@{/static/js/splitLine/script.js}"></script>
+
+
+
+
+
+
+
 
 <script type="text/javascript" th:src="@{/static/plugins/jquery/dist/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/plugins/bootstrap/dist/js/bootstrap.min.js}"></script>

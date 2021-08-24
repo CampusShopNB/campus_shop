@@ -1,69 +1,69 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="ch">
 <head>
-  <base th:href="${#request.getScheme()}+'://'+${#request.getServerName()}+':'+${#request.getServerPort()}+${#request.getContextPath()}">
-  <meta charset="UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>推荐列表</title>
-  <link rel="stylesheet" type="text/css" th:href="@{/static/layui/css/layui.css}"/>
-  <link rel="stylesheet" type="text/css" th:href="@{/static/css/animate.css}"/>
-  <script th:src="@{/static/layui/jquery.min.js}"></script>
-  <script th:inline="javascript">
-    var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
-  </script>
+    <base th:href="${#request.getScheme()}+'://'+${#request.getServerName()}+':'+${#request.getServerPort()}+${#request.getContextPath()}">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>推荐列表</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/layui/css/layui.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/animate.css}"/>
+    <script th:src="@{/static/layui/jquery.min.js}"></script>
+    <script th:inline="javascript">
+        var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
+    </script>
 </head>
 <body style="margin:10px;background-color: white">
 <div class="wrapper wrapper-content">
-  <div class="row">
-    <div class="col-sm-12">
-      <form class="layui-form" action="">
-        <div class="layui-form-item">
-          <label class="layui-form-label" style="font-size:20px">选择状态</label>
-          <div class="layui-input-inline">
-            <select name="type" lay-filter="types">
-              <option th:title="100">全部商品</option>
-              <option th:title="0">待审核</option>
-              <option th:title="1">审核通过</option>
-              <option th:title="2">审核不通过</option>
-              <option th:title="3">商品已下架</option>
-            </select>
-          </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label" style="font-size:20px">选择状态</label>
+                    <div class="layui-input-inline">
+                        <select name="type" lay-filter="types">
+                            <option th:title="100">全部商品</option>
+                            <option th:title="0">待审核</option>
+                            <option th:title="1">审核通过</option>
+                            <option th:title="2">审核不通过</option>
+                            <option th:title="3">商品已下架</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+            <div class="animated fadeIn">
+                <!--关于recomstatus的取值：
+                    操作：通过、不通过-->
+                <table class="layui-hide" id="recommend" lay-filter="test"></table>
+
+                <!--表格列名的修改，见recommend.js的toolBar，参考自buyinorder.html-->
+                <script type="text/html" id="recommendStatusDemo">
+                    {{# if(d.recomstatus==0){ }}
+                    待审核
+                    {{# }  }}
+                    {{# if(d.recomstatus==1){ }}
+                    审核通过
+                    {{# }  }}
+                    {{# if(d.recomstatus==2){ }}
+                    审核不通过
+                    {{# }  }}
+                    {{# if(d.recomstatus==3){ }}
+                    商品已下架
+                    {{# }  }}
+                </script>
+
+
+                <script type="text/html" id="barDemo">
+                    <a class="layui-btn layui-btn-xs" lay-event="xiangqing">详情</a>
+                    <!--html注释对layui tpl似乎无用-->
+                    {{# if(d.recomstatus==0){ }}
+                        <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="shenhe">通过</a>
+                        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="weigui">不通过</a>
+                    {{# } }}
+                </script>
+            </div>
         </div>
-      </form>
-      <div class="animated fadeIn">
-        <!--关于recomstatus的取值：
-            操作：通过、不通过-->
-        <table class="layui-hide" id="recommend" lay-filter="test"></table>
-
-        <!--表格列名的修改，见recommend.js的toolBar，参考自buyinorder.html-->
-        <script type="text/html" id="recommendStatusDemo">
-          {{# if(d.recomstatus==0){ }}
-          待审核
-          {{# }  }}
-          {{# if(d.recomstatus==1){ }}
-          审核通过
-          {{# }  }}
-          {{# if(d.recomstatus==2){ }}
-          审核不通过
-          {{# }  }}
-          {{# if(d.recomstatus==3){ }}
-          商品已下架
-          {{# }  }}
-        </script>
-
-
-        <script type="text/html" id="barDemo">
-          <a class="layui-btn layui-btn-xs" lay-event="xiangqing">详情</a>
-          <!--html注释对layui tpl似乎无用-->
-          {{# if(d.recomstatus==0){ }}
-          <a class="layui-btn layui-btn-xs layui-btn-normal" lay-event="shenhe">通过</a>
-          <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="weigui">不通过</a>
-          {{# } }}
-        </script>
-      </div>
     </div>
-  </div>
 </div>
 </body>
 <script th:src="@{/static/layui/layui.js}"></script>

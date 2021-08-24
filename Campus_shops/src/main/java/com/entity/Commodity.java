@@ -66,7 +66,7 @@ public class Commodity implements Serializable {
      */
     private Date endtime;
     /**
-     * 0违规 1正常 2删除  3待审核
+     * 0违规 1正常 2删除  3待审核  4已售出
      */
     private Integer commstatus;
     /**

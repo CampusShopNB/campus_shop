@@ -131,7 +131,7 @@ public class LoginController {
     @PostMapping("/user/register")
     public  ResultVo userReg(@RequestBody UserInfo userInfo, HttpSession session) {
         String username = userInfo.getUsername();
-        String password = userInfo.getPassword();;
+        String password = userInfo.getPassword();
         String mobilephone = userInfo.getMobilephone();
 //        String vercode = userInfo.getVercode();
         Login login = new Login().setMobilephone(mobilephone);

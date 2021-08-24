@@ -10,12 +10,12 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
             , limit: 20
         }, cols: [[
             {field: 'qid', title: 'ID',width:60, align:'center'}
-            , {field: 'commname', title: '名称', width: 250, align:'center'}
-            , {field: 'commdesc', title: '描述', width: 600, align:'center'}
+            , {field: 'commname', title: '名称', width: 182, align:'center'}
+            , {field: 'commdesc', title: '描述', width: 490, align:'center'}
             , {field: 'username', title: '发布者', width: 110, align:'center'}
             , {field: 'school', title: '学校', width: 130, align:'center'}
             , {field: 'soldtime', title: '收藏时间', width: 160, align:'center'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:140, align:'center'}
+            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:155, align:'center'}
         ]]
         ,height: 500
         , done: function (res, curr, count) {

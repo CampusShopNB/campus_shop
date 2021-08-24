@@ -17,7 +17,7 @@ layui.use(['form', 'element', 'util', 'carousel', 'laypage', 'layer','table'], f
             , {field: 'school', title: '学校', width: 200, align:'center'}
             , {field: 'faculty', title: '院系', width: 160, align:'center'}
             , {field: 'roleid', title: '身份', width: 100, align:'center'}
-            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:120, align:'center'}
+            , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:197, align:'center'}
         ]], done: function (res, curr, count) {
             $("[data-field='roleid']").children().each(function () {
                 if($(this).text() == '身份') {

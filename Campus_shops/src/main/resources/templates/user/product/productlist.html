@@ -56,9 +56,9 @@
                     {{# } }}
                     <!--commstatus不为0,2,3,4，则为1，表示正常状态(已经通过审核)-->
                     {{# if(d.commstatus!=4 && d.commstatus!=0){ }}
-                    {{# if(d.askrecomstatus!=1){ }}
-                    <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="askforrecommend">申请推荐</a>
-                    {{# } }}
+                        {{# if(d.askrecomstatus!=1){ }}
+                        <a class="layui-btn layui-btn-xs layui-btn-danger" lay-event="askforrecommend">申请推荐</a>
+                        {{# } }}
                     <a class="layui-btn layui-btn-xs layui-btn-warm" lay-event="yishou">下架</a>
                     {{# } }}
                     {{# } }}

@@ -34,6 +34,9 @@ public class AdminController {
     private CommodityService commodityService;
     @Autowired
     private NoticesService noticesService;
+    @Autowired
+    private WantedgoodsService wantedgoodsService;
+
 
     /**
      * 管理员跳转登录
@@ -52,7 +55,7 @@ public class AdminController {
     @ResponseBody
     @PostMapping("/admin/login")
     public ResultVo adminlogin(@RequestBody Login login, HttpSession session){
-        System.out.println("测试是否进入！！！");
+        //System.out.println("测试是否进入！！！");
         String account = login.getUsername();
         String password = login.getPassword();
         String vercode = login.getVercode();
@@ -125,22 +128,6 @@ public class AdminController {
         List<UserInfo> userInfoList = userInfoService.queryAllUserInfo((page - 1) * limit, limit,roleid,userstatus);
         Integer dataNumber = userInfoService.queryAllUserCount(roleid);
         return new LayuiPageVo("",0,dataNumber,userInfoList);
-    }
-
-    /**
-     * 跳转推荐商品列表
-     */
-    @GetMapping("/admin/recommendlist")
-    public String adminRecommendList() {
-        return "/admin/recommend/recommend";
-    }
-
-    /**
-     * 跳转学校审核列表
-     */
-    @GetMapping("/admin/wantedschoollist")
-    public String adminSchoolList() {
-        return "/admin/school/school";
     }
 
     /**
@@ -238,6 +225,22 @@ public class AdminController {
     }
 
     /**
+     * 跳转推荐商品列表
+     */
+    @GetMapping("/admin/recommendlist")
+    public String adminRecommendList() {
+        return "/admin/recommend/recommend";
+    }
+
+    /**
+     * 跳转学校审核列表
+     */
+    @GetMapping("/admin/wantedschoollist")
+    public String adminSchoolList() {
+        return "/admin/school/school";
+    }
+
+    /**
      * 分页管理员查看各类商品信息
      *前端传入页码、分页数量
      *前端传入商品信息状态码（commstatus）-->全部:100，违规:0，已审核:1，待审核:3 已完成:4
@@ -293,6 +296,17 @@ public class AdminController {
                 Notices notices = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(commodity.getUserid()).setTpname("商品审核")
                         .setWhys("您的商品 <a href=/product-detail/"+commodity.getCommid()+" style=\"color:#08bf91\" target=\"_blank\" >"+commodity.getCommname()+"</a> 已通过审核，快去看看吧。");
                 noticesService.insertNotices(notices);
+
+                List<Wantedgoods>wantedgoodsList = wantedgoodsService.queryWantgoodsByCategory(new Wantedgoods().setWantcategory(commodity.getCategory()));
+                if(wantedgoodsList.size()!=0){
+                    for(Wantedgoods wg:wantedgoodsList){
+                        if(!((commodity.getUserid()).equals(wg.getUserid()))){
+                            Notices n = new Notices().setId(KeyUtil.genUniqueKey()).setUserid(wg.getUserid()).setTpname("求购商品")
+                                    .setWhys("有人上传了与您的求购类别【"+wg.getWantcategory()+"】一致的商品，快去看看是不是您想要的吧。");
+                            noticesService.insertNotices(n);
+                        }
+                    }
+                }
             }
             return new ResultVo(true,StatusCode.OK,"操作成功");
         }

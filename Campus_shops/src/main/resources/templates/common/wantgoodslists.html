@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<!--[if IE 7]>
+<html class="ie ie7"><![endif]-->
+<!--[if IE 8]>
+<html class="ie ie8"><![endif]-->
+<!--[if IE 9]>
+<html class="ie ie9"><![endif]-->
+<html xmlns:th="http://www.thymeleaf.org" xmlns:v-bind="http://www.w3.org/1999/xhtml" lang="ch">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="author" content="Nghia Minh Luong">
+    <meta name="keywords" content="Default Description">
+    <meta name="description" content="Default keyword">
+    <title>求购商品列表</title>
+
+
+    <!-- 求购清单列表 wantgoods CSS-->
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" th:href="@{/static/css/wantgoods/vendor/bootstrap.min.css}">
+    <!-- Icon Font CSS -->
+    <link rel="stylesheet" th:href="@{/static/css/wantgoods/vendor/font-awesome.min.css}">
+    <!-- Main Style CSS -->
+    <link rel="stylesheet" th:href="@{/static/css/wantgoods/style.css}">
+
+
+    <!-- Fonts-->
+    <link rel="stylesheet" th:href="@{/static/css/fontsgoogleapis.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/ps-icon/style.css}">
+    <!-- CSS Library-->
+    <link rel="stylesheet" th:href="@{static/plugins/bootstrap/dist/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/owl-carousel/assets/owl.carousel.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/jquery-bar-rating/dist/themes/fontawesome-stars.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/slick/slick/slick.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/bootstrap-select/dist/css/bootstrap-select.min.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/Magnific-Popup/dist/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/jquery-ui/jquery-ui.min.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/revolution/css/settings.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/revolution/css/layers.css}">
+    <link rel="stylesheet" th:href="@{static/plugins/revolution/css/navigation.css}">
+    <!-- Custom-->
+    <link rel="stylesheet" th:href="@{/static/layui/css/layui.css}" media="all">
+    <link rel="stylesheet" th:href="@{static/css/style.css}">
+    <script type="text/javascript" th:src="@{/static/js/vue.js}"></script>
+    <script type="text/javascript" th:src="@{/static/plugins/jquery/dist/jquery.min.js}"></script>
+    <!--HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!--WARNING: Respond.js doesn't work if you view the page via file://-->
+    <!--[if lt IE 9]>
+    <script th:src="@{/static/js/html5shiv.js}"></script>
+    <script th:src="@{/static/js/respond.min.js}"></script>
+    <![endif]-->
+    <script th:inline="javascript">
+        let basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
+        let userid = [[${session.userid}]];
+    </script>
+</head>
+<!--[if IE 7]>
+<body class="ie7 lt-ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 8]>
+<body class="ie8 lt-ie9 lt-ie10"><![endif]-->
+<!--[if IE 9]>
+<body class="ie9 lt-ie10"><![endif]-->
+<body class="ps-loading">
+<!--<div class="header--sidebar"></div>
+<header class="header">
+    <div th:include="~{index :: myheader}"></div>
+</header>
+<div class="header-services">
+    <div th:include="~{index :: myhdservices}"></div>
+</div>-->
+
+
+<!--列表的css和轮播冲突了，这里手动引入。
+    另外，由于输入框一聚焦就变白色，加了背景色也没用style="background-color: EAEAEA;"
+    所以直接删除-->
+<!--<header class="header">-->
+<!--    <div class="header__top">-->
+<!--        <div class="container-fluid">-->
+<!--            <div class="row" style="margin-top: -29px;">-->
+<!--                <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12">-->
+<!--                    <p>校园二手商城，让您的闲置商品不再闲置，发现更多好玩好物！</p>-->
+<!--                </div>-->
+<!--                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12">-->
+<!--                    <div class="header__actions">-->
+<!--                        <div th:if="${session.userid!=null}" style="line-height:40px">-->
+<!--                            <img src="" style="width:30px;display: none" id="avatars" class="layui-circle">-->
+<!--                            <a th:href="@{/user/center}" target="_blank"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;个人中心&nbsp;&nbsp;</a>-->
+<!--                            &lt;!&ndash;<a href="//www.runoob.com" target="_blank"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;个人主页&nbsp;&nbsp;</a>&ndash;&gt;-->
+<!--                            &lt;!&ndash;<a href="//www.runoob.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;消息通知&nbsp;&nbsp;</a>&ndash;&gt;-->
+<!--                            <a th:href="@{/user/logout}"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;退出登录</a>-->
+<!--                            <script>-->
+<!--                                $.ajax({-->
+<!--                                    url: basePath + "/user/avatar",-->
+<!--                                    data: "",-->
+<!--                                    contentType: "application/json;charset=UTF-8",-->
+<!--                                    type: "post",-->
+<!--                                    dataType: "json",-->
+<!--                                    success: function (data) {-->
+<!--                                        $("#avatars").attr("src", data.data.uimage);-->
+<!--                                        $("#avatars").show();-->
+<!--                                    }, error: function () {-->
+<!--                                        layer.msg('系统错误', {-->
+<!--                                            time: 1500,-->
+<!--                                            icon: 2,-->
+<!--                                            offset: '150px'-->
+<!--                                        });-->
+<!--                                    }-->
+<!--                                });-->
+<!--                            </script>-->
+<!--                        </div>-->
+<!--                        <a th:if="${session.userid==null}" th:href="@{/login}">登录 & 注册</a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <nav class="navigation">-->
+<!--        <div class="container-fluid">-->
+<!--            <div class="navigation__column left">-->
+<!--                <div class="header__logo"><a class="ps-logo" th:href="@{/}">-->
+<!--                    <img th:src="@{/static/images/logo.png}" alt=""></a></div>-->
+<!--            </div>-->
+<!--            <div class="navigation__column center">-->
+<!--                <ul class="main-menu menu">-->
+<!--                    &lt;!&ndash;不明白为什么首页偏上，所以加个 style="margin-top: 7px;"&ndash;&gt;-->
+<!--                    <li class="menu-item menu-item-has-children dropdown" style="margin-top: 7px;"><a th:href="@{/}">首页</a>-->
+<!--                    <li class="menu-item menu-item-has-children has-mega-menu"><a th:href="@{/product-listing}">商品清单</a>-->
+<!--                    <li class="menu-item menu-item-has-children has-mega-menu"><a th:href="@{/wantgoodslist}">求购列表</a>-->
+<!--                    <li class="menu-item menu-item-has-children dropdown"><a th:href="@{/user/newslist}">网站公告</a></li>-->
+<!--                    <li class="menu-item menu-item-has-children dropdown"><a th:href="@{/about}">关于我们</a></li>-->
+<!--                    <li class="menu-item menu-item-has-children dropdown"><a th:href="@{/contacts}">联系我们</a></li>-->
+<!--                </ul>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </nav>-->
+<!--</header>-->
+<!--列表的css和轮播冲突了，这里手动引入-->
+
+
+<header class="header" style="margin-top: -30px; border-bottom:none;">
+    <div class="header__top header-color" style="border: none;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6 col-md-8 col-sm-6 col-xs-12 ">
+                    <p>校园二手商城，让您的闲置商品不再闲置，发现更多好玩好物！</p>
+                </div>
+                <div class="col-lg-6 col-md-4 col-sm-6 col-xs-12">
+                    <div class="header__actions">
+                        <div th:if="${session.userid!=null}" style="line-height:40px;border: none">
+                            <img src="" style="width:30px;display: none" id="avatars" class="layui-circle">
+                            <a th:href="@{/user/center}" target="_blank" style="border: none"><i class="fa fa-user" aria-hidden="true"></i>&nbsp;个人中心&nbsp;&nbsp;</a>
+                            <!--<a href="//www.runoob.com" target="_blank"><i class="fa fa-user-circle" aria-hidden="true"></i>&nbsp;个人主页&nbsp;&nbsp;</a>-->
+                            <!--<a href="//www.runoob.com"><i class="fa fa-envelope-o" aria-hidden="true"></i>&nbsp;消息通知&nbsp;&nbsp;</a>-->
+                            <a th:href="@{/user/logout}" style="border: none"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;退出登录</a>
+                            <script>
+                                $.ajax({
+                                    url: basePath + "/user/avatar",
+                                    data: "",
+                                    contentType: "application/json;charset=UTF-8",
+                                    type: "post",
+                                    dataType: "json",
+                                    success: function (data) {
+                                        $("#avatars").attr("src",data.data.uimage);
+                                        $("#avatars").show();
+                                    },error:function () {
+                                        layer.msg('系统错误', {
+                                            time: 1500,
+                                            icon: 2,
+                                            offset: '150px'
+                                        });
+                                    }
+                                });
+                            </script>
+                        </div>
+                        <a th:if="${session.userid==null}" th:href="@{/login}" style="border: none;">登录 & 注册</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <nav class="navigation">
+        <div class="container-fluid header-color">
+            <div class="navigation__column left">
+                <div class="header__logo"><a class="ps-logo" th:href="@{/}">
+                    <img th:src="@{/static/images/logo.png}" alt=""></a></div>
+            </div>
+            <div class="navigation__column center">
+                <ul class="main-menu menu">
+                    <li class="menu-item menu-item-has-children dropdown" style="margin-top: 7px"><a th:href="@{/}">首页</a></li>
+                    <li class="menu-item menu-item-has-children dropdown"><span>|</span></li>
+                    <li class="menu-item menu-item-has-children has-mega-menu"><a th:href="@{/product-listing}">商品清单</a></li>
+                    <li class="menu-item menu-item-has-children dropdown"><span>|</span></li>
+                    <li class="menu-item menu-item-has-children has-mega-menu"><a th:href="@{/wantgoodslist}">求购列表</a></li>
+                    <li class="menu-item menu-item-has-children dropdown"><span>|</span></li>
+                    <li class="menu-item menu-item-has-children dropdown"><a th:href="@{/user/newslist}">网站公告</a></li>
+                    <!--<li class="menu-item menu-item-has-children dropdown"><span>|</span></li>
+                    <li class="menu-item menu-item-has-children dropdown"><a th:href="@{/about}">关于我们</a></li>-->
+                    <!--<li class="menu-item menu-item-has-children dropdown"><a th:href="@{/contacts}">联系我们</a></li>-->
+                </ul>
+            </div>
+            <div class="navigation__column right">
+                <form class="ps-search--header layui-form" th:action="@{/product-search}" method="get">
+                    <input class="form-control" type="text" name="keys"
+                           lay-verify="required" lay-reqtext="商品关键字不能为空" placeholder="请输入关键字">
+                    <button type="submit" class="layui-btn" lay-submit="" lay-filter="tosearch"><i class="ps-icon-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+
+<main class="ps-main" style="background-color: #F3EBE9;">
+    <div class="ps-products-wrap pt-80 pb-80" id="wantgoodslist">
+
+        <div>
+            <!--去掉class="ps-products" data-mh="product-listing"，列表就能居中-->
+
+            <!--这里原本放了class为ps-product-action的div，是搜索表单，里面有form-->
+
+
+            <!--<div class="ps-product__columns">
+                            <div class="layui-container" style="width:100%">
+                                <div class="layui-row layui-col-space5">-->
+
+            <div>
+                <div class="layui-container">
+                    <div class="layui-row">
+
+                        <!-- 求购清单列表 Start -->
+                        <div class="section section-padding">
+                            <div class="container">
+                                <div class="section-title">
+                                    <h2 class="title">商品求购列表</h2>
+                                    <p>这里是商品求购列表</p>
+                                </div>
+
+                                <!-- List Wrap Start -->
+                                <div class="job-list-wrap" v-for="wantgoods in wantgoodslistData" :key="wantgoods.id">
+                                    <!-- List Start  th:href="@{/seller/home}"-->
+                                    <a class="job-list">
+                                        <div class="company-logo col-auto">
+                                            <img v-bind:src="wantgoods.uimage"
+                                                 alt="用户头像" style="width:100px;border-radius:50%;cursor:pointer">
+                                        </div>
+                                        <div class="salary-type col-auto order-sm-3">
+                                            <span class="salary-range" style="color: red;">价格上限：￥{{ wantgoods.expectprice }}</span>
+                                            <!--类别颜色参考：https://blog.csdn.net/weixin_30642561/article/details/97325390
+                                                还差2种-->
+                                            类别：<span class="badge badge-success mycategory" style="background-color:#738a91">{{ wantgoods.wantcategory }}</span>
+                                        </div>
+                                        <div class="content col">
+                                            <h3 class="title" style="color: green;">{{ wantgoods.wanttitle }}</h3><br/>
+                                            <p>
+                                                {{ wantgoods.wantcontent }}
+                                            </p><br/>
+                                            <ul class="meta">
+                                                <!--图标参考：http://www.fontawesome.com.cn/faicons/-->
+                                                <li><strong class="text-primary"><i
+                                                        class="fa fa-user"></i>{{ wantgoods.username }}</strong></li>
+                                                <li>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-clock-o"></i>发布时间：{{ wantgoods.createtime }}
+                                                </li>
+                                                <li>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-map-marker"></i>期望交易地点：{{ wantgoods.expectplace }}
+                                                </li>
+                                            </ul>
+                                            <br/>
+                                            <ul class="meta">
+                                                <li><i class="fa fa-phone"></i>电话：{{ wantgoods.phone }}</li>
+                                                <li>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-envelope"></i>邮箱：{{ wantgoods.email }}
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!-- 求购清单列表 Jobs End -->
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="ps-product-action">
+                <div class="ps-pagination">
+                    <div id="layuipage"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ps-footer bg--cover" data-background="images/background/parallax.jpg">
+        <div class="ps-footer__content">
+            <div class="ps-container">
+                <div class="row">
+                    <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 " style="margin-left: 120px;">
+                        <aside class="ps-widget--footer ps-widget--info">
+                            <header><a class="ps-logo" th:href="@{/}"><img th:src="@{/static/images/logo-white.png}" alt=""></a>
+                                <h3 class="ps-widget__title">郭嘉霓</h3>
+                            </header>
+                            <footer>
+                                <p><strong>Sno： 20182005135</strong></p>
+                                <p>Class: 2018级软件工程4班</p>
+                                <p>Email: <a href='mailto:support@store.com'>1240438212@qq.com</a></p>
+                                <p>Phone: +86 13431317321</p>
+                            </footer>
+                        </aside>
+                    </div>
+                    <div class="col-lg-2 col-md-3 col-sm-12 col-xs-12 ">
+                        <aside class="ps-widget--footer ps-widget--info second">
+                            <header>
+                                <h3 class="ps-widget__title">陈丽莎</h3>
+                            </header>
+                            <footer>
+                                <p><strong>Sno： 20182005094</strong></p>
+                                <p>Class: 2018级软件工程4班</p>
+                                <p>Email: <a href='mailto:support@store.com'>Suyanyee@qq.com</a></p>
+                                <p>Phone: +86 18575748095</p>
+                            </footer>
+                        </aside>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
+                        <aside class="ps-widget--footer ps-widget--info second">
+                            <header>
+                                <h3 class="ps-widget__title">张婉淳</h3>
+                            </header>
+                            <footer>
+                                <p><strong>Sno： 20182005224</strong></p>
+                                <p>Class: 2018级软件工程5班</p>
+                                <p>Email: <a href='mailto:support@store.com'>271820501@qq.com</a></p>
+                                <p>Phone: +86 15889960134</p>
+                            </footer>
+                        </aside>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
+                        <aside class="ps-widget--footer ps-widget--info second">
+                            <header>
+                                <h3 class="ps-widget__title">戴晗琳</h3>
+                            </header>
+                            <footer>
+                                <p><strong>Sno： 20182005168</strong></p>
+                                <p>Class: 2018级软件工程5班</p>
+                                <p>Email: <a href='mailto:support@store.com'>1106135995@qq.com</a></p>
+                                <p>Phone: +86 13670033097</p>
+                            </footer>
+                        </aside>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 ">
+                        <aside class="ps-widget--footer ps-widget--info second">
+                            <header>
+                                <h3 class="ps-widget__title">刘佳乐</h3>
+                            </header>
+                            <footer>
+                                <p><strong>Sno： 20182005242</strong></p>
+                                <p>Class: 2018级软件工程4班</p>
+                                <p>Email: <a href='mailto:s1035562400@qq.com'>1035562400@qq.com</a></p>
+                                <p>Phone: +86 13622472383</p>
+                            </footer>
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<!-- JS Library-->
+
+<!-- 求购清单列表JS Main Activation JS -->
+<script th:src="@{/static/js/wantgoods/main.js}"></script>
+
+
+<script type="text/javascript" th:src="@{/static/plugins/bootstrap/dist/js/bootstrap.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/jquery-bar-rating/dist/jquery.barrating.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/owl-carousel/owl.carousel.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/gmap3.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/imagesloaded.pkgd.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/isotope.pkgd.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/bootstrap-select/dist/js/bootstrap-select.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/jquery.matchHeight-min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/slick/slick/slick.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/elevatezoom/jquery.elevatezoom.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/Magnific-Popup/dist/jquery.magnific-popup.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/jquery-ui/jquery-ui.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/ditugoogle.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/revolution/js/jquery.themepunch.tools.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/plugins/revolution/js/jquery.themepunch.revolution.min.js}"></script>
+<script type="text/javascript" th:src="@{/static/layui/layui.js}"></script>
+<script type="text/javascript"
+        th:src="@{/static/plugins/revolution/js/extensions/revolution.extension.video.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{/static/plugins/revolution/js/extensions/revolution.extension.slideanims.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{/static/plugins/revolution/js/extensions/revolution.extension.layeranimation.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{/static/plugins/revolution/js/extensions/revolution.extension.navigation.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{/static/plugins/revolution/js/extensions/revolution.extension.parallax.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{/static/plugins/revolution/js/extensions/revolution.extension.actions.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{/static/plugins/revolution/js/extensions/revolution.extension.kenburn.min.js}"></script>
+<script type="text/javascript"
+        th:src="@{/static/plugins/revolution/js/extensions/revolution.extension.migration.min.js}"></script>
+<!-- Custom scripts-->
+<!--<script type="text/javascript" th:src="@{/static/js/main.js}"></script>-->
+<script th:src="@{/static/js/wantgoods/mainfromindexmain.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/common/wantgoodslists.js}"></script>
+</body>
+</html>

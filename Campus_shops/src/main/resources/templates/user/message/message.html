@@ -58,12 +58,15 @@
                     if($(this).text() == '状态') {
                         $(this).text("状态")
                     }else if($(this).text() == 0){
+                        //0未读，红点
                         $(this).html("<span class=\"layui-badge-dot\"></span>")
                     }else if($(this).text() == 1){
+                        //1已读，灰点
                         $(this).html("<span class=\"layui-badge-dot layui-bg-gray\"></span>")
                     }
                 });
                 $("[data-field='whys']").children().each(function () {
+                    //内容不变（也不变颜色，绿色是超链接）
                     $(this).html($(this).html())
                 });
             }
@@ -73,6 +76,7 @@
 
         });
         //监听行单击事件（双击事件为：rowDouble）
+        //估计意思是，row为单击函数，rowDouble为双击函数
         table.on('row(test)', function(obj){
             var data = obj.data;
             $.ajax({
