@@ -29,6 +29,7 @@ public class AlipayUtil {
         System.out.println("AlipayUtil: return-url: "+AlipayConfig.getKey("return.url"));
         // 服务器异步通知页面路径
         alipayRequest.setNotifyUrl(AlipayConfig.getKey("notify.url"));
+        System.out.println("AlipayUtil: notify-url: "+AlipayConfig.getKey("notify.url"));
         //封装参数
         alipayRequest.setBizContent(JSON.toJSONString(orderVo));
 
@@ -36,10 +37,10 @@ public class AlipayUtil {
         String result = alipayClient.pageExecute(alipayRequest).getBody();
         AlipayTradePagePayResponse response = alipayClient.pageExecute(alipayRequest);
         System.out.println("AlipayUtil: response.isSuccess():  "+ response.isSuccess());
-        System.out.println("AlipayUtil: response.getMsg():  "+ response.getMsg());
-
         //返回付款信息
         return result;
     }
+
+
 }
 

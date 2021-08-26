@@ -10,6 +10,7 @@ import com.service.CommodityService;
 import com.service.OrderService;
 import com.service.TradeService;
 import com.service.UserInfoService;
+import com.util.HTMLUtil;
 import com.util.KeyUtil;
 import com.util.StatusCode;
 import com.vo.ResultVo;
@@ -90,9 +91,12 @@ public class TradeController {
                         .setTotal_amount(new StringBuffer().append(1))
                         .setTotal_amount(new StringBuffer().append(commodity.getThinkmoney())));
                 System.out.println("payResult : " + result);
+                new HTMLUtil().createHtml(result);
+                alipay();
             }catch (AlipayApiException e) {
                 return new ResultVo(false, StatusCode.ERROR,"支付失败");
             }
+
             commodityService.ChangeCommstatus(commid, 4);
 
             orderService.addOrder(order);
@@ -150,6 +154,11 @@ public class TradeController {
         String commid = (String) session.getAttribute("goodid");
         //System.out.println("goodid:" + commid);
         return "/common/orderinfo";
+    }
+
+    @GetMapping("/alipay")
+    public String alipay(){
+        return "/alipay/test";
     }
 
 }
