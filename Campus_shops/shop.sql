@@ -607,6 +607,19 @@ INSERT INTO `notices` VALUES ('1628767001100859789', '1628077153506117891', '您
 INSERT INTO `notices` VALUES ('1628767038198553900', '1628077153506117891', '您的商品 <a href=/product-detail/1628766965176423442 style=\"color:#08bf91\" target=\"_blank\" >【全新】AHC爱和纯黄金面膜</a> 已通过推荐，可以在首页推荐上展示。', 0, '推荐商品', '2021-08-12 19:17:18', 1);
 INSERT INTO `notices` VALUES ('1628767130858471259', '1628076567934159756', '您的商品 <a href=/product-detail/1628666649522188450 style=\"color:#08bf91\" target=\"_blank\" >【全新】dose of colors单色眼影孔雀蓝</a> 未通过推荐，暂时无法显示首页推荐。', 0, '推荐商品', '2021-08-12 19:18:50', 1);
 
+/*Table structure for table `traderecord` */
+
+DROP TABLE IF EXISTS `traderecord`;
+
+CREATE TABLE `traderecord` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `from` varchar(255) DEFAULT NULL COMMENT '资金流出',
+  `to` varchar(255) DEFAULT NULL COMMENT '资金流入',
+  `money` decimal(55,2) DEFAULT NULL COMMENT '交易金额',
+  `tradetime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
+
 -- ----------------------------
 -- Table structure for orderrecord
 -- ----------------------------
@@ -912,6 +925,32 @@ INSERT INTO `user_role` VALUES ('1628079366429940552', 1, '网站用户');
 INSERT INTO `user_role` VALUES ('1628084808795360591', 1, '网站用户');
 INSERT INTO `user_role` VALUES ('1628086153878977047', 1, '网站用户');
 INSERT INTO `user_role` VALUES ('1628938128016638191', 1, '网站用户');
+
+-- ----------------------------
+-- Table structure for wantedgoods
+-- ----------------------------
+DROP TABLE IF EXISTS `wantedgoods`;
+CREATE TABLE `wantedgoods`  (
+  `id` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '唯一主键',
+  `userid` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '去user_info查询用户名、头像、手机号、邮箱',
+  `wanttitle` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL COMMENT '求购标题',
+  `wantcontent` varchar(1024) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '求购内容',
+  `wantcategory` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '求购物品的类别（用于接收通知，如果有人发布相同类别的商品，可以在插入commodity表后，或者管理员审核通过后通知）expect_price',
+  `expectprice` decimal(55, 2) NOT NULL COMMENT '期望价格',
+  `expectplace` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '期望交易地点',
+  `createtime` timestamp(0) NULL DEFAULT NULL COMMENT '发布时间',
+  `updatetime` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0) COMMENT '更新时间',
+  `wantstatus` int(10) NULL DEFAULT 0 COMMENT '求购状态，默认0待审核，1审核通过，2审核不通过，3删除',
+  PRIMARY KEY (`id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of wantedgoods
+-- ----------------------------
+INSERT INTO `wantedgoods` VALUES ('1629281616101981746', '1628076567934159756', '求购一副羽毛球球拍', '有人出一副羽毛球球拍嘛？无品牌要求，最好九成新以上。有的请联系我。走平台。可以在线聊天也可以直接电联、qq。交易地点可以变更。', '其他', 120.00, '华南师范大学E栋楼下', '2021-08-18 18:13:36', '2021-08-18 23:34:26', 1);
+INSERT INTO `wantedgoods` VALUES ('1629638241133557998', '1628077153506117891', '求购一副乒乓球拍', '品牌无要求，新旧程度无要求，价格可议，只求速度，体育课用。（乒乓球我自己有，如果你要出也可以）。地点可换', '其他', 80.00, '暨南大学图书馆', '2021-08-22 21:17:21', '2021-08-22 21:17:41', 1);
+INSERT INTO `wantedgoods` VALUES ('1629638477381390952', '1628079150705332033', '求购成人代步两轮踏板车', '尽量新。价格可议。地点随意', '出行', 1200.00, '华南农业大学', '2021-08-22 21:17:21', '2021-08-22 21:21:46', 1);
+INSERT INTO `wantedgoods` VALUES ('1629788900165579779', '1628076567934159756', '求购一个7号篮球', '颜色无所谓，不要太旧，能用即可。下课练球，考试用。谢谢。地点你定', '其他', 80.00, '华南师范大学操场', '2021-08-24 15:08:20', '2021-08-24 15:13:51', 1);
 
 -- ----------------------------
 -- Table structure for wantedschool
