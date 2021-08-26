@@ -5,6 +5,7 @@ import com.alipay.api.AlipayApiException;
 import com.alipay.api.AlipayClient;
 import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.request.AlipayTradePagePayRequest;
+import com.alipay.api.response.AlipayTradePagePayResponse;
 import com.config.AlipayConfig;
 import com.entity.OrderVo;
 
@@ -24,15 +25,19 @@ public class AlipayUtil {
         //2、设置请求参数
         AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
         //页面跳转同步通知页面路径
-        alipayRequest.setReturnUrl(AlipayConfig.getKey("return_url"));
-        System.out.println("return-url"+AlipayConfig.getKey("return_url"));
+        alipayRequest.setReturnUrl(AlipayConfig.getKey("return.url"));
+        System.out.println("AlipayUtil: return-url: "+AlipayConfig.getKey("return.url"));
         // 服务器异步通知页面路径
-        alipayRequest.setNotifyUrl(AlipayConfig.getKey("notify_url"));
+        alipayRequest.setNotifyUrl(AlipayConfig.getKey("notify.url"));
         //封装参数
         alipayRequest.setBizContent(JSON.toJSONString(orderVo));
 
         //3、请求支付宝进行付款，并获取支付结果
         String result = alipayClient.pageExecute(alipayRequest).getBody();
+        AlipayTradePagePayResponse response = alipayClient.pageExecute(alipayRequest);
+        System.out.println("AlipayUtil: response.isSuccess():  "+ response.isSuccess());
+        System.out.println("AlipayUtil: response.getMsg():  "+ response.getMsg());
+
         //返回付款信息
         return result;
     }
