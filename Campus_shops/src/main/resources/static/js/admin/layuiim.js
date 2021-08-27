@@ -1,7 +1,7 @@
 //当前选中窗口的用户id
 //var actuserid="";
 //接入WebSocket
-var socket = new WebSocket('ws://localhost/websocket/'+userid);
+var socket = new WebSocket('ws://localhost:8996/websocket/'+userid);
 
 layui.use('layim', function(layim){
     //监听修改签名
