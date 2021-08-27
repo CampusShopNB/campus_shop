@@ -6,6 +6,7 @@
 <script type="text/javascript" th:src="@{/static/layui/layui.all.js}"></script>
 <script type="text/javascript" th:src="@{/static/plugins/jquery/dist/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/static/layui/jquery.min.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/static/layui/css/layui.css}"/>
 <script type="text/css" src="@{/static/layuiadmin/style/login.css"></script>
 <script inline="javascript">
   var goodid =  [[${session.goodid}]];
@@ -17,38 +18,39 @@
     <title>填写订单信息</title>
 </head>
 <body>
-<div class="layadmin-user-login-main">
-  <div class="layadmin-user-login-box layadmin-user-login-header">
-    <h2 style="color: white">校园二手商城</h2>
-    <h3 style="color: white">后台管理系统</h3>
-  </div>
-  <div class="layadmin-user-login-box layadmin-user-login-body layui-form">
+<div class="layadmin-user-login-main " >
+  <div class="layadmin-user-login-box layadmin-user-login-body layui-form" style="margin-top: 20px">
     <div class="layui-form-item">
-      <div class="layui-row">
-        <div class="layui-col-xs7">
-          <input type="text" id="receiverName"  lay-verify="required" placeholder="您的称呼" class="layui-input"/>
-        </div>
+      <label class="layui-form-label"><span style="color: red">*</span>收件人</label>
+      <div class="layui-input-block">
+        <input type="text" id="receiverName" name="username" lay-verify="required" autocomplete="off" placeholder="请输入收件人名称" class="layui-input">
       </div>
     </div>
     <div class="layui-form-item">
-      <div class="layui-row">
-        <div class="layui-col-xs7">
-          <input type="text" id="receiverTel"  lay-verify="required" placeholder="联系电话" class="layui-input"/>
-        </div>
-      </div>
+          <label class="layui-form-label"><span style="color: red">*</span>手机号</label>
+          <div class="layui-input-block">
+            <input type="number" id="receiverTel" name="mobilephone"  lay-verify="required" autocomplete="off" placeholder="请输入收件人手机号"
+                   class="layui-input">
+          </div>
+
     </div>
     <div class="layui-form-item">
-      <div class="layui-row">
-        <div class="layui-col-xs7">
-          <input type="text" id="address"  lay-verify="required" placeholder="收件地址" class="layui-input"/>
-        </div>
-      </div>
+
+          <label class="layui-form-label"><span style="color: red">*</span>收件地址</label>
+          <div class="layui-input-block">
+            <input type="text" id="address" name="useraddress" lay-verify="required" autocomplete="off" placeholder="请输入收件地址"
+                   class="layui-input">
+          </div>
+
     </div>
     <div class="layui-form-item">
-      <a th:href="@{/alipay}"><button onclick="createOrder()">提交订单</button></a>
+      <div class="layui-input-block">
+        <button onclick="createOrder()" class="layui-btn">提交订单</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a th:href="@{/alipay}"><button class="layui-btn">前往支付</button></a>
+      </div>
     </div>
   </div>
 </div>
-
 </body>
+
 </html>

@@ -10,7 +10,7 @@ public class HTMLUtil {
         StringBuilder stringHtml = new StringBuilder();
         PrintStream printStream = null;
         try{
-            printStream = new PrintStream(new FileOutputStream("D:\\GitHub\\campus_shop\\Campus_shops\\src\\main\\resources\\templates\\alipay\\test.html"));
+            printStream = new PrintStream(new FileOutputStream(".\\src\\main\\resources\\templates\\alipay\\test.html"));
         }catch(FileNotFoundException e){
             e.printStackTrace();
         }

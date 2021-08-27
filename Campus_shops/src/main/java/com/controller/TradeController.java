@@ -134,7 +134,7 @@ public class TradeController {
 
     @RequestMapping("return")
     public String PayReturn(){
-        return "支付成功";
+        return "/common/product-listing";
     }
     @RequestMapping("notify")
     public String PayNotify(){

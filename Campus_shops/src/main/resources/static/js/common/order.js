@@ -35,7 +35,7 @@ function createOrder() {
             layer.closeAll('loading');
         },
         success: function (data) {
-            layer.msg("success");
+            layer.msg("正在跳转支付界面");
         },error:function () {
             layer.msg("系统错误", {
                 time: 1000,
@@ -44,4 +44,10 @@ function createOrder() {
             });
         }
     });
+}
+
+function topay(){
+    $.ajax({
+        url: "/alipay"
+    })
 }
