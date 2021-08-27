@@ -5,6 +5,7 @@ import com.mapper.OrderMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -99,4 +100,17 @@ public class OrderService {
 
     /**根据id获取订单*/
     public Order getOrderbyId(String id){   return orderMapper.selectById(id); }
+
+    /**后台销售列表查看所有订单*/
+    public List<Order> adminQueryAllOrder(Integer page, Integer count){
+        return orderMapper.adminQueryAllOrder(page,count);
+    }
+    /**后台销售列表,所有订单总数*/
+    public Integer adminQueryOrderCount(){
+        return orderMapper.adminQueryOrderCount();
+    }
+    /**后台分析图表，按照年月查询记录总数*/
+    public List<Order> showDiagramByData(String tyear, String tmonth){
+        return orderMapper.showDiagramByData(tyear,tmonth);
+    }
 }

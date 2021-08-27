@@ -55,4 +55,10 @@ public interface OrderMapper extends BaseMapper<Order>{
 
     /**根据buyerid，查询买家用户。。。。（类似上一个方法）*/
     List<Integer> queryStarByBuyerId(String buyerId);
+    /**后台销售列表查看所有订单*/
+    List<Order> adminQueryAllOrder(@Param("page") Integer page, @Param("count") Integer count);
+    /**后台销售列表,所有订单总数*/
+    Integer adminQueryOrderCount();
+    /**后台分析图表，按照年月查询记录总数*/
+    List<Order> showDiagramByData(@Param("tyear") String tyear, @Param("tmonth") String tmonth);
 }

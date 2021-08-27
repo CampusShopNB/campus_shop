@@ -28,7 +28,7 @@
                                 <input type="text" name="commid" lay-verify="required" lay-reqtext="商品id不能为空"
                                        placeholder="商品id"
                                        autocomplete="off" class="layui-input" th:value="${commodityInfo.commid}"
-                                       style="cursor:not-allowed;" readonly="readonly">
+                                       style="cursor:not-allowed;border: none" readonly="readonly">
                             </div>
                         </div>
                         <!--不上传商品推荐图片了额，直接用主图得了。-->
@@ -44,11 +44,11 @@
 <!--&lt;!&ndash;                            <input type="hidden" id="recomimgvalue" th:value="${commodityInfo.image}">&ndash;&gt;-->
 <!--                        </div>-->
 
-                        <!--商品主图一般是jpg，而且不是透明的，所以必须上传新的图片-->
+                        <!--商品主图一般是jpg，而且不是透明的，所以必须上传新的图片。只有png才是透明的-->
                         <div class="layui-form-item">
-                            <label class="layui-form-label"><span style="color: red">*</span>商品推荐图片</label>
+                            <label class="layui-form-label"><span style="color: red">*</span>推荐图片</label>
                             <div class="layui-inline">
-                                <button type="button" class="layui-btn" id="recomimg">上传商品推荐图片</button>
+                                <button type="button" class="layui-btn" id="recomimg">请上传透明的png图片</button>
                                 <i id="recomimgsuccess" class="layui-icon layui-icon-ok-circle"
                                    style="font-size: 30px; color: #01B961;display:none"></i>
                                 <p id="addrecomimgtips" style="color: #01B961;display: none;">商品推荐图片上传成功</p>
@@ -58,7 +58,7 @@
                         </div>
 
                         <div class="layui-form-item">
-                            <label class="layui-form-label"><span style="color: red">*</span>商品推荐名称</label>
+                            <label class="layui-form-label"><span style="color: red">*</span>推荐名称</label>
                             <div class="layui-input-block">
                                 <input type="text" name="recomname" lay-verify="required" lay-reqtext="商品推荐名称不能为空"
                                        placeholder="请填写商品推荐名称"
@@ -66,7 +66,7 @@
                             </div>
                         </div>
                         <div class="layui-form-item">
-                            <label class="layui-form-label"><span style="color: red">*</span>商品推荐描述</label>
+                            <label class="layui-form-label"><span style="color: red">*</span>推荐描述</label>
                             <div class="layui-input-block">
                                 <input type="text" name="recomdesc" lay-verify="required" lay-reqtext="商品推荐描述不能为空"
                                        placeholder="请填写商品推荐描述"
@@ -76,7 +76,7 @@
 
                         <div class="layui-form-item">
                             <div class="layui-input-block">
-                                <button type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+                                <button id="submitbtn" type="submit" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
                             </div>
                         </div>
                     </form>

@@ -1,7 +1,7 @@
 //切换js
-// document.querySelector('.img__btn').addEventListener('click', function() {
-//     document.querySelector('.dowebok').classList.toggle('s--signup')
-// });
+document.querySelector('.img__btn').addEventListener('click', function() {
+    document.querySelector('.dowebok').classList.toggle('s--signup')
+});
 //获取验证码js
 function getcode() {
     var b = Math.random();

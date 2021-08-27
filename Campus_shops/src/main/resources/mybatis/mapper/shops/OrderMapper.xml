@@ -154,5 +154,19 @@
         where DATE_SUB(CURDATE(), INTERVAL 30 DAY) <![CDATA[<=date(soldtime)]]>
           and buyerid = #{buyerid}
     </select>
+    <!--后台销售列表查看所有订单-->
+    <select id="adminQueryAllOrder" resultType="com.entity.Order">
+        SELECT * FROM orderrecord order by soldtime desc limit #{page},#{count}
+    </select>
+    <!--后台销售列表,所有订单总数-->
+    <select id="adminQueryOrderCount" resultType="java.lang.Integer">
+        SELECT count(*) FROM orderrecord
+    </select>
+    <!--后台分析图表，按照年月查询记录总数-->
+    <select id="showDiagramByData" resultType="com.entity.Order">
+        SELECT * FROM orderrecord
+        where year(soldtime)=#{tyear}
+        and month(soldtime)=#{tmonth}
+    </select>
 
 </mapper>

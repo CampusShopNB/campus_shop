@@ -22,10 +22,9 @@ function lookallrecommend(recomstatus) {
                 , limit: 20
             }, cols: [[
                 {field: 'qid', title: 'ID',width:80, align:'center'}
-                , {field: 'commid', title: '商品id', width: 150, align:'center'}
-                , {field: 'recomname', title: '推荐名称', width: 157, align:'center'}
-                , {field: 'recomimg', title: '推荐图片', width: 150, align:'center'}
-                , {field: 'recomdesc', title: '推荐描述', width: 200, align:'center'}
+                , {field: 'commid', title: '商品id', width: 200, align:'center'}
+                , {field: 'recomname', title: '推荐名称', width: 200, align:'center'}
+                , {field: 'recomdesc', title: '推荐描述', width: 254, align:'center'}
                 , {field: 'updatetime', title: '时间', width: 200,sort: true, align:'center'}
                 , {field: 'recomstatus', title: '商品推荐状态',  toolbar: '#recommendStatusDemo', width: 150, align:'center'}
                 , {fixed: 'right', title: '操作', toolbar: '#barDemo', width:200, align:'center'}

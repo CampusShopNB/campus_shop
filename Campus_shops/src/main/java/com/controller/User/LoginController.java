@@ -156,8 +156,8 @@ public class LoginController {
             login.setId(KeyUtil.genUniqueKey()).setUserid(userid).setMobilephone(mobilephone).setPassword(passwords);
             Integer integer = loginService.loginAdd(login);
             //新注册用户存入默认头像、存入默认签名
-            userInfo.setUserid(userid).setPassword(passwords).setUimage("/pic/d1d66c3ea71044a9b938b00859ca94df.jpg").
-                    setSign("如此清秋何吝酒，这般明月不须钱").setStatus("offline");
+            userInfo.setUserid(userid).setPassword(passwords).setUimage("/pic/default_avatar.jpg").
+                    setSign("才不是懒得写签名，只是没想好!").setStatus("offline");
             Integer integer1 = userInfoService.userReg(userInfo);
             if (integer==1 && integer1==1){
                 /**注册成功后存入session*/

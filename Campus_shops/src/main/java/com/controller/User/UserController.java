@@ -168,14 +168,14 @@ public class UserController {
         //文件全名
         String filenames = filename + "." + ext;
         //图片路径
-        String pathname = "D:\\campusshops\\file\\" + filenames;
+        String pathname = "D:\\campusshops\\file\\user\\" + filenames;
         //上传文件
         file.transferTo(new File(pathname));
-        resUrl.put("src", "/pic/"+filenames);
+        resUrl.put("src", "/pic/user/"+filenames);
         res.put("msg", "");
         res.put("code", 0);
         res.put("data", resUrl);
-        String uimgUrl = "/pic/" + filenames;
+        String uimgUrl = "/pic/user/" + filenames;
 
         String userid=(String) session.getAttribute("userid");
         //实例化一个用户，设置userid和头像url，便于作为参数，更新数据表

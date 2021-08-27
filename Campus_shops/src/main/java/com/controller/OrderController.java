@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
-import java.util.List;
+import java.util.*;
 
 /**
  * <p>
@@ -101,6 +101,7 @@ public class OrderController {
                     return new ResultVo(true, StatusCode.OK, "修改订单状态成功");
                 }
             }
+            return new ResultVo(true, StatusCode.OK, "修改订单状态成功");
         }
         return new ResultVo(false, StatusCode.ERROR, "修改订单状态失败");
     }
@@ -272,6 +273,48 @@ public class OrderController {
         else {
             return new ResultVo(false, StatusCode.ERROR, "评分失败");
         }
+    }
+
+    /**
+     * 后台管理员查看所有订单分页查看用户所有售出订单
+     * 1.前端传入页码、分页数量
+     * 2.查询分页数据
+     */
+    @ResponseBody
+    @GetMapping("/admin/queryallorder")
+    public LayuiPageVo adminQueryAllOrder(int limit, int page) {
+        //查询数据  用户查看售出订单，此时userid其实充当了sellerid
+        List<Order> orderList = orderService.adminQueryAllOrder((page - 1) * limit, limit);
+        //查询记录总数
+        Integer dataNumber = orderService.adminQueryOrderCount();
+        return new LayuiPageVo("", 0, dataNumber, orderList);
+    }
+
+
+    /**
+     *后台统计图，按照年份月份查询
+     * select * from  orderrecord where year(soldtime)='2021' and month(soldtime)='8'
+     */
+    @ResponseBody
+    @PutMapping("/admin/drawbyym/{tyear}/{tmonth}/{tgender}")
+    public LayuiPageVo showDiagramByYearMonth(@PathVariable("tyear") String tyear, @PathVariable("tmonth") String tmonth, @PathVariable("tgender") Integer tgender) {
+        //根据年份月份查询记录
+        List<Order> dateListByYearMonth = orderService.showDiagramByData(tyear,tmonth);
+        int dataNumber=0;
+        String sex = "";
+        if(tgender==1){
+            sex = "男";
+        }else if(tgender==2){
+            sex = "女";
+        }
+        //根据记录中的buyerid，查询user_info，查看性别
+        for(Order d: dateListByYearMonth){
+            UserInfo u = userInfoService.LookUserinfo(d.getBuyerid());
+            if(u.getSex().equals(sex)){
+                dataNumber+=1;
+            }
+        }
+        return new LayuiPageVo("", 200, dataNumber,dataNumber);
     }
 
 

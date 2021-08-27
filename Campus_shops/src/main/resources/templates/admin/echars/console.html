@@ -1,18 +1,87 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <base th:href="${#request.getScheme()}+'://'+${#request.getServerName()}+':'+${#request.getServerPort()}+${#request.getContextPath()}">
     <meta charset="UTF-8">
     <title>数据分析</title>
     <meta charset="utf-8">
     <!-- 引入 ECharts 文件 -->
     <!--<script th:href="@{/static/js/admin/echarts.js}" src="/js/admin/echarts.js"></script>-->
     <script th:src="@{/static/js/admin/echarts.js}"></script>
+
+
+
+    <!--jquery?否则用不了ajax-->
+    <script type="text/javascript" th:src="@{/static/plugins/jquery/dist/jquery.min.js}"></script>
+    <!--ajax 中请求地址的basePath -->
+    <script th:inline="javascript">
+        var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
+    </script>
+    <!--使用layui的js-->
+    <link rel="stylesheet" type="text/css" th:href="@{/static/layui/css/layui.css}"/>
+    <script th:src="@{/static/layui/layui.js}"></script>
+    <script th:src="@{/static/layui/jquery.min.js}"></script>
 </head>
 <body>
 <!-- 为 ECharts 准备一个具备大小（宽高）的 DOM -->
 <div id="main" style="width: 100%;height:615px;"></div>
 
 <script type="text/javascript">
+    //tgender整型，1表示男，2表示女
+    function queryDataByYearMon(arr,tyear,tmonth,tgender){
+        $.ajax({
+            url: basePath+'/admin/drawbyym/'+tyear+"/"+tmonth+"/"+tgender,
+            data: "",
+            contentType: "application/json;charset=UTF-8", //发送数据的格式
+            type: "put",
+            dataType: "json", //回调
+            // beforeSend: function () {
+            //     layer.load(1, { //icon支持传入0-2
+            //         content: '请稍等...',
+            //         success: function (layero) {
+            //             layero.find('.layui-layer-content').css({
+            //                 'padding-top': '39px',
+            //                 'width': '60px'
+            //             });
+            //         }
+            //     });
+            // },
+            // complete: function () {
+            //     layer.closeAll('loading');
+            // },
+            success: function (data) {
+                /*code: 0
+                count: 0
+                data: null
+                msg: ""*/
+                // if(data.status===200){
+                    // layer.msg(data.message, {
+                    //     time: 1000,
+                    //     icon: 1,
+                    //     offset: '50px'
+                    // }, function () {
+                        // location.reload();
+                        // return data;
+                        arr[tmonth-1]=data.data;
+                    // });
+                // }else {
+                    // layer.msg(data.message, {
+                    //     time: 1000,
+                    //     icon: 2,
+                    //     offset: '50px'
+                    // });
+                    // console.log("query error");
+                    // return 0;
+                    // arr[tmonth-1]=-1;
+                // }
+            }
+        });
+    }
+
+
+
+
+
     // 基于准备好的dom，初始化echarts实例
     var myChart = echarts.init(document.getElementById('main'));
     window.onresize = myChart.resize;
@@ -24,11 +93,46 @@
         return data;
     }();
 
+    var myDate = new Date();
+    var thisYear = myDate.getFullYear();
+
+
+
+    var myresgirl=[];
+    window.dataGirlArr = []; //先声明一维
+    for(var i=0;i<12;i++){  //一维长度为12
+        window.dataGirlArr[i]=0;
+        // window.dataGirlArr[i]=queryDataByYearMon(thisYear,i+1,2);
+        queryDataByYearMon(window.dataGirlArr,thisYear,i+1,2);
+
+        var obj ={name:"女",value: window.dataGirlArr[i]};
+        myresgirl.push(obj);
+    }
+
+    var myresboy=[];
+    window.dataBoyArr = []; //先声明一维
+    for(var i=0;i<12;i++){  //一维长度为12
+        window.dataBoyArr[i]=0;
+        // window.dataBoyArr[i]=queryDataByYearMon(thisYear,i+1,1);
+        queryDataByYearMon(window.dataBoyArr,thisYear,i+1,2);
+
+        var obj ={name:"男",value: window.dataGirlArr[i]};
+        myresboy.push(obj);
+    }
+    // alert("---")
+    // console.log("dataGirl")
+    // console.log(window.dataGirlArr);
+    // console.log("dataBoyArr")
+    // console.log(window.dataBoyArr);
+    console.log(myresgirl)
+    console.log(myresboy)
+
+
     option = {
         backgroundColor: "#344b58",
         "title": {
             "text": "本年订单数量统计",
-            "subtext": "BY 校园商铺",
+            "subtext": "BY 校园二手交易商城",
             x: "4%",
 
             textStyle: {
@@ -163,19 +267,45 @@
                     }
                 }
             },
-            "data": [
-                2,
-                1,
-                2,
-                3,
-                5,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0,
-                0
+            "data":[
+                // 2,
+                // 1,
+                // 2,
+                // 3,
+                // 5,
+                // 0,
+                // 0,
+                // 0,
+                // 0,
+                // 0,
+                // 0,
+                // 0
+                // {name:"1",value:window.dataGirlArr[0]},
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    1,
+                    0,
+                    0,
+                    0,
+                    0
+                // window.dataGirlArr[0],
+                // window.dataGirlArr[1],
+                // window.dataGirlArr[2],
+                // window.dataGirlArr[3],
+                // window.dataGirlArr[4],
+                // window.dataGirlArr[5],
+                // window.dataGirlArr[6],
+                // window.dataGirlArr[7],
+                // window.dataGirlArr[8],
+                // window.dataGirlArr[9],
+                // window.dataGirlArr[10],
+                // window.dataGirlArr[11],
+
             ],
         },
 
@@ -197,14 +327,38 @@
                     }
                 },
                 "data": [
+                    // 2,
+                    // 3,
+                    // 5,
+                    // 2,
+                    // 4,
+                    // 0,
+                    // 0,
+                    // 0,
+                    // 0,
+                    // 0,
+                    // 0,
+                    // 0
+                    // window.dataBoyArr[0],
+                    // window.dataBoyArr[1],
+                    // window.dataBoyArr[2],
+                    // window.dataBoyArr[3],
+                    // window.dataBoyArr[4],
+                    // window.dataBoyArr[5],
+                    // window.dataBoyArr[6],
+                    // window.dataBoyArr[7],
+                    // window.dataBoyArr[8],
+                    // window.dataBoyArr[9],
+                    // window.dataBoyArr[10],
+                    // window.dataBoyArr[11],
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    0,
                     2,
-                    3,
-                    5,
-                    2,
-                    4,
-                    0,
-                    0,
-                    0,
                     0,
                     0,
                     0,
@@ -230,19 +384,43 @@
                     }
                 },
                 "data": [
-                    4,
-                    4,
-                    7,
-                    5,
-                    9,
+                    // 4,
+                    // 4,
+                    // 7,
+                    // 5,
+                    // 9,
+                    // 0,
+                    // 0,
+                    // 0,
+                    // 0,
+                    // 0,
+                    // 0,
+                    // 0
+                    // window.dataGirlArr[0]+window.dataBoyArr[0],
+                    // window.dataGirlArr[1]+window.dataBoyArr[1],
+                    // window.dataGirlArr[2]+window.dataBoyArr[2],
+                    // window.dataGirlArr[3]+window.dataBoyArr[3],
+                    // window.dataGirlArr[4]+window.dataBoyArr[4],
+                    // window.dataGirlArr[5]+window.dataBoyArr[5],
+                    // window.dataGirlArr[6]+window.dataBoyArr[6],
+                    // window.dataGirlArr[7]+window.dataBoyArr[7],
+                    // window.dataGirlArr[8]+window.dataBoyArr[8],
+                    // window.dataGirlArr[9]+window.dataBoyArr[9],
+                    // window.dataGirlArr[10]+window.dataBoyArr[10],
+                    // window.dataGirlArr[11]+window.dataBoyArr[11],
                     0,
                     0,
                     0,
+                    0,
+                    0,
+                    0,
+                    0,
+                    3,
                     0,
                     0,
                     0,
                     0
-                ]
+                 ]
             },
         ]
     }

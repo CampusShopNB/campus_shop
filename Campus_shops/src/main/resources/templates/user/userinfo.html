@@ -75,7 +75,7 @@
                             <div class="layui-input-inline">
                                 <input type="text" name="school" lay-verify="school" autocomplete="off"
                                        placeholder="请输入所在学校" class="layui-input" th:value="${userInfo.school}"
-                                       style="cursor:not-allowed;" readonly="readonly">
+                                       style="cursor:not-allowed;border:none" readonly="readonly">
                             </div>
                             <div class="layui-form-mid" th:if="${ userInfo.applyschoolstatus == 1 }" style="color: red;">审核中</div>
                         </div>
@@ -85,7 +85,7 @@
                             <div class="layui-input-inline">
                                 <input type="text" name="faculty" value="" lay-verify="faculty" autocomplete="off"
                                        placeholder="请输入所在院系" class="layui-input" th:value="${userInfo.faculty}"
-                                       style="cursor:not-allowed;" readonly="readonly">
+                                       style="cursor:not-allowed;border:none" readonly="readonly">
                             </div>
 
                         </div>
@@ -95,7 +95,7 @@
                                 <div class="layui-input-inline">
                                     <input type="text" name="startime" class="layui-input"
                                            placeholder="选择入学时间" th:value="${userInfo.startime}"
-                                           style="cursor:not-allowed;" readonly="readonly">
+                                           style="cursor:not-allowed;border:none" readonly="readonly">
                                 </div>
                             </div>
                         </div>
@@ -105,8 +105,10 @@
                             <!--添加id是为了使用layer.photo放大图片，不过直接onclick也可 onclick="enlargePic()"-->
                             <div class="layui-input-inline" id="stuidcarddiv">
                                 <img th:src="${userInfo.stuidcard}"
-                                     style="width:200px;cursor: not-allowed" alt="学生证">
+                                     style="width:200px;cursor: not-allowed" alt="学生证"
+                                     title="不可修改。点击后可放大">
                             </div>
+                            <div class="layui-form-mid layui-word-aux"></div>
                         </div>
 
                         <div class="layui-form-item">

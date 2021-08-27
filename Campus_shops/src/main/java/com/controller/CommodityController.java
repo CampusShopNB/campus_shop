@@ -182,24 +182,24 @@ public class CommodityController {
                 int recomUpdate = recommendService.updateRecommendStatus(recommend);
 
                 //由于soldrecord数据表废弃，以下操作废弃。
-                /**如果商品已售出，则需要向售出数据表soldrecord添加一条记录
-                 * commstatus为4表示商品已经完成交易*/
-                String userid = (String) session.getAttribute("userid");
-                /**查询售出商品的信息
-                 * 查询commodity数据表是为了获取商品的相关信息，便于等下赋值给数据表soldrecord记录的字段。*/
-                Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
-                //实例化一个soldrecord对象，等下执行insert语句时要用到
-                Soldrecord soldrecord = new Soldrecord();
-                /**将商品信息添加到售出记录中*/
-                soldrecord
-                        .setId(KeyUtil.genUniqueKey())
-                        .setCommid(commid)
-                        .setCommname(commodity.getCommname())
-                        .setCommdesc(commodity.getCommdesc())
-                        .setThinkmoney(commodity.getThinkmoney())
-                        .setUserid(userid);
-                /**添加售出记录*/
-                soldrecordService.insertSold(soldrecord);
+//                /**如果商品已售出，则需要向售出数据表soldrecord添加一条记录
+//                 * commstatus为4表示商品已经完成交易*/
+//                String userid = (String) session.getAttribute("userid");
+//                /**查询售出商品的信息
+//                 * 查询commodity数据表是为了获取商品的相关信息，便于等下赋值给数据表soldrecord记录的字段。*/
+//                Commodity commodity = commodityService.LookCommodity(new Commodity().setCommid(commid));
+//                //实例化一个soldrecord对象，等下执行insert语句时要用到
+//                Soldrecord soldrecord = new Soldrecord();
+//                /**将商品信息添加到售出记录中*/
+//                soldrecord
+//                        .setId(KeyUtil.genUniqueKey())
+//                        .setCommid(commid)
+//                        .setCommname(commodity.getCommname())
+//                        .setCommdesc(commodity.getCommdesc())
+//                        .setThinkmoney(commodity.getThinkmoney())
+//                        .setUserid(userid);
+//                /**添加售出记录*/
+//                soldrecordService.insertSold(soldrecord);
             }
 
             /*商品尚未售出。其实commstatus!=4，在这里一般就是commstatus=2，即删除按钮

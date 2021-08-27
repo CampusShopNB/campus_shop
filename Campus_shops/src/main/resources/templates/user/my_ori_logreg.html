@@ -5,7 +5,6 @@
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>校园二手交易商城 | 登录</title>
 <!--    新页面的js和css-->
     <script
       src="https://kit.fontawesome.com/64d58efce2.js"
@@ -21,72 +20,41 @@
     <script th:inline="javascript">
       var basePath = [[${#httpServletRequest.getScheme() + "://" + #httpServletRequest.getServerName() + ":" + #httpServletRequest.getServerPort() + #httpServletRequest.getContextPath()}]];
     </script>
+    <title>校园二手交易商城 | 登录</title>
   </head>
   <body>
     <div class="container">
       <div class="forms-container">
         <div class="signin-signup">
-          <form class="sign-in-form">
+          <form action="#" class="sign-in-form">
             <h2 class="title">欢迎回来</h2>
             <div class="input-field">
               <i class="fas fa-user"></i>
-              <input type="text" autocomplete="off" placeholder="请输入账号" id="username"/>
+              <input type="text" placeholder="用户名" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" autocomplete="off" placeholder="请输入密码" id="password" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
+              <input type="password" placeholder="密码" />
             </div>
-            <div class="input-field">
-              <!--fa-expeditedssl、fa-flickr、fa-get-pocket-->
-              <i class="fa fa-get-pocket"></i>
-              <input type="text" autocomplete="off" placeholder="请输入验证码" id="vercode" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
-            </div>
-            <label>
-              <img th:src="@{/images}" title="看不清，请点击图片刷新" width="128px"
-                   height="33px" id="image1" onclick="getcode(this)"/>
-            </label>
-<!--            <p class="forgot-pass"><a th:href="@{/forget}" style="font-size: small">忘记密码？</a></p>-->
-            <!--type="submit"-->
-            <input type="button" value="登录" id="submitlg" class="btn solid"
-                   onclick="submitlogin()" style="background-color: #8E9BAE;margin-top: 20px"/>
-
+            <input type="submit" value="登录" class="btn solid" style="background-color: #8E9BAE"/>
             <p class="social-text"></p>
             <div class="social-media"></div>
           </form>
-
-
-
-          <form action="#" class="sign-up-form" id="registers">
+          <form action="#" class="sign-up-form">
             <h2 class="title">立即注册</h2>
             <div class="input-field">
-              <i class="fas fa-phone"></i>
-              <input type="text" autocomplete="off" placeholder="请输入手机号" id="userphone" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
+              <i class="fas fa-user"></i>
+              <input type="text" placeholder="用户名" />
             </div>
             <div class="input-field">
               <i class="fas fa-envelope"></i>
-              <input type="email" autocomplete="off" placeholder="请输入邮箱" id="useremail" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
-            </div>
-            <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" autocomplete="off" placeholder="请输入用户名" id="nickname"/>
+              <input type="email" placeholder="邮箱" />
             </div>
             <div class="input-field">
               <i class="fas fa-lock"></i>
-              <input type="password" autocomplete="off" placeholder="请输入密码" id="password2" onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
+              <input type="password" placeholder="密码" />
             </div>
-
-            <div class="input-field">
-              <i class="fa fa-commenting"></i>
-              <input type="text" autocomplete="off" placeholder="请输入短信验证码" id="phonevercode"  onkeyup="this.value=this.value.replace(/\s+/g,'')"/>
-            </div>
-            <label>
-              <button type="button" class="layui-btn layui-btn-primary layui-btn-fluid " id="LAY-user-getsmscode"
-                      onclick="getphonecode()">获取短信验证码</button>
-            </label>
-
-            <!--type="submit"-->
-            <input type="submit" class="btn" value="注册" id="submitrg"
-                   onclick="submitregister()" style="background-color: #8E9BAE;margin-top: 20px"/>
+            <input type="submit" class="btn" value="注册" style="background-color: #8E9BAE"/>
             <p class="social-text"></p>
             <div class="social-media"></div>
           </form>
@@ -122,22 +90,10 @@
       </div>
     </div>
   </body>
-<!--  切换登陆注册面板-->
   <script th:src="@{/static/js/mylogreg/app.js}"></script>
+
 
   <script th:src="@{/static/layui/layui.js}"></script>
   <script th:src="@{/static/js/js.cookie.min.js}"></script>
   <script th:src="@{/static/js/userInfo/logreg.js}"></script>
-
-
-  <script type="text/javascript">
-    //阻止form表单提交按钮的默认 action
-    // https://blog.csdn.net/u013939884/article/details/76474697
-    $(document).ready(function(){
-      $("form").submit(function(e){
-        e.preventDefault();
-        // alert("Submit prevented");
-      });
-    });
-  </script>
 </html>

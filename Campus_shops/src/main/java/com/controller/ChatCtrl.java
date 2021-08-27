@@ -83,6 +83,7 @@ public class ChatCtrl {
         if(integer==null){
             //如果不存在好友关系插入好友关系
             friendsService.insertFriend(friends);
+            //刚好和上面的对象friends交换值
             friendsService.insertFriend(new Friends().setFuserid(userid).setUserid(fuserid));
         }
         return new ResultVo(false, StatusCode.OK,"正在跳转到聊天界面");
