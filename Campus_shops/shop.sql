@@ -11,7 +11,7 @@
  Target Server Version : 50717
  File Encoding         : 65001
 
- Date: 27/08/2021 20:34:42
+ Date: 27/08/2021 20:36:47
 */
 
 SET NAMES utf8mb4;
@@ -137,30 +137,6 @@ INSERT INTO `collect` VALUES ('1630057307391685215', '1628765128097895286', '兰
 INSERT INTO `collect` VALUES ('1630059301411300978', '1628674561533763471', '【几乎全新】沃菲帕客WOLFBIKE自行车', '自己家的自行车，没咋骑和新的差不多，小巧方便，适合上下班骑或者代驾用，可以折叠，还轻巧,车架材质铝合金，着急搬家www.wolfbike.cn', '2021-08-27 18:15:01', 2, '1628079150705332033', '朱亭晚', '华南农业大学', '1630056790346157068');
 INSERT INTO `collect` VALUES ('1630059688850266229', '1628674561533763471', '【几乎全新】沃菲帕客WOLFBIKE自行车', '自己家的自行车，没咋骑和新的差不多，小巧方便，适合上下班骑或者代驾用，可以折叠，还轻巧,车架材质铝合金，着急搬家www.wolfbike.cn', '2021-08-27 18:21:28', 1, '1628079150705332033', '朱亭晚', '华南农业大学', '1629882547037686772');
 INSERT INTO `collect` VALUES ('1630060400675858307', '1628766965176423442', '【全新】AHC爱和纯黄金面膜', '【全新】AHC爱和纯24k黄金面膜锡纸蒸汽补水清洁去黑头保湿5片', '2021-08-27 18:33:20', 2, '1628077153506117891', '岳照琴', '暨南大学', '1630056790346157068');
-
--- ----------------------------
--- Table structure for comment
--- ----------------------------
-DROP TABLE IF EXISTS `comment`;
-CREATE TABLE `comment`  (
-                            `cid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '评论id',
-                            `commid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品id',
-                            `cuserid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '评论者id',
-                            `spuserid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品发布者id',
-                            `content` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '评论内容',
-                            `commtime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '评论时间',
-                            `commstatus` int(10) NULL DEFAULT 1 COMMENT '0异常 1正常 2删除',
-                            PRIMARY KEY (`cid`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of comment
--- ----------------------------
-INSERT INTO `comment` VALUES ('1', '1577792919764240135', '1582184795951594874', '1577713712942250291', '不错啊，东西很好', '2020-02-24 22:49:56', 1);
-INSERT INTO `comment` VALUES ('1588251204811301252', '1583939483587193411', '1577713712942250291', '1582184795951594874', '怎么卖呀？能不能优惠点', '2020-04-30 20:53:24', 1);
-INSERT INTO `comment` VALUES ('1614226508675446955', '1583940546885846474', '1577713712942250291', '1582184795951594874', '111', '2021-02-25 12:15:08', 1);
-INSERT INTO `comment` VALUES ('1629604011627206593', '1628764920638264435', '1582184795951594874', '1628077153506117891', '?', '2021-08-22 11:46:51', 1);
-INSERT INTO `comment` VALUES ('1629604160108608822', '1628764920638264435', '1582184795951594874', '1628077153506117891', '1', '2021-08-22 11:49:20', 1);
 
 -- ----------------------------
 -- Table structure for commimages
@@ -840,30 +816,6 @@ INSERT INTO `recommend` VALUES ('1628765325648122005', '1628765128097895286', '�
 INSERT INTO `recommend` VALUES ('1628767025637658136', '1628766965176423442', 'AHC爱和面膜', '/pic/fe4c2f802e084e2f89c59961da7874fb.png', '24k黄金面膜锡纸蒸汽补水', 1, '2021-08-12 19:17:05');
 
 -- ----------------------------
--- Table structure for reply
--- ----------------------------
-DROP TABLE IF EXISTS `reply`;
-CREATE TABLE `reply`  (
-  `rid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '回复id',
-  `cid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '评论id',
-  `commid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品id',
-  `cuserid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '被回复用户id',
-  `spuserid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品发布者id',
-  `recontent` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '回复内容',
-  `ruserid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '回复者id',
-  `replytime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '回复时间',
-  `repstatus` int(10) NULL DEFAULT 1 COMMENT '0异常 1正常 2删除',
-  PRIMARY KEY (`rid`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of reply
--- ----------------------------
-INSERT INTO `reply` VALUES ('1', '1', '1577792919764240135', '1582184795951594874', '1577713712942250291', '嗯呢', '1577713712942250291', '2020-02-24 22:54:11', 1);
-INSERT INTO `reply` VALUES ('1588262384743447563', '1588251204811301252', '1583939483587193411', '1577713712942250291', '1582184795951594874', '可以呀，我这车子很新的', '1582184795951594874', '2020-04-30 23:59:44', 1);
-INSERT INTO `reply` VALUES ('1614226529645282498', '1614226508675446955', '1583940546885846474', '1577713712942250291', '1582184795951594874', '222', '1582184795951594874', '2021-02-25 12:15:29', 1);
-
--- ----------------------------
 -- Table structure for school
 -- ----------------------------
 DROP TABLE IF EXISTS `school`;
@@ -922,30 +874,6 @@ INSERT INTO `school` VALUES ('6', '10566', '广东海洋大学', 1);
 INSERT INTO `school` VALUES ('7', '10570', '广州医科大学', 1);
 INSERT INTO `school` VALUES ('8', '10571', '广东医科大学', 1);
 INSERT INTO `school` VALUES ('9', '10572', '广州中医药大学', 1);
-
--- ----------------------------
--- Table structure for soldrecord
--- ----------------------------
-DROP TABLE IF EXISTS `soldrecord`;
-CREATE TABLE `soldrecord`  (
-  `id` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '售出记录id',
-  `commid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '商品id',
-  `commname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品名',
-  `commdesc` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '商品描述',
-  `thinkmoney` decimal(55, 2) NULL DEFAULT NULL COMMENT '售价',
-  `soldtime` timestamp(0) NULL DEFAULT CURRENT_TIMESTAMP(0) COMMENT '售出时间',
-  `userid` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '卖家用户id',
-  `soldstatus` int(10) NULL DEFAULT 1 COMMENT '1正常 2删除',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci ROW_FORMAT = Dynamic;
-
--- ----------------------------
--- Records of soldrecord
--- ----------------------------
-INSERT INTO `soldrecord` VALUES ('1586773115334362712', '1583937754237685707', '湘鑫宏日式垃圾桶', '湘鑫宏日式垃圾桶北欧家用垃圾篓大号厕所时尚筒带盖小卫生间创意简约干湿分类压圈垃圾桶 日系白色印花小鹿', 10.00, '2020-04-13 18:18:35', '1582184795951594874', 1);
-INSERT INTO `soldrecord` VALUES ('1586773281001490360', '1583938501381902202', '南极人2020春季新款男士韩版休闲牛仔外套', '南极人2020春季新款男士韩版休闲牛仔外套潮流秋冬装ins港仔文艺夹克上衣服 605白黑【单件】 XL/120-135斤', 85.00, '2020-04-13 18:21:21', '1582184795951594874', 1);
-INSERT INTO `soldrecord` VALUES ('1587889176015334502', '1583940546885846474', '爱玛电动车 小爱蜜', '爱玛电动车 小爱蜜 电动自行车学生代步电瓶车 前后真空胎 带脚踏 加长舒适后减震 3C大证 新国标 奶白咖啡 新国标', 1200.00, '2020-04-26 16:19:36', '1582184795951594874', 1);
-INSERT INTO `soldrecord` VALUES ('1627744719982928281', '1583937436355876950', '活着', '书名：活着 该本书是25周年典藏纪念版 余华小说作品集', 10.00, '2021-07-31 23:18:40', '1582184795951594874', 1);
 
 -- ----------------------------
 -- Table structure for traderecord
